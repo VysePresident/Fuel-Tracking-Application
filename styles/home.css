@@ -3,4 +3,7 @@
   background-position: center; 
   background-size: cover; 
   min-height: calc(100vh - 100px);
+  text-align: center;
+  color:white;
+  display:grid;
 }
