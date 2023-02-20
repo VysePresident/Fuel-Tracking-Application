@@ -1,0 +1,83 @@
+header {
+  display: flex;
+  justify-content: space-between;
+  color: #fff;
+  padding: 10px 20px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  align-items: center;
+  background-color: rgba(8, 16, 31, 0.8);
+  transition: all 0.3s ease-in-out;
+  z-index: 1;
+  height: 80px;
+}
+
+a img{
+  position: relative;
+  padding: 0px 10px;
+  height:45px; 
+  width: 150px;
+}
+
+.nav-links{
+  flex: 1;
+  text-align: right;
+}
+.nav-links ul li{
+  list-style: none;
+  display: inline-block;
+  padding: 8px 12px;
+  position: relative;
+}
+.nav-links ul li a{
+  color: #fff;
+  text-decoration: none;
+  font-size: 15px;
+}
+.nav-links ul li::after{
+  content: '';
+  width: 0%;
+  height: 2px;
+  background: #56a9ec;
+  display: block;
+  margin: auto;
+  transition: 0.5s;
+}
+.nav-links ul li:hover::after{
+  width: 100%;
+}
+nav .fa{
+  display: none;
+}
+
+@media(max-width: 700px){
+  .text-box h1{
+      font-size: 25px;
+  }
+  .nav-links ul li{
+      display: block;
+  }
+  .nav-links{
+      position: fixed;
+      background: #56a9ec;
+      height: 100vh;
+      width: 200px;
+      top: 0;
+      right: -200px;
+      text-align: left;
+      z-index: 2;
+      transition: 1s;
+  }
+  nav .fa{
+      display: block;
+      color: #fff;
+      margin: 10px;
+      font-size: 22px;
+      cursor: pointer;
+  }
+  .nav-links ul{
+      padding: 30px;
+  }
+}

@@ -1,0 +1,157 @@
+.bg-about{
+  height: 100vh;
+  width: 100%;
+  background-image: linear-gradient(rgba(4,9,30,0.8),rgba(4,9,30,0.8)), url(../img/home.jpeg);
+  background-position: center; 
+  background-size: cover; 
+  text-align: center;
+}
+
+.about{
+  width: 80%;
+  background-color: transparent;
+  color: #fff;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+}
+.about h2{
+  margin:0;
+  padding: 0 0 20px;
+  background-color: transparent;
+  text-align: center;
+  font-size: 35px;
+  text-shadow: #0b2e4b;
+}
+
+.btn-buy{
+  margin: 0;
+  position: absolute;
+  left: 40%;
+  outline: none;
+  width: 20%;
+  height: 50px;
+  background: transparent;
+  color: #74c6da;
+  font-size: 20px;
+  border: 1px solid #fff;
+  border-radius: 5px;
+
+}
+.btn-buy:hover{
+  cursor: pointer;
+  border: none;
+  color: #fff;
+  background: #74c6da;
+}
+
+.images, .joinimg {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.images img {
+  max-width: 30%;
+  height: auto;
+  margin: 0 10px;
+}
+
+.joinimg img {
+  width: 50%;
+  height: 50%;
+}
+
+.homebody {
+  margin: 0;
+  padding:100px 20px;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  /* flex-grow: 1;
+  justify-items: flex-start; */
+}
+.promotion, .contact{
+  position: relative;
+  padding: 50px 20px;
+  background-color: aliceblue;
+}
+.hiring{
+  position: relative;
+  padding: 50px 20px;
+  background-color: rgb(16, 46, 71);
+}
+.promotion h2, .contact h2 {
+  text-align: center;
+  font-size: 2rem;
+  margin: 1rem 0;
+}
+.hiring h2 {
+  text-align: center;
+  font-size: 2rem;
+  margin: 1rem 0;
+  color: #fff;
+}
+.hiring p{
+  color:#fff;
+}
+p {
+  text-align: center;
+  font-size: 1.2rem;
+  line-height: 1.5;
+  margin: 1rem 0;
+}
+
+img {
+  max-width: 100%;
+  margin: 1rem 0;
+} 
+
+section a {
+  margin: 0;
+  position: absolute;
+  left: 40%;
+  outline: none;
+  width: 20%;
+  height: 50px;
+  background: #74c6da;
+  color: #fff;
+  font-size: 20px;
+  border-radius: 5px;
+  text-align: center;
+  text-decoration: none;
+  padding: 15px;
+} 
+
+section a:hover {
+  cursor: pointer;
+  border: none;
+  color: #fff;
+  background: #417e8d;;
+}
+
+section .button {
+  margin: 0;
+  position: absolute;
+  left: 40%;
+  outline: none;
+  width: 20%;
+  height: 50px;
+  background: #e66e3d;
+  color: #fff;
+  font-size: 20px;
+  border-radius: 5px;
+}
+
+section .button:hover {
+  cursor: pointer;
+  border: none;
+  color: #fff;
+  background: #963e1b;;
+}
+
+section .contact{
+  margin-bottom: 500px;
+}
