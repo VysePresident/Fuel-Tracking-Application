@@ -47,10 +47,32 @@
   background: #74c6da;
 }
 
-.images, .joinimg {
+.images{
   display: flex;
   justify-content: center;
   align-items: center;
+  padding-top: 2rem;
+}
+
+.join-container{
+  display:flex;
+  margin-left: 100px;
+  margin-right: 100px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+.join-img {
+  width: 50%;
+  height: 50%;
+  margin-right: 20px;
+}
+
+.join-info {
+  margin-left: 20px;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
 }
 
 .images img {
@@ -58,50 +80,62 @@
   height: auto;
   margin: 0 10px;
 }
-
-.joinimg img {
-  width: 50%;
-  height: 50%;
-}
-
 .homebody {
   margin: 0;
   padding:100px 20px;
   display: flex;
   flex-direction: column;
   min-height: 100vh;
-  /* flex-grow: 1;
-  justify-items: flex-start; */
 }
+
 .promotion, .contact{
   position: relative;
-  padding: 50px 20px;
+  padding-left: 20px;
+  padding-right: 20px;
+  padding-top: 20px;
+  padding-bottom: 110px;
   background-color: aliceblue;
 }
+
 .hiring{
   position: relative;
-  padding: 50px 20px;
+  padding-left: 20px;
+  padding-right: 20px;
+  padding-top: 20px;
+  padding-bottom: 20px;
   background-color: rgb(16, 46, 71);
 }
+
 .promotion h2, .contact h2 {
   text-align: center;
   font-size: 2rem;
   margin: 1rem 0;
+  font-family: "Poppins", Sans-serif;
+  font-weight: 800;
+  color: var(--e-global-color-bc3baec );
 }
+
 .hiring h2 {
   text-align: center;
   font-size: 2rem;
   margin: 1rem 0;
+  font-family: "Poppins", Sans-serif;
+  font-weight: 800;
   color: #fff;
 }
+
 .hiring p{
   color:#fff;
+  padding-top: 1rem;
 }
+
 p {
   text-align: center;
   font-size: 1.2rem;
   line-height: 1.5;
   margin: 1rem 0;
+  font-family: "Montserrat", Sans-serif;
+  padding: 2rem;
 }
 
 img {
@@ -109,35 +143,30 @@ img {
   margin: 1rem 0;
 } 
 
-section a {
+.btn-about, .btn-contact{
   margin: 0;
   position: absolute;
   left: 40%;
   outline: none;
   width: 20%;
   height: 50px;
-  background: #74c6da;
+  background: #3fc7c2;
   color: #fff;
   font-size: 20px;
   border-radius: 5px;
-  text-align: center;
-  text-decoration: none;
-  padding: 15px;
 } 
 
-section a:hover {
+.btn-about:hover, .btn-contact:hover {
   cursor: pointer;
   border: none;
   color: #fff;
-  background: #417e8d;;
+  background: #3aa19b;;
 }
 
-section .button {
+.btn-join {
   margin: 0;
-  position: absolute;
-  left: 40%;
   outline: none;
-  width: 20%;
+  width: 40%;
   height: 50px;
   background: #e66e3d;
   color: #fff;
@@ -145,13 +174,20 @@ section .button {
   border-radius: 5px;
 }
 
-section .button:hover {
+.btn-join:hover {
   cursor: pointer;
   border: none;
   color: #fff;
   background: #963e1b;;
 }
 
-section .contact{
-  margin-bottom: 500px;
+a{
+  text-decoration: none;
+  color: #fff;
+}
+
+.btn-about, .btn-contact, .btn-join {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
