@@ -1,0 +1,49 @@
+#contact-form {
+    text-align: center;
+    color:white;
+    display:grid;
+    padding-top: 100px;
+    padding-bottom: 100px;
+}
+
+#head {
+    font-size: 80px;
+    opacity: 100%;
+    background-color: rgba(5, 5, 5, 0.6);
+}
+
+form {
+    align-items: center;
+}
+
+label {
+    display: inline-block;
+    width: 100px; /* adjust as needed */
+    text-align: right;
+    margin-right: 10px; /* optional margin between label and input */
+}
+
+input {
+    width: 300px;
+    margin-bottom: 3px;
+    margin-right: 110px;
+    justify-content: center;
+    align-items: center;
+    text-align: left;
+    vertical-align: top;
+}
+
+#message {
+    width: 300px;
+    height: 200px;
+    margin-bottom: 16px;
+    text-align: left;
+}
+
+input[type="submit"] {
+    font-size: 64px;
+    width: 400px;
+    height: 100px;
+    margin-right: 0%;
+    text-align: center;
+}
