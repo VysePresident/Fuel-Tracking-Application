@@ -1,0 +1,44 @@
+#contact-form {
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    color:white;
+    display:grid;
+    padding-top: 100px;
+    padding-bottom: 100px;
+}
+
+#head {
+    font-size: 80px;
+    opacity: 100%;
+    background-color: rgba(5, 5, 5, 0.6);
+}
+
+label {
+    display: inline-block;
+    width: 100px; /* adjust as needed */
+    text-align: right;
+    margin-right: 10px; /* optional margin between label and input */
+}
+
+input {
+    width: 300px;
+    margin-bottom: 6px;
+}
+
+#message {
+    width: 300px;
+    height: 200px;
+}
+
+input[type="message"] {
+    font-size: 24px;
+    width: 300px;
+    height: 100px;
+}
+
+input[type="submit"] {
+    font-size: 64px;
+    width: 400px;
+    height: 100px;
+}
