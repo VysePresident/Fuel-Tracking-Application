@@ -41,7 +41,12 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100vh;
+  height: 130vh;
+}
+
+.priceEstimate {
+  justify-content: left;
+  align-items: left;
 }
 /* Styles for the white form box */
 form {

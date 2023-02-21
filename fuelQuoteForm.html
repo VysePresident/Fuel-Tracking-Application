@@ -8,18 +8,16 @@
     <link rel="stylesheet" href="styles/fuelQuoteForm.css">
     
     <title>Fuel Quote Form</title>
-
-    <script src="components/home.js"></script>
-    <script src="components/nav-bar.js"></script>
-    <script src="components/footer.js"></script>
 </head>
 
 <body>
     <!--Add link for action to Order Summary Page-->
-    <form class="formTable" action="*" method="POST">
+    <form class="formTable" action="orderSummary.php" method="POST">
+        <div class="nav-bar" id="nav-bar"></div>
         <section>
             <h1><u>Fuel Order Form</u></h1>
-            <p>Proud to serve businesses across the country for <br>over 50 years</p>
+            <p>Proud to serve businesses across the country for <br>
+                over 50 years</p>
 
             <h2>Company Information:</h2>
             <p class="formRow">
@@ -55,7 +53,7 @@
             </p>
             <p class="formRow">
                 <label for="gallonsRequested" class="formCell">Gallons of Fuel:</label>
-                <input class="formCell" type="text" name="gallonsRequested" id="gallonsRequested" required>
+                <input class="formCell" type="number" name="gallonsRequested" id="gallonsRequested" required>
             </p>
             <p class="formRow">
                 <label class="formCell" for="fname">First Name:</label>
@@ -70,8 +68,8 @@
                 <input class="formCell" type="text" name="custEmail" id="custEmail" required>
             </p>
             <p class="formRow">
-                <label class="formCell" for="lname">Phone Number:</label>
-                <input class="formCell" type="tel" name="lname" id="lname" required>
+                <label class="formCell" for="phone">Phone Number:</label>
+                <input class="formCell" type="tel" name="phone" id="phone" required>
             </p>
         </section>
         <section>
@@ -94,9 +92,14 @@
             <input type="submit" value="Submit" class="submitButton" id="submitButton">
         </section>
     </form>
+    
 </body>
 <footer>
-    
+    <section>
+        <div class="footer" id="footer"></div>
+        <script src="components/nav-bar.js"></script>
+        <script src="components/footer.js"></script>
+    </section>
 </footer>
 
 </html>
