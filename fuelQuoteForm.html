@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles/styles.css">
+    <link rel="stylesheet" href="styles/fuelQuoteForm.css">
+    
+    <title>Fuel Quote Form</title>
+
+    <script src="components/home.js"></script>
+    <script src="components/nav-bar.js"></script>
+    <script src="components/footer.js"></script>
+</head>
+
+<body>
+    <!--Add link for action to Order Summary Page-->
+    <form class="formTable" action="*" method="POST">
+        <section>
+            <h1><u>Fuel Order Form</u></h1>
+            <p>Proud to serve businesses across the country for <br>over 50 years</p>
+
+            <h2>Company Information:</h2>
+            <p class="formRow">
+                <label class="formCell" for="companyName">Company Name:</label>
+                <input class="formCell" type="text" name="companyName" id="companyName" required>
+            </p>
+            
+            <p class="formRow">
+                <label for="state" class="formCell">State:</label>
+                <select class="formCell" name="state" id="state" required>
+                    <script src="components/states.js"></script>
+                </select>
+            </p>
+            <p class="formRow">
+                <label class="formCell" for="city">City:</label>
+                <input class="formCell" type="text" name="city" id="city" required>
+            </p>
+            <p class="formRow">
+                <label class="formCell" for="street">Street Address:</label>
+                <input class="formCell" type="text" name="street" id="street" required>
+            </p>
+        </section>
+        <section>
+            <h2 class="formHeader">Order Details:</h2>
+            <p class="formRow">
+                <label for="fuelType" class="formCell">Fuel Type:</label>
+                <select class="formCell" name="fuelType" id="fuelType" required>
+                    <option value="" disabled selected>Select Fuel Type</option>
+                    <option value="unleaded">Unleaded</option>
+                    <option value="leaded">Leaded</option>
+                    <option value="diesel">Diesel</option>
+                </select>
+            </p>
+            <p class="formRow">
+                <label for="gallonsRequested" class="formCell">Gallons of Fuel:</label>
+                <input class="formCell" type="text" name="gallonsRequested" id="gallonsRequested" required>
+            </p>
+            <p class="formRow">
+                <label class="formCell" for="fname">First Name:</label>
+                <input class="formCell" type="text" name="fname" id="fname" required>
+            </p>
+            <p class="formRow">
+                <label class="formCell" for="lname">Last Name:</label>
+                <input class="formCell" type="text" name="lname" id="lname" required>
+            </p class="formRow">
+            <p class="formRow">
+                <label class="formCell" for="custEmail">Email:</label>
+                <input class="formCell" type="text" name="custEmail" id="custEmail" required>
+            </p>
+            <p class="formRow">
+                <label class="formCell" for="lname">Phone Number:</label>
+                <input class="formCell" type="tel" name="lname" id="lname" required>
+            </p>
+        </section>
+        <section>
+            <p class="formRow">
+                <div class="paymentType">
+                    <label class="formCell">Payment Type: </label>
+                    <div class="formCell">
+                        <label for="cash">Cash</label>
+                        <input type="radio" name="paymentType" id="cash" value="cash">
+                        
+                        <label for="credit">Credit</label>
+                        <input type="radio" name="paymentType" id="credit" value="credit">
+
+                        <label for="debit">Debit</label>
+                        <input type="radio" name="paymentType" id="debit" value="debit">
+                    </div> 
+                </div>
+            </p>
+        <section>
+            <input type="submit" value="Submit" class="submitButton" id="submitButton">
+        </section>
+    </form>
+</body>
+<footer>
+    
+</footer>
+
+</html>
