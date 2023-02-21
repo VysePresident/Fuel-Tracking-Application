@@ -1,3 +1,10 @@
+#page {
+    background-image: linear-gradient(rgba(4,9,30,0.7),rgba(4,9,30,0.7)), url(../img/home.jpeg);
+    background-position: center; 
+    background-size: cover; 
+    min-height: calc(100vh - 100px);
+}
+
 #confirmation-message {
     text-align: center;
     justify-content: center;
