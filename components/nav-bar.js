@@ -9,10 +9,10 @@ navBar.innerHTML = `
       <div class="nav-links" id="navLinks">
         <i class="fa fa-times" onclick="hideMenu()"></i>
         <ul>
-          <li><a href="contact.html">CONTACT US</a></li>
-          <li><a href="about.html">ABOUT</a></li>
-          <li><a href="register.html">REGISTER</a></li>
-          <li><a href="signin.html">SIGN IN</a></li>
+          <li><a href="./contact.html">CONTACT US</a></li>
+          <li><a href="./about.html">ABOUT</a></li>
+          <li><a href="./register.html">REGISTER</a></li>
+          <li><a href="./Login_Page.html">SIGN IN</a></li>
         </ul>
       </div>
     </nav>
