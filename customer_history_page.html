@@ -1,25 +1,35 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>Order History Table</title>
-    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.25/css/jquery.dataTables.min.css">
-  </head>
-  <body>
-    <link rel="stylesheet" href="./styles/nav-bar.css">
-    <header>
-      <a href="./index.html"><img src="img/logo.png"></a>
-      <nav>
-        <i class="fa fa-bars" onclick="showMenu()"></i>
-        <div class="nav-links" id="navLinks">
-          <i class="fa fa-times" onclick="hideMenu()"></i>
-          <ul>
-            <li><a href="contact.html">CONTACT US</a></li>
-            <li><a href="about.html">ABOUT</a></li>
-            <li><a href="register.html">REGISTER</a></li>
-            <li><a href="Login_page.html">SIGN IN</a></li>
-          </ul>
-        </div>
-      </nav>
+    <head>
+        <title>Login Form</title>
+        <!--Linking the page that allows one to put restrictions on the email input fields-->
+        <script src="email.validation.js"></script>
+        <!--Linking the page that allows one to put restrictions on the password input fields-->
+        <script src="password.validation.js"></script>
+        <!--This is section of the code is primarily for the top of the page. 
+        For ex the image, the nav bar, and the links.-->
+        <meta charset = "UTF-8" />
+        <meta name = "viewport" content  = "width=device-width, initial-scale = 1.0" />
+        <link rel="stylesheet" href="https://cdn.datatables.net/1.10.25/css/jquery.dataTables.min.css">
+        <link rel = "stylesheet" href = "customer.history.css">
+      <header>
+        <a href="./index.html"><img src="logo.png"></a>
+        <link rel="stylesheet" href="nav-bar.css">
+        <nav>
+            <i class="fa fa-bars" onclick="showMenu()"></i>
+            <div class="nav-links" id="navLinks">
+              <i class="fa fa-times" onclick="hideMenu()"></i>
+              <ul>
+                <li><a href="contact.html">CONTACT US</a></li>
+                <li><a href="about.html">ABOUT</a></li>
+                <li><a href="register.html">REGISTER</a></li>
+                <li><a href="Login_Page.html">SIGN IN</a></li>
+                <li><a></a></li>
+              </ul>
+            </div>
+        </nav>
+    </header>
+    </head>
     <table id="orderHistoryTable">
       <thead>
         <tr>
@@ -42,8 +52,63 @@
         <tr>
           <td>9012</td>
           <td>March 30, 2022</td>
-          <td>$100.00</td>
+          <td>$407.08</td>
         </tr>
+        <tr>
+            <td>0608</td>
+            <td>October 11, 2018            </td>
+            <td>$58.62</td>
+          </tr>
+          <tr>
+            <td>6744</td>
+            <td>September 5, 2019</td>
+            <td>$354.07</td>
+          </tr>
+          <tr>
+            <td>4244</td>
+            <td>January 17, 2020</td>
+            <td>$208.94</td>
+          </tr>
+          <tr>
+            <td>6598</td>
+            <td>April 1, 2020</td>
+            <td>$52.21</td>
+          </tr>
+          <tr>
+            <td>2484</td>
+            <td>August 22, 2020</td>
+            <td>$123.41</td>
+          </tr>
+          <tr>
+            <td>5166</td>
+            <td>November 22, 2020</td>
+            <td>$186.56</td>
+          </tr>
+          <tr>
+            <td>7844</td>
+            <td>February 24, 2021</td>
+            <td>$153.90</td>
+          </tr>
+          <tr>
+            <td>6941</td>
+            <td>January 23, 2023</td>
+            <td>$451.62</td>
+          </tr>
+          <tr>
+            <td>6818</td>
+            <td>February 10, 2023</td>
+            <td>$119.27</td>
+          </tr>
+          <tr>
+            <td>1544</td>
+            <td>October 19, 2023</td>
+            <td>$348.25</td>
+          </tr>
+          <tr>
+            <td>9459</td>
+            <td>October 27, 2023</td>
+            <td>$143.06</td>
+          </tr>
       </tbody>
     </table>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
@@ -56,9 +121,15 @@
       });
 
     </script>
-     <footer>
-        <link rel="stylesheet" href="./styles/footer.css">
-        <p>&copy; 2023 GAS CO. All rights reserved.</p>
-    </footer> 
+    <footer>
+		<!--This is where the footer of the page will be-->
+		<section>
+			<div class="footer" id="footer"></div>
+		</section>
+		<link rel="stylesheet" href="footer.css">
+		<div class="footer" id="footer"></div>
+		<script src="nav-bar.js"></script>
+		<script src="footer.js"></script>
+    </footer>
   </body>
 </html>
