@@ -3,17 +3,17 @@
 <head>
 	<title>Registration Form</title>
 	<!--Linking the page that allows one to put restrictions on the email input fields-->
-    <script src="email.validation.js"></script>
+    <script src="components/email.validation.js"></script>
 	<!--Linking the page that allows one to put restrictions on the password input fields-->
-	<script src="password.validation.js"></script>
+	<script src="components/password.validation.js"></script>
 	<!--This is section of the code is primarily for the top of the page. 
 	For ex the image, the nav bar, and the links.-->
 	<meta charset = "UTF-8" />
 	<meta name = "viewport" content  = "width=device-width, initial-scale = 1.0" />
-	<link rel = "stylesheet" href = "login_page.css">
+	<link rel = "stylesheet" href = "styles/login_page.css">
   <header>
-    <a href="./index.html"><img src="logo.png"></a>
-	<link rel="stylesheet" href="nav-bar.css">
+    <a href="./index.html"><img src="img/logo.png"></a>
+	<link rel="stylesheet" href="styles/nav-bar.css">
 	<nav>
 		<i class="fa fa-bars" onclick="showMenu()"></i>
 		<div class="nav-links" id="navLinks">
@@ -55,17 +55,17 @@
 			<button type="submit">Create Account</button>
 		</div>
 		<!--This is where the link for the registration page will be-->
-		<p>Don't have an account?<a href = "Login_page.html">Login here</a>.</p>
+		<p>Already have an account? <a href = "Login_page.html">Login here</a>.</p>
 	</form>
     <footer>
 		<!--This is where the footer of the page will be-->
 		<section>
 			<div class="footer" id="footer"></div>
 		</section>
-		<link rel="stylesheet" href="footer.css">
+		<link rel="stylesheet" href="styles/footer.css">
 		<div class="footer" id="footer"></div>
-		<script src="nav-bar.js"></script>
-		<script src="footer.js"></script>
+		<script src="components/nav-bar.js"></script>
+		<script src="components/footer.js"></script>
     </footer>
 </body>
 </html>
