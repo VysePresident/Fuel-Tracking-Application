@@ -10,6 +10,10 @@
 
     <title>Order Summary</title>
 
+    <script src="components/nav-bar.js" defer></script>
+    <script src="components/footer.js" defer></script>
+    <script src="components/orderSummary.js" defer></script>
+
     <?php
         if ($_SERVER["REQUEST_METHOD"] == "POST") {
             // Get the values submitted in the form
@@ -42,7 +46,7 @@
 </head>
 
 <body>
-    <form class="orderSummary" >
+    <form class="orderSummary" action="orderConfirmation.html">
     <div class="nav-bar" id="nav-bar"></div>
         <section name="summarySection">
             <h1><u>ORDER SUMMARY</u></h1>
@@ -60,8 +64,8 @@
             </div>
         </section>
         <section class="buttons">
-            <input type="submit" value="Confirm" class="confirmButton" id="confirmButton">
-            <input type="submit" formaction="index.htm" value="Cancel" class="cancelButton" id="cancelButton">
+            <input type="submit" value="Confirm" class="confirmButton" id="confirmButton" onclick="confirmOrder()">
+            <input type="submit" formaction="index.htm" value="Cancel" class="cancelButton" id="cancelButton" onclick="goHome()">
         </section>
     </form>
 </body>
@@ -69,8 +73,6 @@
 <footer>
     <section>
         <div class="footer" id="footer"></div>
-        <script src="components/nav-bar.js"></script>
-        <script src="components/footer.js"></script>
     </section>
 </footer>
 </html>

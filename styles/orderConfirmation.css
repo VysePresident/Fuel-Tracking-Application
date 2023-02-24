@@ -1,0 +1,30 @@
+#page {
+    background-image: linear-gradient(rgba(4,9,30,0.7),rgba(4,9,30,0.7)), url(../img/home.jpeg);
+    background-position: center; 
+    background-size: cover; 
+    min-height: calc(100vh - 100px);
+}
+
+#confirmation-message {
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    color:white;
+    display:grid;
+    padding-top: 180px;
+}
+#confirmhead {
+    font-size: 40px;
+    opacity: 100%;
+    background-color: rgba(5, 5, 5, 0.6);
+}
+.confirmtext {
+    font-size: 20px;
+    opacity: 200%;
+    background-color: rgba(5, 5, 5, 0.6);
+}
+#footer {
+    position: fixed;
+    bottom: 0;
+    vertical-align: bottom;
+}
