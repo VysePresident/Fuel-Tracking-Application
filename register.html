@@ -1,75 +1,74 @@
 <!DOCTYPE html>
 <html>
-	<!--The head-->
-	<head>
-		<title>Registration Form</title>
-		<!--Linking the page that allows one to put restrictions on the email input fields-->
-		<script src="email.validation.js"></script>
-		<!--Linking the page that allows one to put restrictions on the password input fields-->
-		<script src="password.validation.js"></script>
-		<meta charset = "UTF-8" />
-		<meta name = "viewport" content  = "width=device-width, initial-scale = 1.0" />
-		<!--Accessing the login page-->
-		<link rel = "stylesheet" href = "login_page.css">
-	  <header>
-		<!--This is for the header of the page, I access the logo css and nav bar css -->
-		<a href="index.html"><img src="logo.png"></a>
-		<link rel="stylesheet" href="nav-bar.css">
-		<nav>
-			<!--This is where i access the links in the nav bar. They link to other pages-->
-			<i class="fa fa-bars" onclick="showMenu()"></i>
-			<div class="nav-links" id="navLinks">
-			  <i class="fa fa-times" onclick="hideMenu()"></i>
-			  <ul>
-				<li><a href="contact.html">CONTACT US</a></li>
-				<li><a href="about.html">ABOUT</a></li>
-				<li><a href="register.html">REGISTER</a></li>
-				<li><a href="Login_Page.html">SIGN IN</a></li>
-				<li><a></a></li>
-			  </ul>
-			</div>
-		</nav>
-	</header>
-	</head>
+<head>
+	<title>Registration Form</title>
+	<!--Linking the page that allows one to put restrictions on the email input fields-->
+    <script src="email.validation.js"></script>
+	<!--Linking the page that allows one to put restrictions on the password input fields-->
+	<script src="password.validation.js"></script>
+	<!--This is section of the code is primarily for the top of the page. 
+	For ex the image, the nav bar, and the links.-->
+	<meta charset = "UTF-8" />
+	<meta name = "viewport" content  = "width=device-width, initial-scale = 1.0" />
+	<link rel = "stylesheet" href = "login_page.css">
+  <header>
+    <a href="./index.html"><img src="logo.png"></a>
+	<link rel="stylesheet" href="nav-bar.css">
+	<nav>
+		<i class="fa fa-bars" onclick="showMenu()"></i>
+		<div class="nav-links" id="navLinks">
+		  <i class="fa fa-times" onclick="hideMenu()"></i>
+		  <ul>
+			<li><a href="contact.html">CONTACT US</a></li>
+			<li><a href="about.html">ABOUT</a></li>
+			<li><a href="register.html">REGISTER</a></li>
+			<li><a href="Login_Page.html">SIGN IN</a></li>
+			<li><a></a></li>
+		  </ul>
+		</div>
+	</nav>
+</header>
+</head>
+
 <body>
- 
-	<form>
-		<label for = "login here" >Register Here</label>
-
-
-
-		<!--This section of the code is for the email bar-->
-		<div">
+<!--Accces the login php page-->
+	<form method = "post" action = login.php>
+		<!--The title of the page, need to centralize it and make the font bigger-->
+		<label for = "Register  here" >Register Here</label>
+		<!--This is the email section of the page-->
+		<div>
 			<label for="email">Email:</label>
-			<input type="email" id="email" name="email" required placeholder="Enter Email">
+			<input type="email" id="email" name="email" required placeholder="Enter email">
 		</div>
-		<!--This section of code is for the email bar-->
-		<div">
-			<label for="password">Password:</label>
-			<input type="password" id="password" name="password" required  placeholder="Enter password">
-		<!--This section of the code is for the confirm password bar-->
+		<!--This is the password section of the page-->
+		<div>
+            <label for="password">Password:</label>
+            <input type="password" id="password" name="password" required placeholder="Enter password">
 		</div>
-
-	<div>
-		<label for="confirm password">Confirm your password:
-		<input type="confirm password" id="confirm password" name="confirm password" required placeholder="Re-Enter password">
-	</div>
-
-		<!--This is for the create account button-->
-        </label>
+		<!--The remember me section of the page-->
+		<div>
+            <label for="confirm password">Confirm your password:
+            <input type="confirm password" id="confirm password" name="confirm password" required placeholder="Re-Enter password">
+	    </div>
+		<!--This is the Login portion of the page-->
 		<div class = "button-container">
-			<button type="link">Create account</button>
+			<button type="submit">Create Account</button>
 		</div>
-		<!--This is for the hyper link that takes you back to the login page-->
-		<div class="link">
-            <p>Already have an account?<a href = "Login_page.html">Login in</a>.</p>
-		</div>
-
-    
+		<!--This is where the link for the registration page will be-->
+		<p>Don't have an account?<a href = "Login_page.html">Login here</a>.</p>
 	</form>
-        <footer>
-            <link rel="stylesheet" href="footer.css">
-            <p>&copy; 2023 GAS CO. All rights reserved.</p>
-        </footer>   
+    <footer>
+		<!--This is where the footer of the page will be-->
+		<section>
+			<div class="footer" id="footer"></div>
+		</section>
+		<link rel="stylesheet" href="footer.css">
+		<div class="footer" id="footer"></div>
+		<script src="nav-bar.js"></script>
+		<script src="footer.js"></script>
+    </footer>
 </body>
 </html>
+
+
+
