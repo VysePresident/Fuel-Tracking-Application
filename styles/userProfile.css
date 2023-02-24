@@ -29,47 +29,96 @@ section {
 }
 
 /* Set all text and select inputs to same size */
-  text, select {
-      width: 100%;
-    }
+text,
+select {
+  width: 100%;
+}
 
-
-html{
+html {
   height: 100%;
 }
 
 /* Styles for the background image and centered content */
 body {
-background-image: url('../img/bg.png');
-background-size: cover;
-display: flex;
-justify-content: center;
-align-items: center;
-flex-direction: column;
-min-height:100%
+  background-image: linear-gradient(rgba(4, 9, 30, 0.2), rgba(4, 9, 30, 0.2)),
+    url("../img/bg-userProfile.jpg");
+  background-size: cover;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  min-height: 100%;
+}
+
+h1 {
+  padding-bottom: 10px;
+  color: #162938;
+  font-size: 2em;
+}
+
+h2 {
+  color: #162938;
+  text-align: left;
+}
+
+.formRow p {
+  text-align: left;
+  padding-right: 10px;
+  color: #162938;
+  font-weight: 500;
+  font-size: 1em;
 }
 
 .priceEstimate {
-justify-content: left;
-align-items: left;
+  justify-content: left;
+  align-items: left;
 }
 /* Styles for the white form box */
 form {
-background-color: white;
-min-width: 25%;
-padding: 20px;
-border-radius: 10px;
-box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.5);
+  margin: 100px;
+  background-color: transparent;
+  backdrop-filter: blur(150px);
+  filter: brightness(1.3);
+  min-width: 25%;
+  padding: 20px 50px;
+  border-radius: 5px;
+  box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.4);
+}
+
+.formRow {
+  position: relative;
+  width: 250px;
+  gap: 30px;
+  /* color: #fff; */
+}
+
+input {
+  width: 100%;
+  border: #fff;
+  background: transparent;
+  border-bottom: 0.5px solid #162938;
 }
 /* Styles for the green submit button */
 .submitButton {
-background-color: green;
-color: white;
-font-size: 16px;
-border: none;
-padding: 10px 20px;
-border-radius: 5px;
-margin-top: 5px;
-cursor: pointer;
+  margin: 0;
+  /* position: absolute; */
+  left: 40%;
+  outline: none;
+  width: 45%;
+  height: 50px;
+  background: #3e86b6;
+  color: #fff;
+  font-size: 20px;
+  border: none;
+  border-radius: 5px;
+  justify-content: center;
+  align-items: center;
 }
 
+.submitButton:hover {
+  cursor: pointer;
+  border: none;
+  color: #fff;
+  border: none;
+  background: #255492;
+}
