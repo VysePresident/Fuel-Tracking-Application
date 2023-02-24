@@ -1,68 +1,73 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>Order History Table</title>
-    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.25/css/jquery.dataTables.min.css">
-  </head>
-  <body>
-    <link rel="stylesheet" href="nav-bar.css">
-    <header>
-      <a href="./index.html"><img src="logo.png"></a>
-      <nav>
-        <i class="fa fa-bars" onclick="showMenu()"></i>
-        <div class="nav-links" id="navLinks">
-          <i class="fa fa-times" onclick="hideMenu()"></i>
-          <ul>
-            <li><a href="contact.html">CONTACT US</a></li>
-            <li><a href="about.html">ABOUT</a></li>
-            <li><a href="register.html">REGISTER</a></li>
-            <li><a href="Login_page.html">SIGN IN</a></li>
-          </ul>
-        </div>
-      </nav>
-    <table id="orderHistoryTable">
-      <thead>
-        <tr>
-          <th>Order ID</th>
-          <th>Order Date</th>
-          <th>Order Total</th>
-        </tr>
-      </thead>
+<head>
+	<title>Login Form</title>
+	<!--Linking the page that allows one to put restrictions on the email input fields-->
+    <script src="email.validation.js"></script>
+	<!--Linking the page that allows one to put restrictions on the password input fields-->
+	<script src="password.validation.js"></script>
+	<!--This is section of the code is primarily for the top of the page. 
+	For ex the image, the nav bar, and the links.-->
+	<meta charset = "UTF-8" />
+	<meta name = "viewport" content  = "width=device-width, initial-scale = 1.0" />
+	<link rel = "stylesheet" href = "login_page.css">
+  <header>
+    <a href="./index.html"><img src="logo.png"></a>
+	<link rel="stylesheet" href="nav-bar.css">
+	<nav>
+		<i class="fa fa-bars" onclick="showMenu()"></i>
+		<div class="nav-links" id="navLinks">
+		  <i class="fa fa-times" onclick="hideMenu()"></i>
+		  <ul>
+			<li><a href="contact.html">CONTACT US</a></li>
+			<li><a href="about.html">ABOUT</a></li>
+			<li><a href="register.html">REGISTER</a></li>
+			<li><a href="Login_Page.html">SIGN IN</a></li>
+			<li><a></a></li>
+		  </ul>
+		</div>
+	</nav>
+</header>
+</head>
 
-      
-      <tbody>
-        <tr>
-          <td>1234</td>
-          <td>January 1, 2022</td>
-          <td>$50.00</td>
-        </tr>
-        <tr>
-          <td>5678</td>
-          <td>February 15, 2022</td>
-          <td>$75.00</td>
-        </tr>
-        <tr>
-          <td>9012</td>
-          <td>March 30, 2022</td>
-          <td>$100.00</td>
-        </tr>
-      </tbody>
-    </table>
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script src="https://cdn.datatables.net/1.10.25/js/jquery.dataTables.min.js"></script>
-    <script>
-      $(document).ready(function() {
-        $('#orderHistoryTable').DataTable({
-          "order": [[2, "asc"]]
-        });
-      });
-
-    </script>
-     <footer>
-        <link rel="stylesheet" href="./styles/footer.css">
-        <p>&copy; 2023 GAS CO. All rights reserved.</p>
-    </footer> 
-  </body>
+<body>
+<!--Accces the login php page-->
+	<form method = "post" action = login.php>
+		<!--The title of the page, need to centralize it and make the font bigger-->
+		<label for = "login here" >Login Here</label>
+		<!--This is the email section of the page-->
+		<div>
+			<label for="email">Email:</label>
+			<input type="email" id="email" name="email" required placeholder="Enter email">
+		</div>
+		<!--This is the password section of the page-->
+		<div>
+		<label for="password">Password:</label>
+		<input type="password" id="password" name="password" required placeholder="Enter password">
+		</div>
+		<!--The remember me section of the page-->
+		<label 
+            for = "remember"> Remember me:
+            <input type = "checkbox" id = " remember" name = "remember">
+        </label>
+		<!--This is the Login portion of the page-->
+		<div class = "button-container">
+			<button type="submit">Login</button>
+		</div>
+		<!--This is where the link for the registration page will be-->
+		<p>Don't have an account?<a href = "register.html">Register here</a>.</p>
+	</form>
+    <footer>
+		<!--This is where the footer of the page will be-->
+		<section>
+			<div class="footer" id="footer"></div>
+		</section>
+		<link rel="stylesheet" href="footer.css">
+		<div class="footer" id="footer"></div>
+		<script src="nav-bar.js"></script>
+		<script src="footer.js"></script>
+    </footer>
+</body>
 </html>
 
 
