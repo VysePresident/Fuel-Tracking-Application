@@ -9,7 +9,7 @@ container.innerHTML = `
       <section class="about">
         <h2>We Are Your Go-To Company For Petroleum!</h2>
         <div class="buy">
-          <button type="submit" class="btn-buy">BUY NOW</button>
+          <a href="./fuelQuoteForm.html" class="btn-buy">BUY NOW</a>
         </div>
       </section>
     </section>
@@ -58,7 +58,7 @@ container.innerHTML = `
         When you choose Gas Co., you can take advantage of the 24/7 support provided by our team of Operations & <br> Service Specialists. We are always available to ensure that your fuel requirements are fulfilled.
       </p>
       <div class="btn-contact">
-        <a href="contact.js">CONTACT US</a>
+        <a href="./contact.html">CONTACT US</a>
       </div>
     </section>
 
