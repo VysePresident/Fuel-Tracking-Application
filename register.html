@@ -1,108 +1,66 @@
 <!DOCTYPE html>
 <html>
-<head>
-	<title>Register/SignUp</title>
-	<style>
-		form {
-			border: 1px solid #ccc;
-			padding: 50px;
-			width: 300px;
-			margin: 0 auto;
-			text-align: center;
-		}
-
-		label {
-			display: block;
-			margin-bottom: 10px;
-			font-weight: bold;
-		}
-
-		input[type="text"], input[type="password"] {
-			padding: 5px;
-			width: 100%;
-			border: 1px solid #ccc;
-			border-radius: 3px;
-			margin-bottom: 10px;
-		}
-
-        button {
-			padding: 10px 20px;
-			background-color: #27a42b;
-			color: white;
-			border: none;
-			border-radius: 4px;
-			cursor: pointer;
-		}
-		
-
-		.link {
-			display: block;
-			margin-top: 10px;
-			font-size: 14px;
-		}
-
-		.link a {
-			color: rgb(0, 255, 17);
-			text-decoration: none;
-		}
-        nav {
-  background-color: #333;
-  color: #fff;
-  padding: 20px;
-}
-
-nav ul {
-  list-style: none;
-  margin: 0;
-  padding: 0;
-}
-
-nav li {
-  display: inline-block;
-  margin-right: 20px;
-}
-
-nav a {
-  color: #fff;
-  text-decoration: none;
-}
-
-	</style>
-</head>
+	<!--The head-->
+	<head>
+		<title>Registration Form</title>
+		<!--Linking the page that allows one to put restrictions on the email input fields-->
+		<script src="email.validation.js"></script>
+		<!--Linking the page that allows one to put restrictions on the password input fields-->
+		<script src="password.validation.js"></script>
+		<meta charset = "UTF-8" />
+		<meta name = "viewport" content  = "width=device-width, initial-scale = 1.0" />
+		<!--Accessing the login page-->
+		<link rel = "stylesheet" href = "login_page.css">
+	  <header>
+		<!--This is for the header of the page, I access the logo css and nav bar css -->
+		<a href="index.html"><img src="logo.png"></a>
+		<link rel="stylesheet" href="nav-bar.css">
+		<nav>
+			<!--This is where i access the links in the nav bar. They link to other pages-->
+			<i class="fa fa-bars" onclick="showMenu()"></i>
+			<div class="nav-links" id="navLinks">
+			  <i class="fa fa-times" onclick="hideMenu()"></i>
+			  <ul>
+				<li><a href="contact.html">CONTACT US</a></li>
+				<li><a href="about.html">ABOUT</a></li>
+				<li><a href="register.html">REGISTER</a></li>
+				<li><a href="Login_Page.html">SIGN IN</a></li>
+				<li><a></a></li>
+			  </ul>
+			</div>
+		</nav>
+	</header>
+	</head>
 <body>
-    
-    <link rel="stylesheet" href="./styles/nav-bar.css">
-  <header>
-    <a href="./index.html"><img src="img/logo.png"></a>
-    <nav>
-      <i class="fa fa-bars" onclick="showMenu()"></i>
-      <div class="nav-links" id="navLinks">
-        <i class="fa fa-times" onclick="hideMenu()"></i>
-        <ul>
-          <li><a href="contact.html">CONTACT US</a></li>
-          <li><a href="about.html">ABOUT</a></li>
-          <li><a href="register.html">REGISTER</a></li>
-          <li><a href="Login_Page.html">SIGN IN</a></li>
-        </ul>
-      </div>
-    </nav>
+ 
 	<form>
-		<label for="email">Email:</label>
-		<input type="text" id="email" name="email" placeholder="Enter Email">
+		<label for = "login here" >Register Here</label>
 
 
-		<label for="password">Password:</label>
-		<input type="password" id="password" name="password" placeholder="Enter password">
 
+		<!--This section of the code is for the email bar-->
+		<div">
+			<label for="email">Email:</label>
+			<input type="email" id="email" name="email" required placeholder="Enter Email">
+		</div>
+		<!--This section of code is for the email bar-->
+		<div">
+			<label for="password">Password:</label>
+			<input type="password" id="password" name="password" required  placeholder="Enter password">
+		<!--This section of the code is for the confirm password bar-->
+		</div>
 
-        <label for="confirm password">Confirm your password:
-		<input type="confirm password" id="confirm password" name="confirm password" placeholder="Re-Enter password">
+	<div>
+		<label for="confirm password">Confirm your password:
+		<input type="confirm password" id="confirm password" name="confirm password" required placeholder="Re-Enter password">
+	</div>
 
+		<!--This is for the create account button-->
         </label>
-
-        <button type="submit">Create account</button>
-
-
+		<div class = "button-container">
+			<button type="link">Create account</button>
+		</div>
+		<!--This is for the hyper link that takes you back to the login page-->
 		<div class="link">
             <p>Already have an account?<a href = "Login_page.html">Login in</a>.</p>
 		</div>
@@ -110,7 +68,7 @@ nav a {
     
 	</form>
         <footer>
-            <link rel="stylesheet" href="./styles/footer.css">
+            <link rel="stylesheet" href="footer.css">
             <p>&copy; 2023 GAS CO. All rights reserved.</p>
         </footer>   
 </body>
