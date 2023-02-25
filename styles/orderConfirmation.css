@@ -14,12 +14,12 @@
     padding-top: 180px;
 }
 #confirmhead {
-    font-size: 40px;
+    font-size: 80px;
     opacity: 100%;
     background-color: rgba(5, 5, 5, 0.6);
 }
 .confirmtext {
-    font-size: 20px;
+    font-size: 40px;
     opacity: 200%;
     background-color: rgba(5, 5, 5, 0.6);
 }
