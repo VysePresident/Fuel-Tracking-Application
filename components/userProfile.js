@@ -30,15 +30,15 @@ container.innerHTML = `
               <h2 class="formHeader">Personal Information</h2>
               <div class="formRow">
                   <p class="formCell" for="fname">First Name:</p>
-                  <input class="formCell" type="text" name="fname" id="fname" maxlength="25" required>
+                  <input class="formCell" type="text" name="fname" id="fname" maxlength="50" required>
               </div>
               <div class="formRow">
                 <p class="formCell" for="mname">Middle Name (optional):</p>
-                <input class="formCell" type="text" name="mname" id="mname" maxlength="25">
+                <input class="formCell" type="text" name="mname" id="mname" maxlength="50">
               </div>
               <div class="formRow">
                   <p class="formCell" for="lname">Last Name:</p>
-                  <input class="formCell" type="text" name="lname" id="lname" maxlength="25" required>
+                  <input class="formCell" type="text" name="lname" id="lname" maxlength="50" required>
               </div class="formRow">
               <div class="formRow">
                   <p class="formCell" for="phone">Phone Number:</p>
@@ -65,6 +65,10 @@ container.innerHTML = `
             <div class="formRow">
                 <p class="formCell" for="street">Street Address:</p>
                 <input class="formCell" type="text" name="street" id="street" maxlength="100" required>
+            </div>
+                <div class="formRow">
+                <p class="formCell" for="street">Street Address 2 (Optional):</p>
+                <input class="formCell" type="text" name="street" id="street" maxlength="100">
             </div>
             <div class="formRow">
               <p class="formCell" for="zipcode">Zip Code:</p>
