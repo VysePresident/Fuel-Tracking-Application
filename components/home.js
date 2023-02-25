@@ -29,7 +29,7 @@ container.innerHTML = `
         with industry standards.
       </p>
       <div class="btn-about">
-        <a href="about.js">LEARN MORE</a>
+        <a href="about.html">LEARN MORE</a>
       </div>
     </section>
 
