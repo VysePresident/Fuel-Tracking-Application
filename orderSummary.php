@@ -16,20 +16,30 @@
 
     <?php
         if ($_SERVER["REQUEST_METHOD"] == "POST") {
+
+            // Dummy variables to fill in for future backend requirements:
+            $companyName = "dummyCorp";
+            $state = "Confusion";
+            $city = "dummyCity";
+            $street = "12345 dummyStreet Dr";
+
+            // Dummy variables because Pricing module is not yet required:
+            $pricePerGallon = "[WIP: Pricing Module Not Required]";
+            $totalPrice = "[WIP: Pricing Module Not Required]";
+
             // Get the values submitted in the form
-            $companyName = $_POST["companyName"];
-            $state = $_POST["state"];
-            $city = $_POST["city"];
-            $street = $_POST["street"];
             $fuelType = $_POST["fuelType"];
             $gallonsRequested = $_POST["gallonsRequested"];
-            $fname = $_POST["fname"];
-            $lname = $_POST["lname"];
-            $custEmail = $_POST["custEmail"];
-            $phone = $_POST["phone"];
+            $deliveryDate = $_POST["deliveryDate"];
             $paymentType = $_POST["paymentType"];
 
-            // Print the values - Some are used for the order & some for pricing. All will be used for history.
+            // Dummy values for testing purposes:
+            
+            //$fuelType = "Diesel";
+            //$gallonsRequested = 100;
+            //$deliveryDate = "Test";
+            //$paymentType = "Cash";
+            
             /*echo "<p>Company name: $companyName</p>";
             echo "<p>Email: $state</p>";
             echo "<p>Email: $city</p>";
@@ -53,13 +63,12 @@
             <p>Confirm your order:</p>
                 <?php echo "<p>Ship to $companyName at: $street $city, $state</p>" ?>
                 <?php echo "<p>$gallonsRequested gallons of $fuelType</p>" ?>
-        </section>
+                <?php echo "<p>Deliver By: $deliveryDate</p>" ?>
         </section>
             <div class="priceEstimate" name="priceEstimate", id="priceEstimate">
                 <ul class="priceEstimate">
-                    <li class="priceEstimate"><?php echo "<p>Subtotal:</p>" ?></li>
-                    <li class="priceEstimate"><?php echo "<p>Tax:</p>" ?></li>
-                    <li class="priceEstimate"><?php echo "<p>Estimated Cost:</p>" ?></li>
+                    <li class="priceEstimate"><?php echo "<p>Price/Gallon: $pricePerGallon</p>" ?></li>
+                    <li class="priceEstimate"><?php echo "<p>Total Price: $totalPrice</p>" ?></li>
                 </ul>
             </div>
         </section>

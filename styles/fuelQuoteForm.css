@@ -28,17 +28,31 @@ section {
     margin-bottom: 20px;
 }
 
-/* Set all text and select inputs to same size */
-    text, select {
-        width: 100%;
-      }
+/* Set all text, select, and date inputs to same size */
+text, select {
+    width: 100%;
+}
 
+input[type=date] {
+  width: 100%;
+}
+
+input[type=number] {
+  width: 100%;
+}
+/* testing */
+html {
+  height: 100%;
+}
 
 /* Styles for the background image and centered content */
 body {
-  background-image: url('../img/bg.png');
+  /*background-image: url('../img/bg.png');*/
+  background-image: linear-gradient(rgba(4, 9, 30, 0.2), rgba(4, 9, 30, 0.2)),
+    url("../img/bg.png");
   background-size: cover;
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
   height: 130vh;
@@ -50,9 +64,10 @@ body {
 }
 /* Styles for the white form box */
 form {
+  margin: 100px;
   background-color: white;
   min-width: 25%;
-  padding: 20px;
+  padding: 20px 50px;
   border-radius: 10px;
   box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.5);
 }
@@ -68,3 +83,18 @@ form {
   cursor: pointer;
 }
 
+/*#footer {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  vertical-align: bottom;
+}*/
+
+/*#footerWrapper {
+  width: 100vw;
+  justify-content: center;
+}*/
+
+.formCellText {
+  display: inline;
+}
