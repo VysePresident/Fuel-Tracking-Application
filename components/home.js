@@ -46,7 +46,7 @@ container.innerHTML = `
             </p>
           </div>
           <div class="btn-join">
-            <a href="join.js">APPLY NOW</a>
+            <a href="employment.html">APPLY NOW</a>
           </div>
         </div>
       </div>
