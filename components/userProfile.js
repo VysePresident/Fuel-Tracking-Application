@@ -4,7 +4,7 @@ const container = document.createElement("div");
 container.className = "container";
 container.innerHTML = `
 <body>
-    <form class="formTable" action="orderSummary.php" method="POST">
+    <form class="formTable" action="confirmed_profile.html" method="POST">
         <div class="nav-bar" id="nav-bar"></div>
         <section id="formbox">
             <h1>USER PROFILE</h1>
@@ -13,7 +13,7 @@ container.innerHTML = `
               <h2 class=>Profile Information</h2>
               <div class="formRow">
                   <p class="formCell" for="custEmail">Email:</p>
-                  <input class="formCell" type="text" name="custEmail" id="custEmail" required>
+                  <input class="formCell" type="email" name="custEmail" id="custEmail" required>
               </div>
               <div class="formRow">
                   <p class="formCell" for="password">Password:</p>
