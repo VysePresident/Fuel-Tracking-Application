@@ -9,7 +9,7 @@ container.innerHTML = `
       <section class="about">
         <h2>We Are Your Go-To Company For Petroleum!</h2>
         <div class="buy">
-          <a href="./fuelQuoteForm.html" class="btn-buy">BUY NOW</a>
+          <a href="./fuelQuoteForm.php" class="btn-buy">BUY NOW</a>
         </div>
       </section>
     </section>
