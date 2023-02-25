@@ -74,7 +74,7 @@
         </section>
         <section class="buttons">
             <input type="submit" value="Confirm" class="confirmButton" id="confirmButton" onclick="confirmOrder()">
-            <input type="submit" formaction="index.htm" value="Cancel" class="cancelButton" id="cancelButton" onclick="goHome()">
+            <input type="submit" formaction="index.html" value="Cancel" class="cancelButton" id="cancelButton" onclick="goHome()">
         </section>
     </form>
 </body>
