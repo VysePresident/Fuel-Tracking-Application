@@ -4,7 +4,7 @@ const container = document.createElement("div");
 container.className = "container";
 container.innerHTML = `
 <body>
-    <form class="formTable" action="confirmed_profile.html" method="POST">
+    <form class="formTable" action="http://localhost:8080/Fuel-Tracking-Application/server/userProfile.php" method="POST">
         <div class="nav-bar" id="nav-bar"></div>
         <section id="formbox">
             <h1>USER PROFILE</h1>
@@ -67,8 +67,8 @@ container.innerHTML = `
                 <input class="formCell" type="text" name="street" id="street" maxlength="100" required>
             </div>
                 <div class="formRow">
-                <p class="formCell" for="street">Street Address 2 (Optional):</p>
-                <input class="formCell" type="text" name="street" id="street" maxlength="100">
+                <p class="formCell" for="street2">Street Address 2 (Optional):</p>
+                <input class="formCell" type="text" name="street2" id="street2" maxlength="100">
             </div>
             <div class="formRow">
               <p class="formCell" for="zipcode">Zip Code:</p>
