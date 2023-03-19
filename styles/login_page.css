@@ -1,5 +1,5 @@
 body {
-    background-image: url("/Users/JumpMan/Downloads/UH Spring 2023/Software design/Front end assignment 2/Assignment 2 files /login.jpg");
+    background-image: linear-gradient(rgba(4, 9, 30, 0.2), rgba(4, 9, 30, 0.2)),url("../img/login.jpg");
     background-repeat: no-repeat;
     background-size: cover;
     height: 100vh; /* set the height to the full viewport height */
