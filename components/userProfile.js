@@ -21,7 +21,7 @@ container.innerHTML = `
               </div>
               <div class="formRow">
                 <p class="formCell" for="password">Confirm Password:</p>
-                <input class="formCell" type="password" name="password" id="password" minlength="8" required>
+                <input class="formCell" type="password" name="confirmPassword" id="confirmPassword" minlength="8" required>
               </div>
             </section>
   
@@ -85,13 +85,13 @@ container.innerHTML = `
 `;
 home.appendChild(container);
 
-// Get the select element
-const stateSelect = document.getElementById("state");
-
-// Add the states to the select element
-for (let i = 0; i < states.length; i++) {
-  const option = document.createElement("option");
-  option.value = states[i].code;
-  option.textContent = states[i].name;
-  stateSelect.appendChild(option);
-}
+const form = document.querySelector('.formTable');
+console.log(form);
+form.addEventListener('submit', function(e) {
+    const password = document.getElementById('password').value;
+    const confirmPassword = document.getElementById('confirmPassword').value;
+    if (password !== confirmPassword) {
+    e.preventDefault(); // prevent the form from submitting
+    alert('Passwords do not match'); // display an error message
+  }
+});
