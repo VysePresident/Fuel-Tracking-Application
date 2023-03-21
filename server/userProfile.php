@@ -1,4 +1,8 @@
 <?php
+require_once __DIR__ . '/../vendor/autoload.php';
+
+use App\User;
+
 // Database credentials
 $servername = "localhost";
 $username = "root";
@@ -14,78 +18,22 @@ if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
 
-// Validate and sanitize input data
-function clean_input($data) {
-    global $conn;
-    $data = trim($data);
-    $data = stripslashes($data);
-    $data = htmlspecialchars($data);
-    $data = mysqli_real_escape_string($conn, $data);
-    return $data;
-}
+$user = new User($conn);
 
-$email = clean_input($_POST['custEmail']);
-$password = clean_input($_POST['password']);
-$fname = clean_input($_POST['fname']);
-$mname = clean_input($_POST['mname']);
-$lname = clean_input($_POST['lname']);
-$phone = clean_input($_POST['phone']);
-$companyName = clean_input($_POST['companyName']);
-$state = clean_input($_POST['state']);
-$city = clean_input($_POST['city']);
-$street = clean_input($_POST['street']);
-$street2 = clean_input($_POST['street2']);
-$zipcode = clean_input($_POST['zipcode']);
+$email = $user->clean_input($_POST['custEmail']);
+$password = $user->clean_input($_POST['password']);
+$fname = $user->clean_input($_POST['fname']);
+$mname = $user->clean_input($_POST['mname']);
+$lname = $user->clean_input($_POST['lname']);
+$phone = $user->clean_input($_POST['phone']);
+$companyName = $user->clean_input($_POST['companyName']);
+$state = $user->clean_input($_POST['state']);
+$city = $user->clean_input($_POST['city']);
+$street = $user->clean_input($_POST['street']);
+$street2 = $user->clean_input($_POST['street2']);
+$zipcode = $user->clean_input($_POST['zipcode']);
 
-function validate_input($data) {
-    // Check for required fields
-    $required_fields = ['custEmail', 'password', 'fname', 'lname', 'phone', 'companyName', 'state', 'city', 'street', 'zipcode'];
-    foreach ($required_fields as $field) {
-        if (!isset($data[$field]) || empty($data[$field])) {
-            return false;
-        }
-    }
-
-    // Check email format
-    if (!filter_var($data['custEmail'], FILTER_VALIDATE_EMAIL)) {
-        return false;
-    }
-
-    // Check password length
-    if (strlen($data['password']) < 8) {
-        return false;
-    }
-
-    // Check phone number format
-    if (!preg_match('/^\d{10,20}$/', $data['phone'])) {
-        return false;
-    }
-
-    // Check zipcode format
-    if (!preg_match('/^\d{5}(-\d{4})?$/', $data['zipcode'])) {
-        return false;
-    }
-
-    // Validate other string lengths according to the database schema
-    $string_lengths = [
-        'fname' => 50,
-        'mname' => 50,
-        'lname' => 50,
-        'companyName' => 100,
-        'city' => 100,
-        'street' => 100,
-        'street2' => 100
-    ];
-    foreach ($string_lengths as $field => $length) {
-        if (isset($data[$field]) && strlen($data[$field]) > $length) {
-            return false;
-        }
-    }
-
-    return true;
-}
-
-if (validate_input([
+if ($user->validate_input([
     'custEmail' => $email,
     'password' => $password,
     'fname' => $fname,
@@ -120,7 +68,5 @@ if ($stmt->execute()) {
     echo "Error: " . $sql . "<br>" . $conn->error;
 }
 
-
 $stmt->close();
 $conn->close();
-?>
