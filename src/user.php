@@ -89,4 +89,23 @@ class User{
 
     return false;
 }
+public function updateUser(array $userData, int $userId) {
+    if (!$this->validate_input($userData)) {
+        throw new Exception("Invalid user data provided.");
+    }
+
+    $hashed_password = password_hash($userData['password'], PASSWORD_DEFAULT);
+
+    $sql = "UPDATE user_profiles SET email = ?, password = ?, fname = ?, mname = ?, lname = ?, phone = ?, companyName = ?, state = ?, city = ?, street = ?, street2 = ?, zipcode = ? WHERE id = ?";
+
+    $stmt = $this->conn->prepare($sql);
+    $stmt->bind_param("ssssssssssssi", $userData['custEmail'], $hashed_password, $userData['fname'], $userData['mname'], $userData['lname'], $userData['phone'], $userData['companyName'], $userData['state'], $userData['city'], $userData['street'], $userData['street2'], $userData['zipcode'], $userId);
+
+    if ($stmt->execute()) {
+        return true;
+    }
+
+    return false;
+}
+
 }
