@@ -15,33 +15,27 @@
     <script src="components/orderSummary.js" defer></script>
 
     <?php
-        // Variables
-        $avg_ship_cost->privateVariable = "average_shipping_cost";
-        $name->privateVariable = "name";
+        class State {
+            // Variables
+            private $avg_ship_cost;
+            private $name;
 
-        // Variables missing from diagram
-        $phone->publicVariable = "phone";
-        $emailAddress->publicVariable = "email_address";
+            // Functions
+            public function setCost($phonenum) {
+                $phone = $phonenum;
+            }
 
-        // Functions
-        function sendEmail() {
-            return "This function will send an email once the code is added";
-        }
+            public function getCost() {
+                return $phone;
+            }
 
-        function setPhone($phonenum) {
-            $phone = $phonenum;
-        }
-        
-        function getPhone() {
-            return $phone;
-        }
+            public function setEmail($email) {
+                $emailAddress = $email;
+            }
 
-        function setEmail($email) {
-            $emailAddress = $email;
-        }
-        
-        function getEmail() {
-            return $emailAddress;
+            public function getEmail() {
+                return $emailAddress;
+            }
         }
     ?>
 </head>

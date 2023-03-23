@@ -15,35 +15,38 @@
     <script src="components/orderSummary.js" defer></script>
 
     <?php
-        // Variables
-        $carrying_capacity->publicVariable = "carrying_capacity";
-        $total_trucks->privateVariable = "total_trucks";
-        $available_trucks->privateVariable = "available_trucks";
+        class Truck {
+            // Variables
+            private $carrying_capacity;
+            private $total_trucks;
+            private $available_trucks;
 
-        // Functions
-        function setCapacity($num) {
-            $carrying_capacity = $num;
-        }
+            // Functions
+            public function setCapacity($num) {
+                $carrying_capacity = $num;
+            }
 
-        function getCapacity() {
-            return $carrying_capacity;
-        }
+            public function getCapacity() {
+                return $carrying_capacity;
+            }
 
-        function setAvailable($num) {
-            $available_trucks = $num;
-        }
+            public function setAvailable($num) {
+                $available_trucks = $num;
+            }
 
-        function getAvailable() {
-            return $available_trucks;
-        }
+            public function getAvailable() {
+                return $available_trucks;
+            }
 
-        function setTotal() {
-            $total_trucks = $num;
+            public function setTotal($num) {
+                $total_trucks = $num;
+            }
+
+            public function getTotal() {
+                return $total_trucks;
+            }
         }
         
-        function getTotal() {
-            return $total_trucks;
-        }
     ?>
 </head>
 

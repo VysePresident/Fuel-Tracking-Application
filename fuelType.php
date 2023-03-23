@@ -15,11 +15,37 @@
     <script src="components/orderSummary.js" defer></script>
 
     <?php
-        include 'fuelType.php';
-        include 'state.php';
-        include 'trucks.php';
-        $fuel_type = new fuelType();
-        
+        class FuelType {
+            // Variables
+            public $fuel_type_name;
+            public $base_cost_per_gallon;
+            public $price_per_gallon;
+
+            // Functions
+            public function get_fuel_type_name() {
+                return $fuel_type_name;
+            }
+
+            public function get_base_cost_per_gallon() {
+                return $base_cost_per_gallon;
+            }
+
+            public function get_price_per_gallon() {
+                return $price_per_gallon;
+            }
+
+            private function set_fuel_type_name($name) {
+                $fuel_type_name = $name;
+            }
+
+            private function set_base_cost_per_gallon($cost) {
+                $base_cost_per_gallon = $cost;
+            }
+
+            private function set_price_per_gallon($price) {
+                $price_per_gallon = $price;
+            }
+        }
     ?>
 </head>
 
