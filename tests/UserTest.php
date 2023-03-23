@@ -61,4 +61,28 @@ class UserTest extends TestCase{
         $this->assertTrue($this->user->createUser($validData));
         $this->assertFalse($this->user->createUser($invalidData));
     }
+    public function testUpdateUser() {
+        $validData = [
+            'custEmail' => 'test@example.com',
+            'password' => 'password123',
+            'fname' => 'John',
+            'lname' => 'Doe',
+            'phone' => '1234567890',
+            'companyName' => 'Test Company',
+            'state' => 'Texas',
+            'city' => 'Missouri City',
+            'street' => '123 Main Street',
+            'zipcode' => '90001'
+        ];
+    
+        $userId = 1;
+    
+        $this->assertTrue($this->user->updateUser($validData, $userId));
+    
+        $invalidData = $validData;
+        $invalidData['custEmail'] = 'invalid_email';
+    
+        $this->assertFalse($this->user->updateUser($invalidData, $userId));
+    }
+    
 }

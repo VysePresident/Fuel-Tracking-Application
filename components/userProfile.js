@@ -85,6 +85,29 @@ container.innerHTML = `
 `;
 home.appendChild(container);
 
+async function fetchUserData() {
+    const response = await fetch('http://localhost:8080/Fuel-Tracking-Application/server/getUserData.php');
+    const userData = await response.json();
+  
+    // Populate the form fields with the fetched user data
+    document.getElementById('custEmail').value = userData.email;
+    document.getElementById('password').value = userData.password;
+    document.getElementById('confirmPassword').value = userData.password;
+    document.getElementById('fname').value = userData.fname;
+    document.getElementById('mname').value = userData.mname;
+    document.getElementById('lname').value = userData.lname;
+    document.getElementById('phone').value = userData.phone;
+    document.getElementById('companyName').value = userData.companyName;
+    document.getElementById('state').value = userData.state;
+    document.getElementById('city').value = userData.city;
+    document.getElementById('street').value = userData.street;
+    document.getElementById('street2').value = userData.street2;
+    document.getElementById('zipcode').value = userData.zipcode;
+  }
+  
+// Call the fetchUserData function when the page loads
+fetchUserData();
+  
 const form = document.querySelector('.formTable');
 console.log(form);
 form.addEventListener('submit', function(e) {
@@ -95,3 +118,4 @@ form.addEventListener('submit', function(e) {
     alert('Passwords do not match'); // display an error message
   }
 });
+

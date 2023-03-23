@@ -63,7 +63,7 @@ if ($user->validate_input([
 if ($stmt->execute()) {
     echo "New record created successfully";
     //Redirect to a confirmation page
-    header("Location: ../confirmed_profile.html");
+    header("Location: ../updateUserProfile.html");
 } else {
     echo "Error: " . $sql . "<br>" . $conn->error;
 }
