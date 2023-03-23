@@ -15,42 +15,34 @@
     <script src="components/orderSummary.js" defer></script>
 
     <?php
-        if ($_SERVER["REQUEST_METHOD"] == "POST") {
+        // Variables
+        $carrying_capacity->publicVariable = "carrying_capacity";
+        $total_trucks->privateVariable = "total_trucks";
+        $available_trucks->privateVariable = "available_trucks";
 
-            // Dummy variables to fill in for future backend requirements:
-            $companyName = "dummyCorp";
-            $state = "Confusion";
-            $city = "dummyCity";
-            $street = "12345 dummyStreet Dr";
+        // Functions
+        function setCapacity($num) {
+            $carrying_capacity = $num;
+        }
 
-            // Dummy variables because Pricing module is not yet required:
-            $pricePerGallon = "[WIP: Pricing Module Not Required]";
-            $totalPrice = "[WIP: Pricing Module Not Required]";
+        function getCapacity() {
+            return $carrying_capacity;
+        }
 
-            // Get the values submitted in the form
-            $fuelType = $_POST["fuelType"];
-            $gallonsRequested = $_POST["gallonsRequested"];
-            $deliveryDate = $_POST["deliveryDate"];
-            $paymentType = $_POST["paymentType"];
+        function setAvailable($num) {
+            $available_trucks = $num;
+        }
 
-            // Dummy values for testing purposes:
-            
-            //$fuelType = "Diesel";
-            //$gallonsRequested = 100;
-            //$deliveryDate = "Test";
-            //$paymentType = "Cash";
-            
-            /*echo "<p>Company name: $companyName</p>";
-            echo "<p>Email: $state</p>";
-            echo "<p>Email: $city</p>";
-            echo "<p>Email: $street</p>";
-            echo "<p>Email: $fuelType</p>";
-            echo "<p>Email: $gallonsRequested</p>";
-            echo "<p>Email: $fname</p>";
-            echo "<p>Email: $lname</p>";
-            echo "<p>Email: $custEmail</p>";
-            echo "<p>Email: $phone</p>";
-            echo "<p>Email: $paymentType</p>";*/
+        function getAvailable() {
+            return $available_trucks;
+        }
+
+        function setTotal() {
+            $total_trucks = $num;
+        }
+        
+        function getTotal() {
+            return $total_trucks;
         }
     ?>
 </head>

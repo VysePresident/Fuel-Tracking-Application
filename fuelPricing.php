@@ -15,31 +15,9 @@
     <script src="components/orderSummary.js" defer></script>
 
     <?php
-        if ($_SERVER["REQUEST_METHOD"] == "POST") {
-
-            // Variables
-            $margin = 0.0;
-            $calculateRate = 0.0;
-
-            // Dummy values for testing purposes:
-            
-            //$fuelType = "Diesel";
-            //$gallonsRequested = 100;
-            //$deliveryDate = "Test";
-            //$paymentType = "Cash";
-            
-            /*echo "<p>Company name: $companyName</p>";
-            echo "<p>Email: $state</p>";
-            echo "<p>Email: $city</p>";
-            echo "<p>Email: $street</p>";
-            echo "<p>Email: $fuelType</p>";
-            echo "<p>Email: $gallonsRequested</p>";
-            echo "<p>Email: $fname</p>";
-            echo "<p>Email: $lname</p>";
-            echo "<p>Email: $custEmail</p>";
-            echo "<p>Email: $phone</p>";
-            echo "<p>Email: $paymentType</p>";*/
-        }
+        // Variables
+        $calculate_rate->publicVariable = "CalculateRate";
+        $margin->privateVariable = "Margin";
     ?>
 </head>
 

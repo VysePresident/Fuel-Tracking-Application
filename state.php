@@ -15,42 +15,33 @@
     <script src="components/orderSummary.js" defer></script>
 
     <?php
-        if ($_SERVER["REQUEST_METHOD"] == "POST") {
+        // Variables
+        $avg_ship_cost->privateVariable = "average_shipping_cost";
+        $name->privateVariable = "name";
 
-            // Dummy variables to fill in for future backend requirements:
-            $companyName = "dummyCorp";
-            $state = "Confusion";
-            $city = "dummyCity";
-            $street = "12345 dummyStreet Dr";
+        // Variables missing from diagram
+        $phone->publicVariable = "phone";
+        $emailAddress->publicVariable = "email_address";
 
-            // Dummy variables because Pricing module is not yet required:
-            $pricePerGallon = "[WIP: Pricing Module Not Required]";
-            $totalPrice = "[WIP: Pricing Module Not Required]";
+        // Functions
+        function sendEmail() {
+            return "This function will send an email once the code is added";
+        }
 
-            // Get the values submitted in the form
-            $fuelType = $_POST["fuelType"];
-            $gallonsRequested = $_POST["gallonsRequested"];
-            $deliveryDate = $_POST["deliveryDate"];
-            $paymentType = $_POST["paymentType"];
+        function setPhone($phonenum) {
+            $phone = $phonenum;
+        }
+        
+        function getPhone() {
+            return $phone;
+        }
 
-            // Dummy values for testing purposes:
-            
-            //$fuelType = "Diesel";
-            //$gallonsRequested = 100;
-            //$deliveryDate = "Test";
-            //$paymentType = "Cash";
-            
-            /*echo "<p>Company name: $companyName</p>";
-            echo "<p>Email: $state</p>";
-            echo "<p>Email: $city</p>";
-            echo "<p>Email: $street</p>";
-            echo "<p>Email: $fuelType</p>";
-            echo "<p>Email: $gallonsRequested</p>";
-            echo "<p>Email: $fname</p>";
-            echo "<p>Email: $lname</p>";
-            echo "<p>Email: $custEmail</p>";
-            echo "<p>Email: $phone</p>";
-            echo "<p>Email: $paymentType</p>";*/
+        function setEmail($email) {
+            $emailAddress = $email;
+        }
+        
+        function getEmail() {
+            return $emailAddress;
         }
     ?>
 </head>
