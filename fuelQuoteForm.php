@@ -71,14 +71,6 @@ $street = "12345 dummyStreet Dr";
                     <label class="formCell" for="deliveryDate">Deliver By:</label>
                     <input class="formCell" type="date" name="deliveryDate" id="deliveryDate" required>
                 </p>
-                <p class="formRow">
-                    <p class="formCell">Price per Gallon: </p>
-                    <p class="formCell">[WIP: pricing module not required]</p>
-                </p>
-                <p class="formRow">
-                    <p class="formCell">Total Price: </p>
-                    <p class="formCell">[WIP: pricing module not required]</p>
-                </p>
 
             </section>
             <section>
