@@ -5,6 +5,7 @@ container.className = "container";
 container.innerHTML = `
 <body>
     <form class="formTable" action="http://localhost:8080/Fuel-Tracking-Application/server/editUserProfile.php" method="POST">
+        <input type="hidden" name="id" id="id" value="1">
         <div class="nav-bar" id="nav-bar"></div>
         <section id="formbox">
             <h1>USER PROFILE</h1>
