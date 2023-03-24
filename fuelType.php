@@ -50,7 +50,7 @@
             }
 
             private function set_price_per_gallon() {
-                $this->price_per_gallon = $this->base_cost_per_gallon * $this->rate;
+                $this->price_per_gallon = $this->base_cost_per_gallon + ($this->base_cost_per_gallon * $this->rate);
             }
         }
     ?>
