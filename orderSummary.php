@@ -15,6 +15,11 @@
     <script src="components/orderSummary.js" defer></script>
 
     <?php
+        include 'fuelType.php';         // Component of fuelPricing.php
+        include 'state.php';            // Component of fuelPricing.php
+        include 'trucks.php';           // Component of fuelPricing.php
+        include 'fuelPricing.php';      // The module for the pricing of fuel
+        
         if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
             // Dummy variables to fill in for future backend requirements:
