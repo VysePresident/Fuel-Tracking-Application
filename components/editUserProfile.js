@@ -109,7 +109,7 @@ home.appendChild(container);
 
 async function fetchUserData() {
     const userData = {
-        email: 'john.doe@example.com',
+        custEmail: 'john.doe@example.com',
         password: 'Password123@',
         fname: 'John',
         mname: 'D',
@@ -124,7 +124,7 @@ async function fetchUserData() {
     };
   
     // Populate the form fields with the fetched user data
-    document.getElementById('custEmail').value = userData.email;
+    document.getElementById('custEmail').value = userData.custEmail;
     document.getElementById('password').value = userData.password;
     document.getElementById('confirmPassword').value = userData.password;
     document.getElementById('fname').value = userData.fname;

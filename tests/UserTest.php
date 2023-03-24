@@ -39,7 +39,7 @@ class UserTest extends TestCase{
         $user = new User($this->connection);
 
         $validData = [
-            'email' => 'test@example.com',
+            'custEmail' => 'test@example.com',
             'password' => 'test1234',
             'fname' => 'John',
             'lname' => 'Doe',
@@ -60,7 +60,7 @@ class UserTest extends TestCase{
     public function testValidateInput(){
         $user = new User($this->connection);
         $validData = [
-            'email' => 'test@example.com',
+            'custEmail' => 'test@example.com',
             'password' => 'password123',
             'fname' => 'John',
             'lname' => 'Doe',
@@ -74,7 +74,7 @@ class UserTest extends TestCase{
         $this->assertTrue($user->validate_input($validData));
 
         $input = [
-            'email' => '',
+            'custEmail' => '',
             'password' => 'password123',
             'fname' => '',
             'lname' => 'Doe',
@@ -88,7 +88,7 @@ class UserTest extends TestCase{
     
         $errors = $user->test_input($input);
     
-        $this->assertArrayHasKey('email', $errors);
+        $this->assertArrayHasKey('custEmail', $errors);
         $this->assertArrayHasKey('fname', $errors);
         $this->assertArrayNotHasKey('password', $errors);
         $this->assertArrayNotHasKey('lname', $errors);
@@ -103,7 +103,7 @@ class UserTest extends TestCase{
         // Test data for updating the user profile
         $userData = [
             'id' => 1, // Change this to an existing user id in your database
-            'email' => 'new_email@example.com',
+            'custEmail' => 'new_email@example.com',
             'password' => 'NewPassword123',
             'fname' => 'John',
             'mname' => 'A',
@@ -127,7 +127,7 @@ class UserTest extends TestCase{
         $result = $stmt->get_result();
         $updatedUserData = $result->fetch_assoc();
 
-        $this->assertEquals($userData['email'], $updatedUserData['email']);
+        $this->assertEquals($userData['custEmail'], $updatedUserData['custEmail']);
         $this->assertEquals($userData['fname'], $updatedUserData['fname']);
         $this->assertEquals($userData['mname'], $updatedUserData['mname']);
         $this->assertEquals($userData['lname'], $updatedUserData['lname']);

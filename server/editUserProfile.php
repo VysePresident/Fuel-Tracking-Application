@@ -21,7 +21,7 @@ if ($conn->connect_error) {
 
 $user = new User($conn);
 
-$email = $user->clean_input($_POST['custEmail']);
+$custEmail = $user->clean_input($_POST['custEmail']);
 $password = $user->clean_input($_POST['password']);
 $fname = $user->clean_input($_POST['fname']);
 $mname = $user->clean_input($_POST['mname']);
@@ -37,7 +37,7 @@ $zipcode = $user->clean_input($_POST['zipcode']);
 
 
 $validation_result = $user->validate_input([
-    'email' => $email,
+    'custEmail' => $custEmail,
     'password' => $password,
     'fname' => $fname,
     'mname' => $mname,
@@ -56,7 +56,7 @@ if ($validation_result === true) {
         // Hash the password 
         $hashed_password = password_hash($password, PASSWORD_DEFAULT);
         if ($user->editUserProfile([
-            'custEmail' => $email,
+            'custEmail' => $custEmail,
             'password' => $password,
             'fname' => $fname,
             'mname' => $mname,
