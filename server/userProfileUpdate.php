@@ -32,8 +32,8 @@ $zipcode = filter_input(INPUT_POST, 'zipcode', FILTER_SANITIZE_STRING);
 if ($user->validate_input($sanitizedUserData)) {
     if ($user->updateUser($sanitizedUserData, $userId)) {
         echo "User profile updated successfully";
-        // Redirect to a confirmation page
-        header("Location: ../profile_updated.html");
+        // Redirect to an edit page
+        header("Location: ../editUserProfile.html");
     } else {
         echo "Error updating user profile";
     }

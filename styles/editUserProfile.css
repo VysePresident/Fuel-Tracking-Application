@@ -41,7 +41,7 @@ html {
 /* Styles for the background image and centered content */
 body {
   background-image: linear-gradient(rgba(4, 9, 30, 0.2), rgba(4, 9, 30, 0.2)),
-    url("../img/bg-userProfile.jpg");
+    url("../img/bg.jpg");
   background-size: cover;
   display: flex;
   justify-content: center;
