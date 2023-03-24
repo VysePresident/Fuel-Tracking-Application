@@ -21,40 +21,53 @@
         
         // PRICE = 
         class Price {
+            // Properties
             private $state;
             private $truck;
             private $fuel_type;
             private $num_gallons;
 
             // Constructor
-            public function __construct($fueltype, $state, $truck) {
+            public function __construct(FuelType $fueltype, State $state, Truck $truck) {
                 $this->fuel_type = $fueltype;
                 $this->state = $state;
                 $this->truck = $truck;
             }
 
-            // Functions (WIP)
+            // Methods
             public function calculate_num_trucks() {
-                return ceil($this->num_gallons / $this->truck.$this->carrying_capacity);
+                return ceil($this->num_gallons / $this->truck->getCapacity());
             }
 
             public function calculate_shipping_costs()
             {
-                return (calculate_num_trucks() * getState().avg_shipping_cost_per_truck)
+                return ($this->calculate_num_trucks() * $this->state->getCost());
             }
 
             public function calculate_material_cost() {
-                $material_cost = $this->fuel_type.$this->base_cost_per_gallon * $this->$num_gallons;
-                return $material_cost;
+                // Cost per gallon * Num of gallons
+                return($this->fuel_type->base_cost_per_gallon * $this->num_gallons);
             }
 
-            +calculate_landed_cost()
+            public function calculate_landed_cost()
             {
-                 shipping_cost = calculate_shipping_costs()
-                 material_cost = calculate_material_cost()
-                 landed_cost = shipping_cost + material_cost
-            
-                return landed_cost 
+                return($this->calculate_shipping_costs() + $this->calculate_material_cost());
+            }
+
+            public function calculate_total_sale_price() {
+                $shipping_cost = $this->calculate_shipping_costs();
+                $gas_price = $this->fuel_type->price_per_gallon * $this->num_gallons;
+                $total_price = $gas_price + $shipping_cost;
+                
+                return $total_price;
+            }
+
+            public function calculate_profit_percentage() {
+                $sale_price = $this->calculate_total_sale_price();
+                $landed_cost = $this->calculate_landed_cost();
+                $profit_percentage = ($sale_price - $landed_cost ) / $landed_cost;
+
+                return($profit_percentage);
             }
         }
     ?>

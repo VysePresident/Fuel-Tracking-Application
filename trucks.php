@@ -16,34 +16,41 @@
 
     <?php
         class Truck {
-            // Variables
+            // Properties
             private $carrying_capacity;
             private $total_trucks;
             private $available_trucks;
 
-            // Functions
+            // Constructor
+            public function __construct(int $capacity, int $available, int $total) {
+                $this->setCapacity($capacity);
+                $this->setAvailable($available);
+                $this->setTotal($total);
+            }
+
+            // Methods
             public function setCapacity($num) {
-                $carrying_capacity = $num;
+                $this->carrying_capacity = $num;
             }
 
             public function getCapacity() {
-                return $carrying_capacity;
+                return $this->carrying_capacity;
             }
 
             public function setAvailable($num) {
-                $available_trucks = $num;
+                $this->available_trucks = $num;
             }
 
             public function getAvailable() {
-                return $available_trucks;
+                return $this->available_trucks;
             }
 
             public function setTotal($num) {
-                $total_trucks = $num;
+                $this->total_trucks = $num;
             }
 
             public function getTotal() {
-                return $total_trucks;
+                return $this->total_trucks;
             }
         }
         

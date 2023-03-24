@@ -16,25 +16,31 @@
 
     <?php
         class State {
-            // Variables
+            // Properties
             private $avg_ship_cost;
             private $name;
 
-            // Functions
-            public function setCost($phonenum) {
-                $phone = $phonenum;
+            // Constructor
+            public function __construct($name, float $cost) {
+                $this->setName($name);
+                $this->setCost($cost);
+            }
+
+            // Methods
+            public function setCost($avg_ship_cost) {
+                $this->avg_ship_cost = $avg_ship_cost;
             }
 
             public function getCost() {
-                return $phone;
+                return $this->avg_ship_cost;
             }
 
-            public function setEmail($email) {
-                $emailAddress = $email;
+            public function setName($name) {
+                $this->name = $name;
             }
 
-            public function getEmail() {
-                return $emailAddress;
+            public function getName() {
+                return $this->name;
             }
         }
     ?>

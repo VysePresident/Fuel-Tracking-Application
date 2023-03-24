@@ -16,34 +16,43 @@
 
     <?php
         class FuelType {
-            // Variables
+            // Properties
             public $fuel_type_name;
             public $base_cost_per_gallon;
             public $price_per_gallon;
+            private $rate;
 
-            // Functions
+            // Constructor
+            public function __construct($name, float $cost, float $rate) {
+                $this->set_fuel_type_name($name);
+                $this->set_base_cost_per_gallon($cost);
+                $this->rate = $rate;
+                $this->set_price_per_gallon();
+            }
+
+            // Methods
             public function get_fuel_type_name() {
-                return $fuel_type_name;
+                return $this->fuel_type_name;
             }
 
             public function get_base_cost_per_gallon() {
-                return $base_cost_per_gallon;
+                return $this->base_cost_per_gallon;
             }
 
             public function get_price_per_gallon() {
-                return $price_per_gallon;
+                return $this->price_per_gallon;
             }
 
             private function set_fuel_type_name($name) {
-                $fuel_type_name = $name;
+                $this->fuel_type_name = $name;
             }
 
             private function set_base_cost_per_gallon($cost) {
-                $base_cost_per_gallon = $cost;
+                $this->base_cost_per_gallon = $cost;
             }
 
-            private function set_price_per_gallon($price) {
-                $price_per_gallon = $price;
+            private function set_price_per_gallon() {
+                $this->price_per_gallon = $this->base_cost_per_gallon * $this->rate;
             }
         }
     ?>
