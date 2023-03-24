@@ -18,8 +18,45 @@
         include 'fuelType.php';
         include 'state.php';
         include 'trucks.php';
-        $fuel_type = new fuelType();
         
+        // PRICE = 
+        class Price {
+            private $state;
+            private $truck;
+            private $fuel_type;
+            private $num_gallons;
+
+            // Constructor
+            public function __construct($fueltype, $state, $truck) {
+                $this->fuel_type = $fueltype;
+                $this->state = $state;
+                $this->truck = $truck;
+            }
+
+            // Functions (WIP)
+            public function calculate_num_trucks() {
+                return ceil($this->num_gallons / $this->truck.$this->carrying_capacity);
+            }
+
+            public function calculate_shipping_costs()
+            {
+                return (calculate_num_trucks() * getState().avg_shipping_cost_per_truck)
+            }
+
+            public function calculate_material_cost() {
+                $material_cost = $this->fuel_type.$this->base_cost_per_gallon * $this->$num_gallons;
+                return $material_cost;
+            }
+
+            +calculate_landed_cost()
+            {
+                 shipping_cost = calculate_shipping_costs()
+                 material_cost = calculate_material_cost()
+                 landed_cost = shipping_cost + material_cost
+            
+                return landed_cost 
+            }
+        }
     ?>
 </head>
 
