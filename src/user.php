@@ -89,7 +89,7 @@ class User{
 
     return false;
 }
-public function updateUser(array $userData, int $userId) {
+public function updateUser(array $userData, int $id) {
     if (!$this->validate_input($userData)) {
         throw new Exception("Invalid user data provided.");
     }
@@ -99,13 +99,33 @@ public function updateUser(array $userData, int $userId) {
     $sql = "UPDATE user_profiles SET email = ?, password = ?, fname = ?, mname = ?, lname = ?, phone = ?, companyName = ?, state = ?, city = ?, street = ?, street2 = ?, zipcode = ? WHERE id = ?";
 
     $stmt = $this->conn->prepare($sql);
-    $stmt->bind_param("ssssssssssssi", $userData['custEmail'], $hashed_password, $userData['fname'], $userData['mname'], $userData['lname'], $userData['phone'], $userData['companyName'], $userData['state'], $userData['city'], $userData['street'], $userData['street2'], $userData['zipcode'], $userId);
+    $stmt->bind_param("ssssssssssssi", $userData['custEmail'], $hashed_password, $userData['fname'], $userData['mname'], $userData['lname'], $userData['phone'], $userData['companyName'], $userData['state'], $userData['city'], $userData['street'], $userData['street2'], $userData['zipcode'], $id);
 
     if ($stmt->execute()) {
         return true;
     }
 
     return false;
+}
+
+public function test_input($data)
+{
+    $errors = [];
+
+    foreach ($data as $key => $value) {
+        // Skip validation for street2
+        if ($key === 'street2') {
+            continue;
+        }
+
+        if (empty($value)) {
+            $errors[$key] = "The $key field is required.";
+        }
+    }
+
+    // You can add more specific validation rules here, if needed.
+
+    return $errors;
 }
 
 }

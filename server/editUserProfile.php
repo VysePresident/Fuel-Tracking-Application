@@ -17,7 +17,7 @@ if ($conn->connect_error) {
 
 $user = new User($conn);
 
-// $userId = $user->clean_input($_POST['userId']);
+$id = $user->clean_input($_POST['id']);
 $email = $user->clean_input($_POST['custEmail']);
 $password = $user->clean_input($_POST['password']);
 $fname = $user->clean_input($_POST['fname']);
@@ -33,7 +33,7 @@ $zipcode = $user->clean_input($_POST['zipcode']);
 
 $stmt = null;
 
-if ($user->validate_input([
+$validation_errors = $user->test_input([
     'custEmail' => $email,
     'password' => $password,
     'fname' => $fname,
@@ -46,7 +46,9 @@ if ($user->validate_input([
     'street' => $street,
     'street2' => $street2,
     'zipcode' => $zipcode
-])) {
+]);
+
+if (empty($validation_errors)) {
     // Hash the password
     $hashed_password = password_hash($password, PASSWORD_DEFAULT);
 
@@ -54,18 +56,29 @@ if ($user->validate_input([
     $sql = "UPDATE user_profiles SET email=?, password=?, fname=?, mname=?, lname=?, phone=?, companyName=?, state=?, city=?, street=?, street2=?, zipcode=? WHERE id=?";
 
     $stmt = $conn->prepare($sql);
-    $stmt->bind_param("ssssssssssssi", $email, $hashed_password, $fname, $mname, $lname, $phone, $companyName, $state, $city, $street, $street2, $zipcode, $userId);
+    $stmt->bind_param("ssssssssssssi", $email, $hashed_password, $fname, $mname, $lname, $phone, $companyName, $state, $city, $street, $street2, $zipcode, $id);
 } else {
-    echo "Invalid input data";
+    echo "Invalid input data:<br>";
+    foreach ($validation_errors as $field => $error) {
+        echo "$field: $error<br>";
+    }
 }
+
+
 
 if ($stmt !== null && $stmt->execute()) {
     echo "Record updated successfully";
     //Redirect to a confirmation page
     header("Location: ../confirmed_profile.html");
 } else {
-    echo "Error updating record.<br>" . $conn->error;
+    if ($stmt !== null) {
+        echo "Error updating record: " . $stmt->error . "<br>";
+        $stmt->close();
+    } else {
+        echo "Error updating record: " . $conn->error . "<br>";
+    }
 }
+
 
 if ($stmt !== null) {
     $stmt->close();
