@@ -123,9 +123,8 @@ public function test_input($data)
         }
     }
 
-    // You can add more specific validation rules here, if needed.
-
     return $errors;
 }
+
 
 }
