@@ -26,10 +26,11 @@
             private $num_gallons;
 
             // Constructor
-            public function __construct(FuelType $fueltype, State $state, Truck $truck) {
+            public function __construct(FuelType $fueltype, State $state, Truck $truck, int $gallons) {
                 $this->fuel_type = $fueltype;
                 $this->state = $state;
                 $this->truck = $truck;
+                $this->num_gallons = $gallons;
             }
 
             // Methods
