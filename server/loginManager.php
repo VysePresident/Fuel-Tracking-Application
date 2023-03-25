@@ -48,12 +48,12 @@ class LoginManager {
             //$this->loginUser($client);
             return true;
           } else {
-            echo "Incorrect password.";
+            //echo "Incorrect password.";
             return false;
           }
         }
       }
-      echo "Incorrect login information.";
+      //echo "Incorrect login information.";
     }
   
     public function loginUser($client) {
@@ -66,7 +66,9 @@ class LoginManager {
       $_SESSION['companyState'] = $client->getCompanyState();
       $_SESSION['companyCity'] = $client->getCompanyCity();
       $_SESSION['companyStreet'] = $client->getCompanyStreet();
-      echo "Logged in successfully.";
+      header("Location: ../index.php");
+      exit();
+      //echo "Logged in successfully.";
     }
 
     public function isLoginValid()
@@ -78,7 +80,7 @@ class LoginManager {
       {
         $client = $this->getClientByEmail($this->email);
         $this->loginUser($client);
-        echo "<p>MISSION SUCCESS LOGGED IN!</p>";
+        //echo "<p>MISSION SUCCESS LOGGED IN!</p>";
         return true;
       }
       return false;
@@ -87,7 +89,7 @@ class LoginManager {
     private function getClientByEmail($email) {
       foreach ($this->myClients as $client) {
         if ($client->getEmail() === $email) {
-          echo "<p>EMAIL FOUND</p>";
+          //echo "<p>EMAIL FOUND</p>";
           return $client;
         }
       }
