@@ -89,7 +89,9 @@
 
 <body>
     <form class="orderSummary" action="orderConfirmation.html">
-    <div class="nav-bar" id="nav-bar"></div>
+    <div class="nav-bar" id="nav-bar">
+        <object type="text/html" data="components/nav-bar.php"></object> 
+    </div>
         <section name="summarySection">
             <h1><u>ORDER SUMMARY</u></h1>
             <p>Confirm your order:</p>

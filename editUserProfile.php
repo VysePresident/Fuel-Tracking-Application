@@ -6,7 +6,9 @@
     <link rel="stylesheet" href="styles/styles.css">
   </head>
   <body>
-      <div class="nav-bar" id="nav-bar"></div>
+      <div class="nav-bar" id="nav-bar">
+      <object type="text/html" data="components/nav-bar.php"></object> 
+      </div>
       <div class="editUserProfile" id="editUserProfile"></div>
       <div class="footer" id="footer"></div>
       <script src="components/editUserProfile.js"></script>

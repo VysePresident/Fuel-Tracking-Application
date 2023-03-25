@@ -14,15 +14,20 @@
   </head>
   <body>
       <header>
-        <nav id="nav-bar"></nav>
+        <nav id="nav-bar">
+          <object type="text/html" data="components/nav-bar.php"></object> 
+        </nav>
       </header>
       <section id="page">
         <section id="confirmation-message">
-          <h1 id="confirmhead">CAREER OPPORTUNITIES: </h1>
+          <h1 id="confirmhead">ABOUT US: </h1>
           <p class="confirmtext">
-            Our sincerest apologies, but we are not currently hiring at this time.
+            We offer a wide range of fuel products, including gasoline, diesel,
+            and propane, to meet the needs of our customers. Our products are
+            sourced from reputable suppliers and tested for quality and compliance
+            with industry standards.
           </p>
-          <p class="confirmtext">Please check again soon!</p>
+          <p class="confirmtext">We are proud to have served the fueling needs of the country for 50 years now.</p>
         </section>
     </section>
       

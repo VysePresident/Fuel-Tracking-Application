@@ -1,5 +1,6 @@
 
 <?php
+  require_once '../src/client.php';
   session_start();
 ?>
 
