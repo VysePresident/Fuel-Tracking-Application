@@ -28,7 +28,9 @@ $street = "12345 dummyStreet Dr";
     <!--Add link for action to Order Summary Page-->
     <section>
         <form class="formTable" action="orderSummary.php" method="POST">
-            <div class="nav-bar" id="nav-bar"></div>
+            <div class="nav-bar" id="nav-bar">
+                <object type="text/html" data="components/nav-bar.php"></object> 
+            </div>
             <section>
                 <h1><u>Fuel Order Form</u></h1>
                 <p>Proud to serve businesses across the country for <br>

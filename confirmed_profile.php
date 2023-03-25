@@ -8,13 +8,15 @@
     <link rel="stylesheet" href="styles/confirmed.css">
     <script>
       setTimeout(function() {
-        window.location.href = "index.html";
+        window.location.href = "index.php";
       }, 4000); // 4000 milliseconds = 4 seconds
     </script>
   </head>
   <body>
       <header>
-        <nav id="nav-bar"></nav>
+        <nav id="nav-bar">
+          <object type="text/html" data="components/nav-bar.php"></object> 
+        </nav>
       </header>
       <body id="page">
         <section id="confirmation-message">

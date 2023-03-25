@@ -8,7 +8,9 @@
     <link rel="stylesheet" href="styles/contact-form.css">
   </head>
   <body>
-      <div class="nav-bar" id="nav-bar"></div>
+      <div class="nav-bar" id="nav-bar">
+        <object type="text/html" data="components/nav-bar.php"></object> 
+      </div>
       <body id="page">
         <section id="contact-form">
           <h1 id="head">Contact Form</h1>
