@@ -67,7 +67,7 @@ class LoginManager {
       $_SESSION['companyCity'] = $client->getCompanyCity();
       $_SESSION['companyStreet'] = $client->getCompanyStreet();
       header("Location: ../index.php");
-      exit();
+      //exit();
       //echo "Logged in successfully.";
     }
 
