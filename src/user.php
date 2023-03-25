@@ -22,61 +22,6 @@ class User{
     return $data;
   }
 
-//   public function validate_input($data){
-//     // Check for required fields
-//     $required_fields = ['custEmail', 'password', 'fname', 'lname', 'phone', 'companyName', 'state', 'city', 'street', 'zipcode'];
-//     foreach ($required_fields as $field) {
-//         if ($field === 'mname') {
-//             continue;
-//         }
-//         if (!isset($data[$field]) || empty($data[$field])) {
-//             return false;
-//         }
-//     }
-
-//     // Check email format
-//     if (!filter_var($data['custEmail'], FILTER_VALIDATE_EMAIL)) {
-//         return false;
-//     }
-
-//     // Check password length
-//     if (strlen($data['password']) < 8) {
-//         return false;
-//     }
-
-//     // Check phone number format
-//     if (!preg_match('/^\d{10,20}$/', $data['phone'])) {
-//         return false;
-//     }
-
-//     // Check zipcode format
-//     if (!preg_match('/^\d{5}(-\d{4})?$/', $data['zipcode'])) {
-//         return false;
-//     }
-
-//     // Validate other string lengths
-//     $string_lengths = [
-//         'fname' => 50,
-//         'mname' => 50,
-//         'lname' => 50,
-//         'companyName' => 100,
-//         'city' => 100,
-//         'street' => 100,
-//         'street2' => 100
-//     ];
-//     foreach ($string_lengths as $field => $length) {
-//         if ($field === 'mname' || $field === 'street2') {
-//             continue;
-//         }
-//         if (isset($data[$field]) && strlen($data[$field]) > $length) {
-//             return false;
-//         }
-//     }
-
-//     return true;
-//   }
-
-
 public function validate_input($data){
     $errors = [];
 
@@ -153,23 +98,6 @@ public function validate_input($data){
     return false;
 }
 
-public function test_input($data)
-{
-    $errors = [];
-
-    foreach ($data as $key => $value) {
-        // Skip validation for street2
-        if ($key === 'street2' || $key === 'mname') {
-            continue;
-        }
-
-        if (empty($value)) {
-            $errors[$key] = "The $key field is required.";
-        }
-    }
-
-    return $errors;
-}
 
 public function editUserProfile(array $userData) {
     if (!$this->validate_input($userData)) {
