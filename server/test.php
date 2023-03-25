@@ -7,6 +7,10 @@ require_once 'loginManager.php';
 require_once 'registrationManager.php';
 
 $myLoginManager = new LoginManager('tom@example.com', 'password1');
+$myLoginManager->isLoginValid();
+header("Location: ../index.php");
+
+
 //$myLoginManager->confirmClientsWorks();
 //echo $myLoginManager->getEmail();
 $testEmailExists = $myLoginManager->doesEmailExist($clients);
@@ -41,6 +45,8 @@ else {
 echo "<p>LINE BREAK</p>";
 
 //echo $myManager->getPhone();
+
+
 
 ?>
 

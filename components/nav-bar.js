@@ -1,6 +1,6 @@
 const navBar = document.getElementById('nav-bar');
 
-navBar.innerHTML = `
+/*navBar.innerHTML = `
   <link rel="stylesheet" href="./styles/nav-bar.css">
   <header>
     <a href="./index.html"><img src="img/logo.png"></a>
@@ -17,7 +17,7 @@ navBar.innerHTML = `
       </div>
     </nav>
   </header>
-`;
+`;*/
 
 // get the navLinks element
 const navLinks = document.getElementById("navLinks");
