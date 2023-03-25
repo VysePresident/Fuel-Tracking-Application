@@ -11,7 +11,7 @@ class UserTest extends TestCase{
         $servername = "localhost";
         $username = "root";
         $password = "GasCo12345678";
-        $dbname = "gasco"; // Use a test version of your database
+        $dbname = "gasco"; 
         $port = 3307;
 
         $this->connection = new mysqli($servername, $username, $password, $dbname, $port);
@@ -20,8 +20,17 @@ class UserTest extends TestCase{
     {
         $this->connection->close();
     }
+
+    /**
+     * @covers \App\User::__construct
+     */
+    public function testConstructor(){
+        $this->assertInstanceOf(User::class, new User($this->connection));
+    }
+
     /**
      * @covers \App\User::clean_input
+     * @covers \App\User::__construct
      */
     public function testCleanInput(){
         $user = new User($this->connection);
@@ -30,9 +39,14 @@ class UserTest extends TestCase{
 
         $cleanedInput = $user->clean_input($dirtyInput);
         $this->assertEquals($expectedOutput, $cleanedInput);
+        $this->assertNotEquals($dirtyInput, $cleanedInput);
+        $this->assertEquals($expectedOutput, $cleanedInput);
     }
+
     /**
+    * @covers \App\User::validate_input
     * @covers \App\User::createUser
+    * @covers \App\User::__construct
     */
     public function testCreateUser()
     {
@@ -52,10 +66,12 @@ class UserTest extends TestCase{
         ];
 
         $this->assertTrue($user->createUser($validData));
+        $this->assertIsBool($user->createUser($validData));
     }
 
     /**
     * @covers \App\User::validate_input
+    * @covers \App\User::__construct
     */
     public function testValidateInput(){
         $user = new User($this->connection);
@@ -72,6 +88,7 @@ class UserTest extends TestCase{
             'zipcode' => '90001'
         ];
         $this->assertTrue($user->validate_input($validData));
+        $this->assertIsBool($user->validate_input($validData));
 
         $input = [
             'custEmail' => '',
@@ -86,23 +103,71 @@ class UserTest extends TestCase{
             'zipcode' => '90001'
         ];
     
-        $errors = $user->test_input($input);
+        $errors = $user->validate_input($input);
     
-        $this->assertArrayHasKey('custEmail', $errors);
-        $this->assertArrayHasKey('fname', $errors);
-        $this->assertArrayNotHasKey('password', $errors);
-        $this->assertArrayNotHasKey('lname', $errors);
+        $this->assertContains("Missing or empty field: custEmail", $errors);
+        $this->assertContains("Missing or empty field: fname", $errors);
+        $this->assertNotContains("Missing or empty field: password", $errors);
+        $this->assertNotContains("Missing or empty field: lname", $errors);
+        $this->assertIsArray($errors);
+
+        // Test case to cover the 'continue' statement for 'mname' and 'street2'
+        $inputWithMnameStreet2 = $validData;
+        $inputWithMnameStreet2['mname'] = 'Middle';
+        $inputWithMnameStreet2['street2'] = 'Apt 4B';
+        $this->assertTrue($user->validate_input($inputWithMnameStreet2));
+
+        // Test case for invalid email format
+        $invalidEmailInput = $validData;
+        $invalidEmailInput['custEmail'] = 'invalid_email';
+        $errors = $user->validate_input($invalidEmailInput);
+        $this->assertContains("Invalid email format", $errors);
+
+        // Test case for password too short
+        $shortPasswordInput = $validData;
+        $shortPasswordInput['password'] = 'short';
+        $errors = $user->validate_input($shortPasswordInput);
+        $this->assertContains("Password too short, must be at least 8 characters", $errors);
+
+        // Test case for invalid phone number format
+        $invalidPhoneInput = $validData;
+        $invalidPhoneInput['phone'] = '1234567';
+        $errors = $user->validate_input($invalidPhoneInput);
+        $this->assertContains("Invalid phone number format", $errors);
+
+        // Test case for invalid zipcode format
+        $invalidZipcodeInput = $validData;
+        $invalidZipcodeInput['zipcode'] = '1234';
+        $errors = $user->validate_input($invalidZipcodeInput);
+        $this->assertContains("Invalid zipcode format", $errors);
+
+        // Test case for long string values
+        $longStringInput = $validData;
+        $longStringInput['fname'] = str_repeat('a', 51);
+        $longStringInput['lname'] = str_repeat('b', 51);
+        $longStringInput['companyName'] = str_repeat('c', 101);
+        $longStringInput['city'] = str_repeat('d', 101);
+        $longStringInput['street'] = str_repeat('e', 101);
+
+        $errors = $user->validate_input($longStringInput);
+        $this->assertContains("Field fname too long, maximum length is 50 characters", $errors);
+        $this->assertContains("Field lname too long, maximum length is 50 characters", $errors);
+        $this->assertContains("Field companyName too long, maximum length is 100 characters", $errors);
+        $this->assertContains("Field city too long, maximum length is 100 characters", $errors);
+        $this->assertContains("Field street too long, maximum length is 100 characters", $errors);
     }
 
     /**
+    * @covers \App\User::validate_input
     * @covers \App\User::editUserProfile
+    * @covers \App\User::__construct
     */
     public function testEditUserProfile(): void{
         $user = new User($this->connection);
 
         // Test data for updating the user profile
         $userData = [
-            'id' => 1, // Change this to an existing user id in your database
+            'id' => 1,
             'custEmail' => 'new_email@example.com',
             'password' => 'NewPassword123',
             'fname' => 'John',
@@ -139,65 +204,4 @@ class UserTest extends TestCase{
         $this->assertEquals($userData['street2'], $updatedUserData['street2']);
         $this->assertEquals($userData['zipcode'], $updatedUserData['zipcode']);
 }
-
-    // public function testEditUserProfile(){
-    //     $user = new User($this->connection);
-    //     // Create a test user profile
-    //     $id = 1;
-    //     $user_data = [
-    //         'email' => 'test@example.com',
-    //         'password' => 'password123',
-    //         'fname' => 'John',
-    //         'lname' => 'Doe',
-    //         'phone' => '1234567890',
-    //         'companyName' => 'Test Company',
-    //         'state' => 'Texas',
-    //         'city' => 'Missouri City',
-    //         'street' => '123 Main Street',
-    //         'zipcode' => '90001'
-    //     ];
-
-    //     // Insert the test user profile into the database
-    //     $user->createUser($user_data);
-
-    //     $new_user_data = [
-    //         'email' => 'test@example.com',
-    //         'password' => 'password123',
-    //         'fname' => 'John',
-    //         'lname' => 'Doee',
-    //         'phone' => '1234567890',
-    //         'companyName' => 'Test Company',
-    //         'state' => 'Texas',
-    //         'city' => 'Missouri City',
-    //         'street' => '123 Main Street',
-    //         'zipcode' => '90001'
-    //     ];
-    //     // Update the user profile
-    //     $result = $user->editUserProfile($id, $new_user_data);
-
-    //     // Check that the user profile was updated successfully
-    //     $this->assertTrue($result, 'User profile was not updated successfully');
-
-    //     // Fetch the updated user profile from the database
-    //     $stmt = $this->connection->prepare('SELECT * FROM user_profiles WHERE id = ?');
-    //     $stmt->bind_param('i', $id);
-    //     $stmt->execute();
-    //     $result = $stmt->get_result();
-    //     $updated_profile = $result->fetch_assoc();
-    //     $stmt->close();
-
-    //     // Check that the user profile data was updated correctly
-    //     $this->assertEquals($user_data['email'], $updated_profile['email']);
-    //     $this->assertTrue(password_verify($user_data['password'], $updated_profile['password']));
-    //     $this->assertEquals($user_data['fname'], $updated_profile['fname']);
-    //     $this->assertEquals($user_data['mname'], $updated_profile['mname']);
-    //     $this->assertEquals($user_data['lname'], $updated_profile['lname']);
-    //     $this->assertEquals($user_data['phone'], $updated_profile['phone']);
-    //     $this->assertEquals($user_data['companyName'], $updated_profile['companyName']);
-    //     $this->assertEquals($user_data['state'], $updated_profile['state']);
-    //     $this->assertEquals($user_data['city'], $updated_profile['city']);
-    //     $this->assertEquals($user_data['street'], $updated_profile['street']);
-    //     $this->assertEquals($user_data['street2'], $updated_profile['street2']);
-    //     $this->assertEquals($user_data['zipcode'], $updated_profile['zipcode']);
-    // }
 }
