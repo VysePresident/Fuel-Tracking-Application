@@ -29,7 +29,7 @@ container.innerHTML = `
         with industry standards.
       </p>
       <div class="btn-about">
-        <a href="about.html">LEARN MORE</a>
+        <a href="about.php">LEARN MORE</a>
       </div>
     </section>
 
@@ -46,7 +46,7 @@ container.innerHTML = `
             </p>
           </div>
           <div class="btn-join">
-            <a href="employment.html">APPLY NOW</a>
+            <a href="employment.php">APPLY NOW</a>
           </div>
         </div>
       </div>
@@ -58,7 +58,7 @@ container.innerHTML = `
         When you choose Gas Co., you can take advantage of the 24/7 support provided by our team of Operations & <br> Service Specialists. We are always available to ensure that your fuel requirements are fulfilled.
       </p>
       <div class="btn-contact">
-        <a href="./contact.html">CONTACT US</a>
+        <a href="./contact.php">CONTACT US</a>
       </div>
     </section>
 

@@ -6,19 +6,19 @@
 
 <link rel="stylesheet" href="./styles/nav-bar.css">
   <header>
-    <a href="./index.html"><img src="img/logo.png"></a>
+    <a href="./index.php"><img src="img/logo.png"></a>
     <nav>
       <i class="fa fa-bars" onclick="showMenu()"></i>
       <div class="nav-links" id="navLinks">
         <i class="fa fa-times" onclick="hideMenu()"></i>
         <ul>
-          <li><a href="../contact.html">CONTACT US</a></li>
-          <li><a href="../about.html">ABOUT</a></li>
+          <li><a href="../contact.php">CONTACT US</a></li>
+          <li><a href="../about.php">ABOUT</a></li>
           <?php 
             if(isset($_SESSION['email']))
             {
-              echo '<li><a href="../register.html">PROFILE</a></li>';
-              echo '<li><a href="../Login_Page.html">LOGOUT</a></li>';
+              echo '<li><a href="../editUserProfile.php">PROFILE</a></li>';
+              echo '<li><a href="../server/logout.php">LOGOUT</a></li>';
               echo "HI " . $_SESSION['email'] . "!";
             }
             else
