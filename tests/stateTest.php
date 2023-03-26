@@ -2,8 +2,10 @@
     declare(strict_types=1);
     
     use PHPUnit\Framework\TestCase;
-    
-    require_once 'state.php';
+
+    // Contains the State class as the fuelPricing.php file also includes the state.php file.
+    // I was surprised this would not run tests when I used 'src/state.php'
+    include_once('src/fuelPricing.php');
     /**
      * @covers State
      */

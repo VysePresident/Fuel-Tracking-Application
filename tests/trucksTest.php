@@ -2,12 +2,14 @@
     declare(strict_types=1);
     use PHPUnit\Framework\TestCase;
 
-    require_once 'trucks.php';
+    // Contains the Truck class as the fuelPricing.php file also includes the trucks.php file.
+    // I was surprised this would not run tests when I used 'src/trucks.php'
+    include_once('src/fuelPricing.php');
     /**
      * @covers Truck
      */
 
-    class TruckTest extends TestCase {
+    class TrucksTest extends TestCase {
         /** @test */
         public function testTruck() {
             // create a Truck instance

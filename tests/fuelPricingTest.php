@@ -1,7 +1,7 @@
 <?php
     use PHPUnit\Framework\TestCase;
 
-    include_once('fuelPricing.php');
+    include_once('src/fuelPricing.php');
 
     class FuelPricingTest extends TestCase {
         /**

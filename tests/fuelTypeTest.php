@@ -4,9 +4,11 @@
     use FuelType;
     use PHPUnit\Framework\TestCase;
 
-    require_once 'fuelType.php';
+    // Contains the FuelType class as the fuelPricing.php file also includes the fuelType.php file.
+    // I was surprised this would not run tests when I used 'src/fuelType.php'
+    include_once('src/fuelPricing.php');
     /**
-     * @covers FuelType
+     * @covers \FuelType
      */
     class FuelTypeTest extends TestCase {
         /** @test */
