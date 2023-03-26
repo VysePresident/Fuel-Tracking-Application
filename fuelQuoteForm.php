@@ -29,7 +29,8 @@ $street = "12345 dummyStreet Dr";
     <section>
         <form class="formTable" action="orderSummary.php" method="POST">
             <div class="nav-bar" id="nav-bar">
-                <object type="text/html" data="components/nav-bar.php"></object> 
+                <?php include_once 'components/nav-bar.php'; ?>
+                <!--<object type="text/html" data="components/nav-bar.php"></object>-->
             </div>
             <section>
                 <h1><u>Fuel Order Form</u></h1>

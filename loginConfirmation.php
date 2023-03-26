@@ -7,25 +7,26 @@
     <link rel="stylesheet" href="styles/footer.css">
     <link rel="stylesheet" href="styles/orderConfirmation.css">
 
-    <title>ORDER SUCCESSFUL CONFIRMATION.</title>
+    <title>LOGIN PROCESSING</title>
 
-    <script src="components/orderConfirmation.js"></script>
-
+    <script src="components/loginConfirmation.js"></script>
+    <?php
+        ini_set("display_errors", "1");
+        ini_set("display_startup_errors", "1");
+        error_reporting(E_ALL);
+        require_once 'server/loginStart.php';
+    ?>
   </head>
   <body>
       <header>
         <nav id="nav-bar">
-          <?php include_once 'components/nav-bar.php'; ?>
-          <!--<object type="text/html" data="components/nav-bar.php"></object>-->
+          <object type="text/html" data="components/nav-bar.php"></object> 
         </nav>
       </header>
       <section id="page">
         <section id="confirmation-message">
-          <h1 id="confirmhead">CAREER OPPORTUNITIES: </h1>
-          <p class="confirmtext">
-            Our sincerest apologies, but we are not currently hiring at this time.
-          </p>
-          <p class="confirmtext">Please check again soon!</p>
+          <h1 id="confirmhead">LOGIN PROCESSING</h1>
+          <p class="confirmtext">You will be redirected to the index page shortly</p>
         </section>
     </section>
       

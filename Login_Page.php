@@ -6,12 +6,22 @@
     <script src="components/email.validation.js"></script>
 	<!--Linking the page that allows one to put restrictions on the password input fields-->
 	<script src="components/password.validation.js"></script>
+
+	<!--SESSION CONTINUATION - probably not necessary but for the sake of consistency -->
+	<?php
+		require_once 'server/loginSession.php';
+		//require_once 'components/nav-bar.php';
+	?>
 	<!--This is section of the code is primarily for the top of the page. 
 	For ex the image, the nav bar, and the links.-->
 	<meta charset = "UTF-8" />
 	<meta name = "viewport" content  = "width=device-width, initial-scale = 1.0" />
 	<link rel = "stylesheet" href = "styles/login_page.css">
-  <header>
+	<div class="nav-bar" id="nav-bar">
+		<?php include_once 'components/nav-bar.php'; ?>
+        <!--<object type="text/html" data="components/nav-bar.php"></object>-->
+	</div>
+  <!--<header>
     <a href="./index.html"><img src="img/logo.png"></a>
 	<link rel="stylesheet" href="styles/nav-bar.css">
 	<nav>
@@ -27,12 +37,19 @@
 		  </ul>
 		</div>
 	</nav>
-</header>
+</header>-->
+	<?php
+		ini_set("display_errors", "1");
+		ini_set("display_startup_errors", "1");
+		error_reporting(E_ALL);
+		
+		//require_once 'components/nav-bar.php';
+	?>
 </head>
 
 <body>
 <!--Accces the login php page-->
-	<form method = "post" action = login.php>
+	<form method = "post" action = loginConfirmation.php>
 		<!--The title of the page, need to centralize it and make the font bigger-->
 		<label for = "login here" >Login Here</label>
 		<!--This is the email section of the page-->
