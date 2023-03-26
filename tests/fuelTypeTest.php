@@ -5,10 +5,10 @@
     use PHPUnit\Framework\TestCase;
 
     // Contains the FuelType class as the fuelPricing.php file also includes the fuelType.php file.
-    // I was surprised this would not run tests when I used 'src/fuelType.php'
+    // Using 'src/fuelType.php' causes an error, as it attempts to re-declare the FuelType class.
     include_once('src/fuelPricing.php');
     /**
-     * @covers \FuelType
+     * @covers FuelType
      */
     class FuelTypeTest extends TestCase {
         /** @test */

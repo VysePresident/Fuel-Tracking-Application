@@ -3,7 +3,7 @@
     use PHPUnit\Framework\TestCase;
 
     // Contains the Truck class as the fuelPricing.php file also includes the trucks.php file.
-    // I was surprised this would not run tests when I used 'src/trucks.php'
+    // Using 'src/trucks.php' causes an error, as it attempts to re-declare the Truck class.
     include_once('src/fuelPricing.php');
     /**
      * @covers Truck

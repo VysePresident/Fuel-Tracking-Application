@@ -4,7 +4,7 @@
     use PHPUnit\Framework\TestCase;
 
     // Contains the State class as the fuelPricing.php file also includes the state.php file.
-    // I was surprised this would not run tests when I used 'src/state.php'
+    // Using 'src/state.php' causes an error, as it attempts to re-declare the State class.
     include_once('src/fuelPricing.php');
     /**
      * @covers State
