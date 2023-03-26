@@ -6,7 +6,7 @@
       ini_set("display_errors", "1");
       ini_set("display_startup_errors", "1");
       error_reporting(E_ALL);
-      include_once 'server/login.php'; // Maintains session information
+      //include_once 'server/loginSession.php'; // Maintains session information
       
     ?>
 
@@ -25,7 +25,8 @@
   </head>
   <body>
       <div class="nav-bar" id="nav-bar">
-        <object type="text/html" data="components/nav-bar.php"></object> 
+        <?php include_once 'components/nav-bar.php'; ?>
+        <!--<object type="text/html" data="components/nav-bar.php"></object>-->
       </div>
       <div class="home" id="home"></div>
       <div class="footer" id="footer"></div>

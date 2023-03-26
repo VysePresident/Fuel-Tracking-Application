@@ -7,7 +7,8 @@
   </head>
   <body>
       <div class="nav-bar" id="nav-bar">
-      <object type="text/html" data="components/nav-bar.php"></object> 
+        <?php include_once 'components/nav-bar.php'; ?>
+        <!--<object type="text/html" data="components/nav-bar.php"></object>-->
       </div>
       <div class="editUserProfile" id="editUserProfile"></div>
       <div class="footer" id="footer"></div>

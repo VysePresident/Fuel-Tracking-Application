@@ -90,7 +90,8 @@
 <body>
     <form class="orderSummary" action="orderConfirmation.html">
     <div class="nav-bar" id="nav-bar">
-        <object type="text/html" data="components/nav-bar.php"></object> 
+        <?php include_once 'components/nav-bar.php'; ?>
+        <!--<object type="text/html" data="components/nav-bar.php"></object> 
     </div>
         <section name="summarySection">
             <h1><u>ORDER SUMMARY</u></h1>

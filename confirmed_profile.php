@@ -15,7 +15,8 @@
   <body>
       <header>
         <nav id="nav-bar">
-          <object type="text/html" data="components/nav-bar.php"></object> 
+          <?php include_once 'components/nav-bar.php'; ?>
+          <!--<object type="text/html" data="components/nav-bar.php"></object>-->
         </nav>
       </header>
       <body id="page">

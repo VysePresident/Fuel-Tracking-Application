@@ -9,7 +9,8 @@
   </head>
   <body>
       <div class="nav-bar" id="nav-bar">
-        <object type="text/html" data="components/nav-bar.php"></object> 
+      <?php include_once 'components/nav-bar.php'; ?>
+          <!--<object type="text/html" data="components/nav-bar.php"></object>-->
       </div>
       <body id="page">
         <section id="contact-form">

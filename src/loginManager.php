@@ -1,6 +1,6 @@
 <?php
 
-require_once 'clientsList.php';
+require_once 'server/clientsList.php';
 $GLOBALS['clients'] = $clients;
 
 class LoginManager {

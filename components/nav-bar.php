@@ -1,6 +1,7 @@
 
 <?php
-  require_once '../src/client.php';
+  require_once dirname(__DIR__) . '/src/client.php';
+  //require_once '../src/client.php';
   session_start();
 ?>
 
@@ -24,7 +25,7 @@
             else
             {
               echo '<li><a href="../register.html">REGISTER</a></li>';
-              echo '<li><a href="../Login_Page.html">SIGN IN</a></li>';
+              echo '<li><a href="../Login_Page.php">SIGN IN</a></li>';
             }
 
           ?>
