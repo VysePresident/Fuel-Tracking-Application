@@ -17,7 +17,6 @@
         include 'state.php';
         include 'trucks.php';
         
-        // PRICE = 
         class Price {
             // Properties
             private $state;

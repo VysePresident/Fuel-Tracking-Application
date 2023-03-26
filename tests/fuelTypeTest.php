@@ -4,7 +4,9 @@
     use FuelType;
     use PHPUnit\Framework\TestCase;
 
-    require_once 'fuelType.php';
+    // Contains the FuelType class as the fuelPricing.php file also includes the fuelType.php file.
+    // Using 'src/fuelType.php' causes an error, as it attempts to re-declare the FuelType class.
+    include_once('src/fuelPricing.php');
     /**
      * @covers FuelType
      */
