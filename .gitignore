@@ -22,3 +22,4 @@ coverage/_js/popper.min.js
 .phpunit.cache/code-coverage/8c3acc09b38ad1626b795b67ea8e15ad
 .phpunit.cache/code-coverage/b34bea2598de269c5fded2418039307b
 .phpunit.cache/code-coverage/babd8da4673d629ef181bfcebdd4fe18
+.phpunit.cache/test-results

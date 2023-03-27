@@ -14,27 +14,32 @@
     <script src="components/footer.js" defer></script>
     <script src="components/orderSummary.js" defer></script>
 
-    <?php
+    
+</head>
+
+<body>
+    <form class="orderSummary" action="orderConfirmation.php">
+    <div class="nav-bar" id="nav-bar">
+        <?php include_once 'components/nav-bar.php'; 
+        
+        ?>
+        <?php
         ini_set("display_errors", "1");
         ini_set("display_startup_errors", "1");
         error_reporting(E_ALL);
 
         // Fuel Pricing Module
-        include 'fuelPricing.php';
+        include 'src/fuelPricing.php';
+
+        // Dummy variables to fill in for future backend requirements:
+        $companyName = $_SESSION['companyName'];
+        $state = new State($_SESSION['companyState'],15.00);
+        $statename = $_SESSION['companyState'];
+        $truck = new Truck(80,50,60);
+        $city = $_SESSION['companyCity'];
+        $street = $_SESSION['companyStreet'];
 
         if ($_SERVER["REQUEST_METHOD"] == "POST") {
-
-            // Dummy variables to fill in for future backend requirements:
-            $companyName = "dummyCorp";
-            $state = new State("Confusion",15.00);
-            $statename = $state->getName();
-            $truck = new Truck(80,50,60);
-            $city = "dummyCity";
-            $street = "12345 dummyStreet Dr";
-
-            // Dummy variables because Pricing module is not yet required:
-            $pricePerGallon = "[WIP: Pricing Module Not Required]";
-            $totalPrice = "[WIP: Pricing Module Not Required]";
 
             // Get the values submitted in the form
             $fuelType = $_POST["fuelType"];
@@ -61,37 +66,16 @@
             $priceCalc = new Price($fuel,$state,$truck,$gallonsRequested);
             $pricePerGallon = $fuel->get_price_per_gallon();
             $totalPrice = $priceCalc->calculate_total_sale_price();
-            
-
-
-
-            // Dummy values for testing purposes:
-            
-            //$fuelType = "Diesel";
-            //$gallonsRequested = 100;
-            //$deliveryDate = "Test";
-            //$paymentType = "Cash";
-            
-            /*echo "<p>Company name: $companyName</p>";
-            echo "<p>Email: $state</p>";
-            echo "<p>Email: $city</p>";
-            echo "<p>Email: $street</p>";
-            echo "<p>Email: $fuelType</p>";
-            echo "<p>Email: $gallonsRequested</p>";
-            echo "<p>Email: $fname</p>";
-            echo "<p>Email: $lname</p>";
-            echo "<p>Email: $custEmail</p>";
-            echo "<p>Email: $phone</p>";
-            echo "<p>Email: $paymentType</p>";*/
         }
     ?>
-</head>
 
-<body>
-    <form class="orderSummary" action="orderConfirmation.html">
-    <div class="nav-bar" id="nav-bar">
-        <?php include_once 'components/nav-bar.php'; ?>
-        <!--<object type="text/html" data="components/nav-bar.php"></object> 
+
+
+
+
+
+
+        <!--<object type="text/html" data="components/nav-bar.php"></object> -->
     </div>
         <section name="summarySection">
             <h1><u>ORDER SUMMARY</u></h1>
@@ -109,7 +93,7 @@
         </section>
         <section class="buttons">
             <input type="submit" value="Confirm" class="confirmButton" id="confirmButton" onclick="confirmOrder()">
-            <input type="submit" formaction="index.html" value="Cancel" class="cancelButton" id="cancelButton" onclick="goHome()">
+            <input type="submit" formaction="index.php" value="Cancel" class="cancelButton" id="cancelButton" onclick="goHome()">
         </section>
     </form>
 </body>
