@@ -14,13 +14,16 @@
 </head>
 
 <?php
-// Dummy values to stand in for user profile information, as we are not yet intended
-// to work on the backend.
+    ini_set("display_errors", "1");
+    ini_set("display_startup_errors", "1");
+    error_reporting(E_ALL);
+    // Dummy values to stand in for user profile information, as we are not yet intended
+    // to work on the backend.
 
-$company_name = "dummyCorp";
-$state = "Confusion";
-$city = "dummyCity";
-$street = "12345 dummyStreet Dr";
+    $company_name = $_SESSION['companyName'];
+    $state = $_SESSION['companyState'];
+    $city = $_SESSION['companyCity'];
+    $street = $_SESSION['companyStreet'];
 
 ?>
 
