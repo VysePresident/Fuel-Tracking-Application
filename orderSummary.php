@@ -14,7 +14,16 @@
     <script src="components/footer.js" defer></script>
     <script src="components/orderSummary.js" defer></script>
 
-    <?php
+    
+</head>
+
+<body>
+    <form class="orderSummary" action="orderConfirmation.php">
+    <div class="nav-bar" id="nav-bar">
+        <?php include_once 'components/nav-bar.php'; 
+        
+        ?>
+        <?php
         ini_set("display_errors", "1");
         ini_set("display_startup_errors", "1");
         error_reporting(E_ALL);
@@ -59,13 +68,14 @@
             $totalPrice = $priceCalc->calculate_total_sale_price();
         }
     ?>
-</head>
 
-<body>
-    <form class="orderSummary" action="orderConfirmation.html">
-    <div class="nav-bar" id="nav-bar">
-        <?php include_once 'components/nav-bar.php'; ?>
-        <object type="text/html" data="components/nav-bar.php"></object> 
+
+
+
+
+
+
+        <!--<object type="text/html" data="components/nav-bar.php"></object> -->
     </div>
         <section name="summarySection">
             <h1><u>ORDER SUMMARY</u></h1>
@@ -83,7 +93,7 @@
         </section>
         <section class="buttons">
             <input type="submit" value="Confirm" class="confirmButton" id="confirmButton" onclick="confirmOrder()">
-            <input type="submit" formaction="index.html" value="Cancel" class="cancelButton" id="cancelButton" onclick="goHome()">
+            <input type="submit" formaction="index.php" value="Cancel" class="cancelButton" id="cancelButton" onclick="goHome()">
         </section>
     </form>
 </body>

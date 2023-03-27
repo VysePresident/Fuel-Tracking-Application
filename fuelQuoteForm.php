@@ -13,19 +13,7 @@
     <script src="components/footer.js" defer></script>
 </head>
 
-<?php
-    ini_set("display_errors", "1");
-    ini_set("display_startup_errors", "1");
-    error_reporting(E_ALL);
-    // Dummy values to stand in for user profile information, as we are not yet intended
-    // to work on the backend.
 
-    $company_name = $_SESSION['companyName'];
-    $state = $_SESSION['companyState'];
-    $city = $_SESSION['companyCity'];
-    $street = $_SESSION['companyStreet'];
-
-?>
 
 <body>
     <!--Add link for action to Order Summary Page-->
@@ -33,6 +21,18 @@
         <form class="formTable" action="orderSummary.php" method="POST">
             <div class="nav-bar" id="nav-bar">
                 <?php include_once 'components/nav-bar.php'; ?>
+                <?php
+                    ini_set("display_errors", "1");
+                    ini_set("display_startup_errors", "1");
+                    error_reporting(E_ALL);
+                    // Dummy values to stand in for user profile information, as we are not yet intended
+                    // to work on the backend.
+
+                    $company_name = $_SESSION['companyName'];
+                    $state = $_SESSION['companyState'];
+                    $city = $_SESSION['companyCity'];
+                    $street = $_SESSION['companyStreet'];
+                ?> 
                 <!--<object type="text/html" data="components/nav-bar.php"></object>-->
             </div>
             <section>
