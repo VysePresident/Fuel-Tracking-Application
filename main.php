@@ -149,9 +149,6 @@ use Geocoder\Query\GeocodeQuery;
 use Geocoder\HttpAdapter\CurlHttpAdapter;
 use Geocoder\StatefulGeocoder;
 
-
-
-
 class Trucking {
     public $db_name;
     private $geocoder;
