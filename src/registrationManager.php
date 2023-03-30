@@ -122,8 +122,13 @@ public function editUserProfile(array $userData) {
 
         $stmt = $this->conn->prepare($sql);
         $stmt->bind_param("ss", $userData['custEmail'], $hashed_password);
-
-        return true;
+        
+        if ($stmt->execute()) {
+            return true;
+        }
+        echo "VERY SERIOUS ERROR";
+        header("location: index.php?VERY_SERIOUS_ERROR");
+        return false;
     }
 
     return false;
