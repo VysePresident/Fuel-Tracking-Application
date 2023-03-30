@@ -28,7 +28,7 @@ public function validate_input($data){
     $errors = [];
 
     // Check for required fields
-    $required_fields = ['custEmail', 'password', 'fname', 'lname', 'phone', 'zipcode', 'companyName', 'state', 'city', 'street'];
+    $required_fields = ['email', 'password', 'fname', 'lname', 'phone', 'zipcode', 'companyName', 'state', 'city', 'street'];
     foreach ($required_fields as $field) {
         if ($field === 'mname') {
             continue;
@@ -39,7 +39,7 @@ public function validate_input($data){
     }
 
     // Check email format
-    if (!filter_var($data['custEmail'], FILTER_VALIDATE_EMAIL)) {
+    if (!filter_var($data['email'], FILTER_VALIDATE_EMAIL)) {
         $errors[] = "Invalid email format";
     }
 
@@ -90,13 +90,19 @@ public function validate_input($data){
 
     $hashed_password = password_hash($userData['password'], PASSWORD_DEFAULT);
 
-    $sql = "INSERT INTO user_profiles (custEmail, password, fname/*, mname*/, lname, phone, zipcode, companyName, state, city, street/*, street2*/)
+    $sql = "INSERT INTO ClientInformation (email, password, fname/*, mname*/, lname, phone, zipcode, companyName, state, city, street/*, street2*/)
     VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
     $stmt = $this->conn->prepare($sql);
-$stmt->bind_param("ssssssssss", $userData['custEmail'], $hashed_password, $userData['fname']/*, $userData['mname']*/, $userData['lname'], $userData['phone'], $userData['zipcode'], $userData['companyName'], $userData['state'], $userData['city'], $userData['street']/*, $userData['street2']*/ );
+    $stmt->bind_param("ssssssssss", $userData['email'], $hashed_password, $userData['fname']/*, $userData['mname']*/, $userData['lname'], $userData['phone'], $userData['zipcode'], $userData['companyName'], $userData['state'], $userData['city'], $userData['street']/*, $userData['street2']*/ );
 
-    if ($stmt->execute()) {
+    $sql2 = "INSERT INTO UserCredentials (email, password)
+    VALUES (?, ?)";
+
+    $stmt2 = $this->conn->prepare($sql2);
+    $stmt2->bind_param("ss", $userData['email'], $hashed_password);
+
+    if ($stmt->execute() && $stmt2->execute()) {
         return true;
     }
 
@@ -121,7 +127,7 @@ public function editUserProfile(array $userData) {
         $sql = "UPDATE userCredentials SET email=?, password=?";
 
         $stmt = $this->conn->prepare($sql);
-        $stmt->bind_param("ss", $userData['custEmail'], $hashed_password);
+        $stmt->bind_param("ss", $userData['email'], $hashed_password);
         
         if ($stmt->execute()) {
             return true;

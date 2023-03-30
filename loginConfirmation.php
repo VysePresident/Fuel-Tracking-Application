@@ -2,10 +2,10 @@
 <html>
   <head>
     
-    <link rel="stylesheet" href="styles/styles.css">
+    <!--<link rel="stylesheet" href="styles/styles.css">
     <link rel="stylesheet" href="styles/nav-bar.css">
     <link rel="stylesheet" href="styles/footer.css">
-    <link rel="stylesheet" href="styles/orderConfirmation.css">
+    <link rel="stylesheet" href="styles/orderConfirmation.css">-->
 
     <title>LOGIN PROCESSING</title>
 
@@ -19,9 +19,9 @@
   </head>
   <body>
       <header>
-        <nav id="nav-bar">
+        <!--<nav id="nav-bar">
           <object type="text/html" data="components/nav-bar.php"></object> 
-        </nav>
+        </nav>-->
       </header>
       <section id="page">
         <section id="confirmation-message">
@@ -30,7 +30,7 @@
         </section>
     </section>
       
-      <div class="footer" id="footer"></div>
+      <!--<div class="footer" id="footer"></div>-->
       <script src="components/nav-bar.js"></script>
       <script src="components/footer.js"></script>
       <script src="components/home.js"></script>
