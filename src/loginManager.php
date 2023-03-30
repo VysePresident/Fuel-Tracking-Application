@@ -1,99 +1,104 @@
 <?php
 
-require_once 'server/clientsList.php';
-$GLOBALS['clients'] = $clients;
+require_once __DIR__ . '/dbh.php';
+require_once __DIR__ . '/client.php';
 
-class LoginManager {
+ini_set('max_execution_time', 300);
+ini_set('memory_limit', '256M');
+
+class LoginManager extends Dbh {
     private $email;
     private $password;
-    private $myClients;
+    private $conn;
 
+    // Getters and Setters
     public function getEmail() {
-      return $this->email;
+        return $this->email;
     }
-  
+
     public function setEmail($email) {
-      $this->email = $email;
+        $this->email = $email;
     }
-  
+
     public function getPassword() {
-      return $this->password;
+        return $this->password;
     }
-  
+
     public function setPassword($password) {
-      $this->password = $password;
+        $this->password = $password;
     }
 
-    public function __construct($email, $password)
-    {
-      $this->email = $email;
-      $this->password = $password;
-      $this->myClients = $GLOBALS['clients'];
-      //$this->myClients = $clients;
+    // Constructor
+    public function __construct($email, $password) {
+        $this->email = $email;
+        $this->password = $password;
+        $this->conn = $this->connect();
     }
-  
-    public function doesEmailExist() {
-      foreach ($this->myClients as $client) {
-        if ($client->getEmail() === $this->email) {
-          return true;
+
+    public function getClientByEmail($email) {
+        $stmt = $this->conn->prepare("SELECT * FROM clientInformation WHERE email = ?");
+        $stmt->bind_param("s", $email); // TESTING
+        $stmt->execute();
+        $result = $stmt->get_result();
+        $clientData = $result->fetch_assoc();
+        //$stmt->execute([$email]);
+        //$clientData = $stmt->fetch_assoc();
+        //$clientData = $stmt->fetch();
+
+        if ($clientData) {
+          //echo "This is password: " . $clientData['password'] . '\n';
+          //echo "This is object password: " . $this->password . '\n';
+            return new Client(
+                $clientData['email'],
+                $clientData['fname'],
+                $clientData['lname'],
+                $clientData['phone'],
+                $clientData['password'],
+                $clientData['companyName'],
+                $clientData['companyState'],
+                $clientData['companyCity'],
+                $clientData['companyStreet']
+            );
+        } else {
+            return null;
         }
-      }
-      return false;
     }
-  
-    public function doesPasswordMatch() {
-      foreach ($this->myClients as $client) {
-        if ($client->getEmail() === $this->email) {
-          if ($client->getPassword() === $this->password) {
-            //$this->loginUser($client);
+
+    public function doesPasswordMatch($client, $password) {
+        if ($client->getPassword() == $password) {
             return true;
-          } else {
-            //echo "Incorrect password.";
+        } else {
             return false;
-          }
         }
-      }
-      //echo "Incorrect login information.";
-    }
-  
-    public function loginUser($client) {
-      session_start();
-      $_SESSION['email'] = $client->getEmail();
-      $_SESSION['fname'] = $client->getFname();
-      $_SESSION['lname'] = $client->getLname();
-      $_SESSION['phone'] = $client->getPhone();
-      $_SESSION['companyName'] = $client->getCompanyName();
-      $_SESSION['companyState'] = $client->getCompanyState();
-      $_SESSION['companyCity'] = $client->getCompanyCity();
-      $_SESSION['companyStreet'] = $client->getCompanyStreet();
-      header("Location: ../index.php");
-      //exit();
-      //echo "Logged in successfully.";
+
+        //USE WHEN HASHING IS BUILT IN!
+        //return password_verify($password, $client->getPassword());
     }
 
-    public function isLoginValid()
-    {
-      $confirmEmailExists = $this->doesEmailExist();
-      $confirmPasswordMatches = $this->doesPasswordMatch();
-
-      if ($confirmEmailExists && $confirmPasswordMatches)
-      {
+    public function isLoginValid() {
         $client = $this->getClientByEmail($this->email);
-        $this->loginUser($client);
-        //echo "<p>MISSION SUCCESS LOGGED IN!</p>";
-        return true;
-      }
-      return false;
+        if ($client) {
+            if ($this->doesPasswordMatch($client, $this->password)) {
+                $this->loginUser($client);
+                //header("Location: ../index.php?noerror");
+                //echo "LOGGED IN!" . '\n';
+                exit();
+            } else {
+                //echo "WRONG PASSWORD!" . '\n';
+                //echo "This is password: " . $this->password;
+                header("Location: ../index.php?error=wrongpassword");
+                exit();
+            }
+        } else {
+            //echo "THERE WAS NO USER!" . '\n';
+            header("Location: ../index.php?error=nouser");
+            exit();
+        }
     }
 
-    private function getClientByEmail($email) {
-      foreach ($this->myClients as $client) {
-        if ($client->getEmail() === $email) {
-          //echo "<p>EMAIL FOUND</p>";
-          return $client;
-        }
-      }
-      return null;
+    private function loginUser($client) {
+        session_start();
+        $_SESSION['client'] = $client;
     }
 }
-?>  
+?>

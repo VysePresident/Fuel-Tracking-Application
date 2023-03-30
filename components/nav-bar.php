@@ -16,11 +16,11 @@
           <li><a href="../contact.php">CONTACT US</a></li>
           <li><a href="../about.php">ABOUT</a></li>
           <?php 
-            if(isset($_SESSION['email']))
+            if(isset($_SESSION['client']))
             {
               echo '<li><a href="../editUserProfile.php">PROFILE</a></li>';
-              echo '<li><a href="../server/logout.php">LOGOUT</a></li>';
-              echo "HI " . $_SESSION['email'] . "!";
+              echo '<li><a href="/server/logout.php">LOGOUT</a></li>';
+              echo "HI " . $_SESSION['client']->getEmail() . "!";
             }
             else
             {
