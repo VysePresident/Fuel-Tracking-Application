@@ -3,16 +3,16 @@
 class hcUser {
     private $email;
     private $fname;
+    private $mname;
     private $lname;
     private $phone;
-    private $password;
 
-    public function __construct($email, $fname, $lname, $phone, $password) {
+    public function __construct($email, $fname, $lname, $phone) {
         $this->email = $email;
         $this->fname = $fname;
+        $this->mname = null;
         $this->lname = $lname;
         $this->phone = $phone;
-        $this->password = $password;
     }
 
     public function getEmail() {
@@ -31,6 +31,14 @@ class hcUser {
         $this->fname = $fname;
     }
 
+    public function getMname() {
+        return $this->mname;
+    }
+
+    public function setMname($mname) {
+        $this->mname = $mname;
+    }
+
     public function getLname() {
         return $this->lname;
     }
@@ -45,14 +53,6 @@ class hcUser {
 
     public function setPhone($phone) {
         $this->phone = $phone;
-    }
-
-    public function getPassword() {
-        return $this->password;
-    }
-
-    public function setPassword($password) {
-        $this->password = $password;
     }
 }
 
