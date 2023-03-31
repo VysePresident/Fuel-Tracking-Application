@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>Login Form</title>
+        <title>Order History</title>
         <!--Linking the page that allows one to put restrictions on the email input fields-->
         <script src="email.validation.js"></script>
         <!--Linking the page that allows one to put restrictions on the password input fields-->
@@ -11,12 +11,12 @@
         <meta charset = "UTF-8" />
         <meta name = "viewport" content  = "width=device-width, initial-scale = 1.0" />
         <link rel="stylesheet" href="https://cdn.datatables.net/1.10.25/css/jquery.dataTables.min.css">
-        <link rel = "stylesheet" href = "customer.history.css">
+        <link rel = "stylesheet" href = "Customer_history_page.css">
       <header>
         <a href="./index.html"><img src="logo.png"></a>
         <link rel="stylesheet" href="nav-bar.css">
         <nav>
-            <i class="fa fa-bars" onclick="showMenu()"></i>
+            <i class="fa fa-bars" onclick="showMenu()"></i >
             <div class="nav-links" id="navLinks">
               <i class="fa fa-times" onclick="hideMenu()"></i>
               <ul>
@@ -30,74 +30,45 @@
         </nav>
     </header>
     </head>
+  <?php
+    $email = "tom@example.com";
+  ?>
     <table id="orderHistoryTable">
       <thead>
         <tr>
           <th>Order ID</th>
           <th>Order Date</th>
           <th>Delivery Date</th>
-          <th>Delivery Address</th>
           <th>Gallons requested</th>
           <th>Total amount Due</th>
 
         </tr>
       </thead>
       <tbody>
-        <tr>
-          <td>1234</td>
-          <td>January 1, 2022</td>
-          <td>January 12, 2022</td>
-          <td>201 E Mountain Rd, Wimberley, Texas 78676, USA</td>
-          <td>13</td>
-          <td>$38.389</td>
-
-        </tr>
-        <tr>
-          <td>5678</td>
-          <td>February 15, 2022</td>
-          <td>February 28, 2022</td>
-          <td>201 E Mountain Rd, Wimberley, Texas 78676, USA</td>
-          <td>13</td>
-          <td>$38.389</td>
-        </tr>
-
-        <tr>
-          <td>9012</td>
-          <td>March 30, 2022</td>
-          <td>February 28, 2022</td>
-          <td>201 E Mountain Rd, Wimberley, Texas 78676, USA</td>
-          <td>26</td>
-          <td>$76.78</td>
-          </tr>
-
-        <tr>
-            <td>0608</td>
-            <td>October 11, 2018</td>
-            <td>October 31, 2018</td>
-            <td>201 E Mountain Rd, Wimberley, Texas 78676, USA</td>
-            <td>42</td>
-            <td>$124.026</td>            
-          </tr>
-
-          <tr>
-            <td>6744</td>
-            <td>September 5, 2019</td>
-            <td>February 28, 2020</td>
-          <td>201 E Mountain Rd, Wimberley, Texas 78676, USA</td>
-          <td>32</td>
-          <td>$94.496</td>
-          </tr>
-
-          <tr>
-            <td>4244</td>
-            <td>January 17, 2020</td>
-            <td>February 28, 2020</td>
-          <td>201 E Mountain Rd, Wimberley, Texas 78676, USA</td>
-          <td>12</td>
-          <td>$35.436</td>
-          </tr>
+        <?php
+          ini_set("display_errors", "1");
+          ini_set("display_startup_errors", "1");
+          error_reporting(E_ALL);
+          include("src/connection.php");
 
           
+          $query = "SELECT * FROM FuelQuote WHERE email = \"".$email."\";";
+          $result = mysqli_query($con, $query);
+          $num_rows = mysqli_num_rows($result);
+
+          for ($i = 0; $i < $num_rows; $i++) {
+            $row = mysqli_fetch_assoc($result);
+
+            echo "<tr>
+            <td>".$row['orderID']."</td>
+            <td>".$row['dateOfPurchase']."</td>
+            <td>".$row['dateOfPurchase']."</td>
+            <td>".$row['gallonsPurchased']."</td>
+            <td>".$row['totalBill']."</td>
+  
+            </tr>";
+          }
+        ?>
       </tbody>
     </table>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
