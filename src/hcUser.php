@@ -6,13 +6,15 @@ class hcUser {
     private $mname;
     private $lname;
     private $phone;
+    private $zipcode;
 
-    public function __construct($email, $fname, $lname, $phone) {
+    public function __construct($email, $fname, $lname, $phone, $zipcode) {
         $this->email = $email;
         $this->fname = $fname;
         $this->mname = null;
         $this->lname = $lname;
         $this->phone = $phone;
+        $this->zipcode = $zipcode;
     }
 
     public function getEmail() {
@@ -53,6 +55,14 @@ class hcUser {
 
     public function setPhone($phone) {
         $this->phone = $phone;
+    }
+
+    public function getZipcode() {
+        return $this->zipcode;
+    }
+
+    public function setZipcode($zipcode) {
+        $this->zipcode = $zipcode;
     }
 }
 

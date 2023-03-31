@@ -28,6 +28,14 @@ class LoginManager extends Dbh {
         $this->password = $password;
     }
 
+    /*public function getConn() {
+        return $this->conn;
+    }*/
+
+    /*public function setConn($conn) {
+        $this->conn = $conn;
+    }*/
+
     // Constructor
     public function __construct($email, $password) {
         $this->email = $email;
@@ -43,16 +51,11 @@ class LoginManager extends Dbh {
         $stmt->execute();
         $result = $stmt->get_result();
         $clientData = $result->fetch_assoc();
-        //$stmt->execute([$email]);
-        //$clientData = $stmt->fetch_assoc();
-        //$clientData = $stmt->fetch();
 
         if ($clientData) {
             // Credentials good.  Check Password
-            echo "CLIENT FOUND!" . ' \n ';
             if($this->doesPasswordMatch($this->password, $clientData['password']))
             {
-                echo "PASSWORD MATCH! " . ' \n ';
                 $stmtClientInformation = $this->conn->prepare(
                     "SELECT * FROM clientInformation WHERE email = ?");
                 $stmtClientInformation->bind_param("s", $email);
@@ -62,7 +65,6 @@ class LoginManager extends Dbh {
 
                 if ($clientInformation)
                 {
-                    echo "CLIENT INFO FOUND: " . ' \n ';
                     $myClient = new Client(
                         $clientInformation['email'],
                         $clientInformation['fname'],
@@ -76,12 +78,10 @@ class LoginManager extends Dbh {
                     );
                     if (isset($clientInformation['mname']))
                     {
-                        echo "SETTING mName: " . ' \n ';
                         $myClient->setMname($clientInformation['mname']);
                     }
                     if (isset($clientInformation['companyStreet2']))
                     {
-                        echo "SETTING street2" .' \n ';
                         $myClient->setcompanyStreet2($clientInformation['companyStreet2']);
                     }
                     return $myClient;
@@ -90,35 +90,21 @@ class LoginManager extends Dbh {
                 else
                 {
                     // Error connecting to database
-                    echo "Error connecting to database!";
+                    return null;
                     //header("location: index.php?error=DB_CONN_FAILED");
-                    //exit();
+                    exit();
                 }
                 
             }
             else
             {
                 //Login fails - wrong password
-                echo "Wrong Password!";
+                return null;
                 //header("location: index.php?error=WRONG_PASSWORD");
                 //exit();
             }
-          //echo "This is password: " . $clientData['password'] . '\n';
-          //echo "This is object password: " . $this->password . '\n';
-            /*return new Client(
-                $clientData['email'],
-                $clientData['fname'],
-                $clientData['lname'],
-                $clientData['phone'],
-                $clientData['password'],
-                $clientData['companyName'],
-                $clientData['companyState'],
-                $clientData['companyCity'],
-                $clientData['companyStreet']
-            );*/
         } else {
             // Email doesn't exist
-            echo "NO EMAIL FOUND WHOOPS" . ' \n ';
             return null;
         }
     }
@@ -134,34 +120,39 @@ class LoginManager extends Dbh {
         //return password_verify($password, $client->getPassword());
     }
 
-    public function isLoginValid() {
+    /*public function isLoginValid() {
         $client = $this->getClientByEmail($this->email);
         if ($client) {
             $this->loginUser($client);
-            echo "LOGGED IN!" . '\n';
-            /*if ($this->doesPasswordMatch($client, $this->password)) {
-                $this->loginUser($client);
-                //header("Location: ../index.php?noerror");
-                echo "LOGGED IN!" . '\n';
-                //exit();*/
-            } /*else {
-                echo "WRONG PASSWORD!" . '\n';
-                echo "This is password: " . $this->password;
-                //header("Location: ../index.php?error=wrongpassword");
-                //exit();
-            }
-        }*/
+            header("Location: ../index.php?noerror");
+            exit();
+            } 
         else {
-            echo "THERE WAS NO USER!" . '\n';
-            //header("Location: ../index.php?error=nouser");
+            header("Location: ../index.php?error=noUser!");
+            exit();
+        }
+}*/
+
+    public function isLoginValid() {
+        $client = $this->getClientByEmail($this->email);
+        if ($client) {
+            session_start();
+            $_SESSION['client'] = $client;
+            header("Location: ../index.php?noerror");
+            exit();
+            } 
+        else {
+            return false;
+            //header("Location: ../index.php?error=noUser!");
             //exit();
         }
-}
+    }
 
-    private function loginUser($client) {
+    /*public function loginUser($client) {
         session_start();
         $_SESSION['client'] = $client;
-    }
+        return true;
+    }*/
 
 }
 ?>

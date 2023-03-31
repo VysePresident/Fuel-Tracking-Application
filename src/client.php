@@ -12,7 +12,7 @@ class Client extends hcUser {
 
     public function __construct($email, $fname, $lname, $phone, $zipcode,
                                 $companyName, $companyState, $companyCity, $companyStreet) {
-        parent::__construct($email, $fname, $lname, $phone);
+        parent::__construct($email, $fname, $lname, $phone, $zipcode);
         $this->companyName = $companyName;
         $this->companyState = $companyState;
         $this->companyCity = $companyCity;
