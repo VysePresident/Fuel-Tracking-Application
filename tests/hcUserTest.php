@@ -10,18 +10,16 @@ class hcUserTest extends PHPUnit\Framework\TestCase
      * @covers hcUser::getEmail
      * @covers hcUser::getFname
      * @covers hcUser::getLname
-     * @covers hcUser::getPassword
      * @covers hcUser::getPhone
      */
     public function testConstructor()
     {
-        $user = new hcUser('test@example.com', 'John', 'Doe', '123-456-7890', 'password');
+        $user = new hcUser('test@example.com', 'John', 'Doe', '123-456-7890', "12345");
         $this->assertInstanceOf(hcUser::class, $user);
         $this->assertEquals('test@example.com', $user->getEmail());
         $this->assertEquals('John', $user->getFname());
         $this->assertEquals('Doe', $user->getLname());
         $this->assertEquals('123-456-7890', $user->getPhone());
-        $this->assertEquals('password', $user->getPassword());
     }
 
     /**
@@ -30,7 +28,7 @@ class hcUserTest extends PHPUnit\Framework\TestCase
      */
     public function testGetEmail()
     {
-        $user = new hcUser('test@example.com', 'John', 'Doe', '123-456-7890', 'password');
+        $user = new hcUser('test@example.com', 'John', 'Doe', '123-456-7890', "12345");
         $this->assertEquals('test@example.com', $user->getEmail());
     }
 
@@ -41,7 +39,7 @@ class hcUserTest extends PHPUnit\Framework\TestCase
      */
     public function testSetEmail()
     {
-        $user = new hcUser('test@example.com', 'John', 'Doe', '123-456-7890', 'password');
+        $user = new hcUser('test@example.com', 'John', 'Doe', '123-456-7890', "12345");
         $user->setEmail('new@example.com');
         $this->assertEquals('new@example.com', $user->getEmail());
     }
@@ -54,7 +52,7 @@ class hcUserTest extends PHPUnit\Framework\TestCase
      */
     public function testGetFname()
     {
-        $user = new hcUser('test@example.com', 'John', 'Doe', '123-456-7890', 'password');
+        $user = new hcUser('test@example.com', 'John', 'Doe', '123-456-7890', "12345");
         $this->assertEquals('John', $user->getFname());
     }
     
@@ -65,10 +63,37 @@ class hcUserTest extends PHPUnit\Framework\TestCase
      */
     public function testSetFname()
     {
-        $user = new hcUser('test@example.com', 'John', 'Doe', '123-456-7890', 'password');
+        $user = new hcUser('test@example.com', 'John', 'Doe', '123-456-7890', "12345");
         $user->setFname('Jane');
         $this->assertEquals('Jane', $user->getFname());
     }
+
+    /**
+     * @covers hcUser::getMname
+     * @covers hcUser::setMname
+     * @covers hcUser::__construct
+     */
+    public function testGetMname()
+    {
+        $user = new hcUser('test@example.com', 'Dob', 'Doe', '123-456-7890', "12345");
+        $user->setMname('Bob');
+        $this->assertEquals('Bob', $user->getMname());
+    }
+    
+    /**
+     * @covers hcUser::setMname
+     * @covers hcUser::getMname
+     * @covers hcUser::__construct
+     */
+    public function testSetMname()
+    {
+        $user = new hcUser('test@example.com', 'John', 'Doe', '123-456-7890', "12345");
+        $user->setMname('Jane');
+        $this->assertEquals('Jane', $user->getMname());
+    }
+
+
+
 
     /**
      * @covers hcUser::getLname
@@ -76,7 +101,7 @@ class hcUserTest extends PHPUnit\Framework\TestCase
      */
     public function testGetLname()
     {
-        $user = new hcUser('test@example.com', 'John', 'Doe', '123-456-7890', 'password');
+        $user = new hcUser('test@example.com', 'John', 'Doe', '123-456-7890', "12345");
         $this->assertEquals('Doe', $user->getLname());
     }
 
@@ -87,7 +112,7 @@ class hcUserTest extends PHPUnit\Framework\TestCase
      */
     public function testSetLname()
     {
-        $user = new hcUser('test@example.com', 'John', 'Doe', '123-456-7890', 'password');
+        $user = new hcUser('test@example.com', 'John', 'Doe', '123-456-7890', "12345");
         $user->setLname('Smith');
         $this->assertEquals('Smith', $user->getLname());
     }
@@ -98,7 +123,7 @@ class hcUserTest extends PHPUnit\Framework\TestCase
      */
     public function testGetPhone()
     {
-        $user = new hcUser('test@example.com', 'John', 'Doe', '123-456-7890', 'password');
+        $user = new hcUser('test@example.com', 'John', 'Doe', '123-456-7890', "12345");
         $this->assertEquals('123-456-7890', $user->getPhone());
     }
 
@@ -109,32 +134,33 @@ class hcUserTest extends PHPUnit\Framework\TestCase
      */
     public function testSetPhone()
     {
-        $user = new hcUser('test@example.com', 'John', 'Doe', '123-456-7890', 'password');
+        $user = new hcUser('test@example.com', 'Bob', 'Doe', '123-456-7890', "12345");
         $user->setPhone('555-555-5555');
         $this->assertEquals('555-555-5555', $user->getPhone());
-
     }
 
     /**
-     * @covers hcUser::getPassword
+     * @covers hcUser::getZipcode
      * @covers hcUser::__construct
      */
-    public function testGetPassword()
+
+    public function testGetZipcode()
     {
-        $user = new hcUser('test@example.com', 'John', 'Doe', '123-456-7890', 'password');
-        $this->assertEquals('password', $user->getPassword());
+        $user = new hcUser('test@example.com', 'Bob', 'Doe', '123-456-7890', "12345");
+        $this->assertEquals("12345", $user->getZipcode());
     }
 
     /**
-     * @covers hcUser::setPassword
-     * @covers hcUser::getPassword
+     * @covers hcUser::getZipcode
+     * @covers hcUser::setZipcode
      * @covers hcUser::__construct
      */
-    public function testSetPassword()
+
+    public function testSetZipcode()
     {
-        $user = new hcUser('test@example.com', 'John', 'Doe', '123-456-7890', 'password');
-        $user->setPassword('newpassword');
-        $this->assertEquals('newpassword', $user->getPassword());
+        $user = new hcUser('test@example.com', 'Bob', 'Doe', '123-456-7890', "12345");
+        $user->setZipcode("23456");
+        $this->assertEquals("23456", $user->getZipcode());
     }
 
     /**
@@ -142,28 +168,24 @@ class hcUserTest extends PHPUnit\Framework\TestCase
      * @covers hcUser::setFname
      * @covers hcUser::setLname
      * @covers hcUser::setPhone
-     * @covers hcUser::setPassword
      * @covers hcUser::__construct
      * @covers hcUser::getEmail
      * @covers hcUser::getFname
      * @covers hcUser::getLname
      * @covers hcUser::getPhone
-     * @covers hcUser::getPassword
      */
     public function testAllSetters()
     {
-        $user = new hcUser('test@example.com', 'John', 'Doe', '123-456-7890', 'password');
+        $user = new hcUser('test@example.com', 'John', 'Doe', '123-456-7890', "12345");
         $user->setEmail('new@example.com');
         $user->setFname('Jane');
         $user->setLname('Smith');
         $user->setPhone('555-555-5555');
-        $user->setPassword('newpassword');
 
         $this->assertEquals('new@example.com', $user->getEmail());
         $this->assertEquals('Jane', $user->getFname());
         $this->assertEquals('Smith', $user->getLname());
         $this->assertEquals('555-555-5555', $user->getPhone());
-        $this->assertEquals('newpassword', $user->getPassword());
     }
 }
 ?>
