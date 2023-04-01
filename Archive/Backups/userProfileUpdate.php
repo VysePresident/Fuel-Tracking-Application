@@ -14,7 +14,7 @@ $conn = $dbConn->getConnection();
 $user = new User($conn);
 
 // Get the user input and sanitize it
-$email = filter_input(INPUT_POST, 'email', FILTER_SANITIZE_EMAIL);
+$email = filter_input(INPUT_POST, 'custEmail', FILTER_SANITIZE_EMAIL);
 $password = filter_input(INPUT_POST, 'password', FILTER_SANITIZE_STRING);
 $confirmPassword = filter_input(INPUT_POST, 'confirmPassword', FILTER_SANITIZE_STRING);
 $fname = filter_input(INPUT_POST, 'fname', FILTER_SANITIZE_STRING);
