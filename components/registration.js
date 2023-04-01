@@ -1,10 +1,10 @@
-const home = document.getElementById("userProfile");
+const home = document.getElementById("registration,");
 const container = document.createElement("div");
 
 container.className = "container";
 container.innerHTML = `
 <body>
-    <form class="formTable" action="http://localhost:8080/Fuel-Tracking-Application/server/userProfile.php" method="POST">
+    <form class="formTable" action="./server/registration.php" method="POST">
         <div class="nav-bar" id="nav-bar"></div>
         <section id="formbox">
             <h1>USER PROFILE</h1>
@@ -12,8 +12,8 @@ container.innerHTML = `
             <section>
               <h2 class=>Profile Information</h2>
               <div class="formRow">
-                  <p class="formCell" for="custEmail">Email:</p>
-                  <input class="formCell" type="email" name="custEmail" id="custEmail" required>
+                  <p class="formCell" for="email">Email:</p>
+                  <input class="formCell" type="email" name="email" id="email" required>
               </div>
               <div class="formRow">
                   <p class="formCell" for="password">Password:</p>
