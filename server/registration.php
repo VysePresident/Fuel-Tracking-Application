@@ -1,16 +1,23 @@
 <?php
 require_once __DIR__ . '/../vendor/autoload.php';
 
+// ini_set('display_errors', 1);
+// ini_set('display_startup_errors', 1);
+// error_reporting(E_ALL);
 
-$dotenv = Dotenv\Dotenv::createImmutable(__DIR__);
-$dotenv->load();
+// $dotenv = Dotenv\Dotenv::createImmutable(__DIR__);
+// $dotenv->load();
 use App\User;
 
 // Database credentials
-$servername = getenv('DB_HOST');
-$username = getenv('DB_USER');
-$password = getenv('DB_PASS');
-$dbname = getenv('DB_NAME');
+// $servername = getenv('DB_HOST');
+// $username = getenv('DB_USER');
+// $password = getenv('DB_PASS');
+// $dbname = getenv('DB_NAME');
+$servername = "gasco-server.mysql.database.azure.com";
+$username = "tanya";
+$password = "team53server";
+$dbname = "gasco";
 $port = 3306;
 $ssl_mode = "require";
 
