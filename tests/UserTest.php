@@ -53,7 +53,7 @@ class UserTest extends TestCase{
         $user = new User($this->connection);
 
         $validData = [
-            'email' => 'test@example.com',
+            'custEmail' => 'test@example.com',
             'password' => 'test1234',
             'fname' => 'John',
             'lname' => 'Doe',
@@ -76,7 +76,7 @@ class UserTest extends TestCase{
     public function testValidateInput(){
         $user = new User($this->connection);
         $validData = [
-            'email' => 'test@example.com',
+            'custEmail' => 'test@example.com',
             'password' => 'password123',
             'fname' => 'John',
             'lname' => 'Doe',
@@ -91,7 +91,7 @@ class UserTest extends TestCase{
         $this->assertIsBool($user->validate_input($validData));
 
         $input = [
-            'email' => '',
+            'custEmail' => '',
             'password' => 'password123',
             'fname' => '',
             'lname' => 'Doe',
@@ -105,7 +105,7 @@ class UserTest extends TestCase{
     
         $errors = $user->validate_input($input);
     
-        $this->assertContains("Missing or empty field: email", $errors);
+        $this->assertContains("Missing or empty field: custEmail", $errors);
         $this->assertContains("Missing or empty field: fname", $errors);
         $this->assertNotContains("Missing or empty field: password", $errors);
         $this->assertNotContains("Missing or empty field: lname", $errors);
@@ -119,7 +119,7 @@ class UserTest extends TestCase{
 
         // Test case for invalid email format
         $invalidEmailInput = $validData;
-        $invalidEmailInput['email'] = 'invalid_email';
+        $invalidEmailInput['custEmail'] = 'invalid_email';
         $errors = $user->validate_input($invalidEmailInput);
         $this->assertContains("Invalid email format", $errors);
 
@@ -168,7 +168,7 @@ class UserTest extends TestCase{
         // Test data for updating the user profile
         $userData = [
             'id' => 1,
-            'email' => 'new_email@example.com',
+            'custEmail' => 'new_email@example.com',
             'password' => 'NewPassword123',
             'fname' => 'John',
             'mname' => 'A',
@@ -192,7 +192,7 @@ class UserTest extends TestCase{
         $result = $stmt->get_result();
         $updatedUserData = $result->fetch_assoc();
 
-        $this->assertEquals($userData['email'], $updatedUserData['email']);
+        $this->assertEquals($userData['custEmail'], $updatedUserData['custEmail']);
         $this->assertEquals($userData['fname'], $updatedUserData['fname']);
         $this->assertEquals($userData['mname'], $updatedUserData['mname']);
         $this->assertEquals($userData['lname'], $updatedUserData['lname']);

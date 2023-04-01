@@ -1,4 +1,3 @@
-
 <?php
 require_once __DIR__ . '/../vendor/autoload.php';
 
@@ -34,9 +33,7 @@ $street = $user->clean_input($_POST['street']);
 $street2 = $user->clean_input($_POST['street2']);
 $zipcode = $user->clean_input($_POST['zipcode']);
 
-
-
-$validation_result = $user->validate_input([
+if ($user->validate_input([
     'custEmail' => $custEmail,
     'password' => $password,
     'fname' => $fname,
@@ -49,41 +46,27 @@ $validation_result = $user->validate_input([
     'street' => $street,
     'street2' => $street2,
     'zipcode' => $zipcode
-]);
+])) {
+    // Hash the password
+    $hashed_password = password_hash($password, PASSWORD_DEFAULT);
 
-if ($validation_result === true) {
-    try {
-        // Hash the password 
-        $hashed_password = password_hash($password, PASSWORD_DEFAULT);
-        if ($user->editUserProfile([
-            'custEmail' => $custEmail,
-            'password' => $password,
-            'fname' => $fname,
-            'mname' => $mname,
-            'lname' => $lname,
-            'phone' => $phone,
-            'companyName' => $companyName,
-            'state' => $state,
-            'city' => $city,
-            'street' => $street,
-            'street2' => $street2,
-            'zipcode' => $zipcode
-        ])) {
-            echo "Record updated successfully";
-            //Redirect to a confirmation page
-            header("Location: ../confirmed_profile.html");
-        } 
-        else  {
-            echo "Error updating record: " . $conn->error . "<br>";
-        }
-    } catch (Exception $e) {
-        echo "Error updating record: " . $e->getMessage() . "<br>";
-    }
+    // Prepare and execute SQL statement
+    $sql = "INSERT INTO user_profiles (custEmail, password, fname, mname, lname, phone, companyName, state, city, street, street2, zipcode)
+    VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+
+    $stmt = $conn->prepare($sql);
+    $stmt->bind_param("ssssssssssss", $custEmail, $hashed_password, $fname, $mname, $lname, $phone, $companyName, $state, $city, $street, $street2, $zipcode);
 } else {
-    echo "Invalid input data:<br>";
-    foreach ($validation_result as $error) {
-        echo $error . "<br>";
-    }
-}        
-$conn->close();
+    echo "Invalid input data";
+}
 
+if ($stmt->execute()) {
+    echo "New record created successfully";
+    //Redirect to a confirmation page
+    header("Location: ../editUserProfile.html");
+} else {
+    echo "Error: " . $sql . "<br>" . $conn->error;
+}
+
+$stmt->close();
+$conn->close();

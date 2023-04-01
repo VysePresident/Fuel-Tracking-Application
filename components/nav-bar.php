@@ -24,7 +24,7 @@
             }
             else
             {
-              echo '<li><a href="../registration.html">REGISTER</a></li>';
+              echo '<li><a href="../register.html">REGISTER</a></li>';
               echo '<li><a href="../Login_Page.php">SIGN IN</a></li>';
             }
 
