@@ -40,7 +40,7 @@ class UpdateUserTest extends TestCase{
     {
         // Call the updateUser method with the test user ID and new values
         $newValues = [
-            'email' => 'test@example.com',
+            'custEmail' => 'test@example.com',
             'password' => 'password123',
             'fname' => 'UpdatedFirstName',
             'lname' => 'UpdatedLastName',
@@ -53,7 +53,7 @@ class UpdateUserTest extends TestCase{
         ];
 
       $invalidData = $newValues;
-      $invalidData['email'] = 'invalid_email';
+      $invalidData['custEmail'] = 'invalid_email';
 
       $this->assertTrue($this->user->createUser($newValues));
       $this->assertFalse($this->user->createUser($invalidData));

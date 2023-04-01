@@ -13,8 +13,8 @@ container.innerHTML = `
             <section>
               <h2 class=>Profile Information</h2>
               <div class="formRow">
-                  <p class="formCell" for="email">Email:</p>
-                  <input class="formCell" type="email" name="email" id="email" required>
+                  <p class="formCell" for="custEmail">Email:</p>
+                  <input class="formCell" type="email" name="custEmail" id="custEmail" required>
               </div>
               <div class="formRow">
                   <p class="formCell" for="password">Password:</p>
@@ -91,7 +91,7 @@ home.appendChild(container);
 //     const userData = await response.json();
   
 //     // Populate the form fields with the fetched user data
-//     document.getElementById('email').value = userData.email;
+//     document.getElementById('custEmail').value = userData.email;
 //     document.getElementById('password').value = userData.password;
 //     document.getElementById('confirmPassword').value = userData.password;
 //     document.getElementById('fname').value = userData.fname;
@@ -109,7 +109,7 @@ home.appendChild(container);
 
 async function fetchUserData() {
     const userData = {
-        email: 'john.doe@example.com',
+        custEmail: 'john.doe@example.com',
         password: 'Password123@',
         fname: 'John',
         mname: 'D',
@@ -124,7 +124,7 @@ async function fetchUserData() {
     };
   
     // Populate the form fields with the fetched user data
-    document.getElementById('email').value = userData.email;
+    document.getElementById('custEmail').value = userData.custEmail;
     document.getElementById('password').value = userData.password;
     document.getElementById('confirmPassword').value = userData.password;
     document.getElementById('fname').value = userData.fname;
