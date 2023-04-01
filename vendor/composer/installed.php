@@ -164,9 +164,9 @@
             'dev_requirement' => true,
         ),
         'phpunit/phpunit' => array(
-            'pretty_version' => '9.5.0',
-            'version' => '9.5.0.0',
-            'reference' => '8e16c225d57c3d6808014df6b1dd7598d0a5bbbe',
+            'pretty_version' => '9.5.18',
+            'version' => '9.5.18.0',
+            'reference' => '1b5856028273bfd855e60a887278857d872ec67a',
             'type' => 'library',
             'install_path' => __DIR__ . '/../phpunit/phpunit',
             'aliases' => array(),
