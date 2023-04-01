@@ -1,4 +1,4 @@
-const home = document.getElementById("registration,");
+const home = document.getElementById("registration");
 const container = document.createElement("div");
 
 container.className = "container";

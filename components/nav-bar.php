@@ -18,13 +18,13 @@
           <?php 
             if(isset($_SESSION['client']))
             {
-              echo '<li><a href="../editUserProfile.php">PROFILE</a></li>';
+              echo '<li><a href="./server/editUserProfile.php">PROFILE</a></li>';
               echo '<li><a href="/server/logout.php">LOGOUT</a></li>';
               echo "HI " . $_SESSION['client']->getEmail() . "!";
             }
             else
             {
-              echo '<li><a href="../registration.html">REGISTER</a></li>';
+              echo '<li><a href="../registration.php">REGISTER</a></li>';
               echo '<li><a href="../Login_Page.php">SIGN IN</a></li>';
             }
 

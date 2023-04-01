@@ -138,6 +138,7 @@ class LoginManager extends Dbh {
         if ($client) {
             session_start();
             $_SESSION['client'] = $client;
+            $_SESSION['email'] = $client->getEmail();
             header("Location: ../index.php?noerror");
             exit();
             } 
