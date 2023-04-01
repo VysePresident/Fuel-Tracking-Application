@@ -55,3 +55,4 @@ coverage/trucks.php.html
 .phpunit.cache/code-coverage/c785b6ace23eb3886f9824328e3a2a9a
 .phpunit.cache/code-coverage/dd6aca13ac5203415993111101313215
 .phpunit.cache/test-results
+.env
