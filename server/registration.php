@@ -23,6 +23,7 @@ $port = 3306;
 $ssl_mode = "require";
 
 echo "Host: {$servername}, User: {$username}, Pass: {$password}, Name: {$dbname}";
+
 // Create connection
 $conn = mysqli_init();
 mysqli_ssl_set($conn, NULL, NULL, NULL, NULL, NULL);
