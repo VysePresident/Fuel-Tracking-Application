@@ -26,7 +26,7 @@ public function validate_input($data){
     $errors = [];
 
     // Check for required fields
-    $required_fields = ['custEmail', 'password', 'fname', 'lname', 'phone', 'companyName', 'state', 'city', 'street', 'zipcode'];
+    $required_fields = ['email', 'password', 'fname', 'lname', 'phone', 'companyName', 'state', 'city', 'street', 'zipcode'];
     foreach ($required_fields as $field) {
         if ($field === 'mname') {
             continue;
@@ -37,7 +37,7 @@ public function validate_input($data){
     }
 
     // Check email format
-    if (!filter_var($data['custEmail'], FILTER_VALIDATE_EMAIL)) {
+    if (!filter_var($data['email'], FILTER_VALIDATE_EMAIL)) {
         $errors[] = "Invalid email format";
     }
 
@@ -85,11 +85,11 @@ public function validate_input($data){
 
     $hashed_password = password_hash($userData['password'], PASSWORD_DEFAULT);
 
-    $sql = "INSERT INTO user_profiles (custEmail, password, fname, mname, lname, phone, companyName, state, city, street, street2, zipcode)
+    $sql = "INSERT INTO user_profiles (email, password, fname, mname, lname, phone, companyName, state, city, street, street2, zipcode)
     VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
     $stmt = $this->conn->prepare($sql);
-    $stmt->bind_param("ssssssssssss", $userData['custEmail'], $hashed_password, $userData['fname'], $userData['mname'], $userData['lname'], $userData['phone'], $userData['companyName'], $userData['state'], $userData['city'], $userData['street'], $userData['street2'], $userData['zipcode']);
+    $stmt->bind_param("ssssssssssss", $userData['email'], $hashed_password, $userData['fname'], $userData['mname'], $userData['lname'], $userData['phone'], $userData['companyName'], $userData['state'], $userData['city'], $userData['street'], $userData['street2'], $userData['zipcode']);
 
     if ($stmt->execute()) {
         return true;
@@ -106,10 +106,10 @@ public function editUserProfile(array $userData) {
 
     $hashed_password = password_hash($userData['password'], PASSWORD_DEFAULT);
 
-    $sql = "UPDATE user_profiles SET custEmail=?, password=?, fname=?, mname=?, lname=?, phone=?, companyName=?, state=?, city=?, street=?, street2=?, zipcode=? WHERE id=?";
+    $sql = "UPDATE user_profiles SET email=?, password=?, fname=?, mname=?, lname=?, phone=?, companyName=?, state=?, city=?, street=?, street2=?, zipcode=? WHERE id=?";
 
     $stmt = $this->conn->prepare($sql);
-    $stmt->bind_param("ssssssssssssi", $userData['custEmail'], $hashed_password, $userData['fname'], $userData['mname'], $userData['lname'], $userData['phone'], $userData['companyName'], $userData['state'], $userData['city'], $userData['street'], $userData['street2'], $userData['zipcode'], $userData['id']);
+    $stmt->bind_param("ssssssssssssi", $userData['email'], $hashed_password, $userData['fname'], $userData['mname'], $userData['lname'], $userData['phone'], $userData['companyName'], $userData['state'], $userData['city'], $userData['street'], $userData['street2'], $userData['zipcode'], $userData['id']);
 
     if ($stmt->execute()) {
         return true;
