@@ -5,14 +5,18 @@ require_once __DIR__ . '/../vendor/autoload.php';
 use App\User;
 
 // Database credentials
-$servername = "localhost";
-$username = "root";
-$password = "GasCo12345678";
+$hostname = "gasco-server.mysql.database.azure.com";
+$username = "tanya";
+$password = "team53server";
 $dbname = "gasco";
-$port = 3307;
+$port = 3306;
+$ssl_mode = "require";
+
 
 // Create connection
-$conn = new mysqli($servername, $username, $password, $dbname, $port);
+$conn = mysqli_init();
+mysqli_ssl_set($conn, NULL, NULL, NULL, NULL, NULL);
+mysqli_real_connect($conn, $hostname, $username, $password, $dbname, $port, MYSQLI_CLIENT_SSL);
 
 // Check connection
 if ($conn->connect_error) {
@@ -21,7 +25,7 @@ if ($conn->connect_error) {
 
 $user = new User($conn);
 
-$custEmail = $user->clean_input($_POST['custEmail']);
+$email = $user->clean_input($_POST['email']);
 $password = $user->clean_input($_POST['password']);
 $fname = $user->clean_input($_POST['fname']);
 $mname = $user->clean_input($_POST['mname']);
@@ -37,7 +41,7 @@ $zipcode = $user->clean_input($_POST['zipcode']);
 
 
 $validation_result = $user->validate_input([
-    'custEmail' => $custEmail,
+    'email' => $email,
     'password' => $password,
     'fname' => $fname,
     'mname' => $mname,
@@ -52,28 +56,55 @@ $validation_result = $user->validate_input([
 ]);
 
 if ($validation_result === true) {
+    // try {
+    //     // Hash the password 
+    //     $hashed_password = password_hash($password, PASSWORD_DEFAULT);
+    //     if ($user->editUserProfile([
+    //         'email' => $email,
+    //         'password' => $password,
+    //         'fname' => $fname,
+    //         'mname' => $mname,
+    //         'lname' => $lname,
+    //         'phone' => $phone,
+    //         'companyName' => $companyName,
+    //         'state' => $state,
+    //         'city' => $city,
+    //         'street' => $street,
+    //         'street2' => $street2,
+    //         'zipcode' => $zipcode
+    //     ])) {
+    //         echo "Record updated successfully";
+    //         //Redirect to a confirmation page
+    //         header("Location: ../confirmed_profile.html");
+    //     } 
+    //     else  {
+    //         echo "Error updating record: " . $conn->error . "<br>";
+    //     }
+    // } catch (Exception $e) {
+    //     echo "Error updating record: " . $e->getMessage() . "<br>";
+    // }
     try {
         // Hash the password 
         $hashed_password = password_hash($password, PASSWORD_DEFAULT);
-        if ($user->editUserProfile([
-            'custEmail' => $custEmail,
-            'password' => $password,
-            'fname' => $fname,
-            'mname' => $mname,
-            'lname' => $lname,
-            'phone' => $phone,
-            'companyName' => $companyName,
-            'state' => $state,
-            'city' => $city,
-            'street' => $street,
-            'street2' => $street2,
-            'zipcode' => $zipcode
-        ])) {
+        
+        // Prepare and execute SQL statement for ClientInformation
+        $sql_client_info = "UPDATE ClientInformation SET email=?, fname=?, mname=?, lname=?, phone=?, companyName=?, companyState=?, companyCity=?, companyStreet=?, companyStreet2=?, zipcode=? WHERE email=?";
+
+        $stmt_client_info = $conn->prepare($sql_client_info);
+        $stmt_client_info->bind_param("ssssssssssss", $email, $fname, $mname, $lname, $phone, $companyName, $state, $city, $street, $street2, $zipcode, $email);
+
+        // Prepare and execute SQL statement for UserCredentials
+        $sql_user_credentials = "UPDATE UserCredentials SET email=?, password=? WHERE email=?";
+
+        $stmt_user_credentials = $conn->prepare($sql_user_credentials);
+        $stmt_user_credentials->bind_param("sss", $email, $hashed_password, $email);
+
+        // Execute both statements
+        if ($stmt_client_info->execute() && $stmt_user_credentials->execute()) {
             echo "Record updated successfully";
             //Redirect to a confirmation page
             header("Location: ../confirmed_profile.html");
-        } 
-        else  {
+        } else {
             echo "Error updating record: " . $conn->error . "<br>";
         }
     } catch (Exception $e) {
