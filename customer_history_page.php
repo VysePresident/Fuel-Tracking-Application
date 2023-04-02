@@ -38,7 +38,7 @@
       <tbody>
         <?php
 
-          include("src/connection.php");
+          include("server/connection.php");
           $query = "SELECT * FROM FuelQuote WHERE email = \"".$email."\";";
           $result = mysqli_query($con, $query);
           $num_rows = mysqli_num_rows($result);

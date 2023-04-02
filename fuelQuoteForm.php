@@ -22,7 +22,7 @@
             <div class="nav-bar" id="nav-bar">
                 <?php
                     include_once 'components/nav-bar.php';
-                    include("src/connection.php");
+                    include("server/connection.php");
                     ini_set("display_errors", "1");
                     ini_set("display_startup_errors", "1");
                     error_reporting(E_ALL);

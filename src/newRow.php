@@ -20,7 +20,7 @@
     ini_set("display_errors", "1");
     ini_set("display_startup_errors", "1");
     error_reporting(E_ALL);
-    require_once("../src/connection.php");
+    require_once("../server/connection.php");
     function my_php_function($con) {
         // Perform some PHP operations
         $query = "INSERT INTO FuelQuote (email, gallonsPurchased, fueltype, dateOfPurchase, numTrucksUsed, paymentType, totalBill, expectedProfits, status) VALUES ('bob1@gmail.com', 5, 'Diesel', '1111-11-11', 5, 'Debit', 34.34, 43.43, 'Transit');";
