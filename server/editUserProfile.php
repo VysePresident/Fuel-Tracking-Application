@@ -14,7 +14,7 @@ $port = 3306;
 // Create connection
 $conn = mysqli_init();
 mysqli_ssl_set($conn, NULL, NULL, NULL, NULL, NULL);
-mysqli_real_connect($conn, $hostname, $username, $password, $dbname, $port, MYSQLI_CLIENT_SSL);
+mysqli_real_connect($conn, $servername, $username, $password, $dbname, $port, MYSQLI_CLIENT_SSL);
 
 // Check connection
 if ($conn->connect_error) {
@@ -74,7 +74,7 @@ if ($validation_result === true) {
         if ($stmt_client_info->execute() && $stmt_user_credentials->execute()) {
             echo "Record updated successfully";
             //Redirect to a confirmation page
-            header("Location: ../confirmed_profile.html");
+            header("Location: ../confirmed_profile.php");
         } else {
             echo "Error updating record: " . $conn->error . "<br>";
         }

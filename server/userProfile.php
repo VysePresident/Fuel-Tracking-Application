@@ -20,7 +20,7 @@ if ($conn->connect_error) {
 
 $user = new User($conn);
 
-$custEmail = $user->clean_input($_POST['custEmail']);
+$email = $user->clean_input($_POST['email']);
 $password = $user->clean_input($_POST['password']);
 $fname = $user->clean_input($_POST['fname']);
 $mname = $user->clean_input($_POST['mname']);
@@ -34,7 +34,7 @@ $street2 = $user->clean_input($_POST['street2']);
 $zipcode = $user->clean_input($_POST['zipcode']);
 
 if ($user->validate_input([
-    'custEmail' => $custEmail,
+    'email' => $email,
     'password' => $password,
     'fname' => $fname,
     'mname' => $mname,
@@ -51,11 +51,11 @@ if ($user->validate_input([
     $hashed_password = password_hash($password, PASSWORD_DEFAULT);
 
     // Prepare and execute SQL statement
-    $sql = "INSERT INTO user_profiles (custEmail, password, fname, mname, lname, phone, companyName, state, city, street, street2, zipcode)
+    $sql = "INSERT INTO user_profiles (email, password, fname, mname, lname, phone, companyName, state, city, street, street2, zipcode)
     VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
     $stmt = $conn->prepare($sql);
-    $stmt->bind_param("ssssssssssss", $custEmail, $hashed_password, $fname, $mname, $lname, $phone, $companyName, $state, $city, $street, $street2, $zipcode);
+    $stmt->bind_param("ssssssssssss", $email, $hashed_password, $fname, $mname, $lname, $phone, $companyName, $state, $city, $street, $street2, $zipcode);
 } else {
     echo "Invalid input data";
 }
