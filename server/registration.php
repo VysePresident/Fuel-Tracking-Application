@@ -82,9 +82,9 @@ if ($user->validate_input([
 
     // Execute both statements
     if ($stmt_client_info->execute() && $stmt_user_credentials->execute()) {
-        echo "New record created successfully";
+        $success_message = "New record created successfully";
         //Redirect to a confirmation page
-        header("Location: ../editUserProfile.php");
+        header("Location: ../editUserProfile.php?success_message=$success_message");
     } else {
         echo "Error: " . $sql . "<br>" . $conn->error;
     }
