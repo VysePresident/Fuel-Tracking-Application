@@ -1,7 +1,7 @@
 function goHome() {
-    window.location.href = "index.html";
+    window.location.href = "index.php";
 }
 
 function confirmOrder() {
-    window.location.href = "orderConfirmation.html";
+    window.location.href = "orderConfirmation.php";
 }
