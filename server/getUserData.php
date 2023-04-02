@@ -11,17 +11,23 @@ header("Access-Control-Allow-Origin: *");
 header("Access-Control-Allow-Methods: GET");
 header("Access-Control-Allow-Headers: Content-Type");
 
-require_once('db_connection.php');
+require_once('dbh.php');
 
 // Use the email from the session
 $userEmail = $_SESSION['email'];
 
-$query = "SELECT ci.*, uc.password FROM ClientInformation ci
-          JOIN UserCredentials uc ON ci.email = uc.email
-          WHERE ci.email = ?";
-$stmt = $conn->prepare($query);
+// Connect to the database
+$dbh = new Dbh();
+$conn = $dbh->connect();
+
+// Prepare the SELECT statement
+$stmt = $conn->prepare("SELECT * FROM clientInformation WHERE email = ?");
 $stmt->bind_param("s", $userEmail);
+
+// Execute the SELECT statement
 $stmt->execute();
+
+// Get the result set
 $result = $stmt->get_result();
 
 if ($result->num_rows > 0) {
