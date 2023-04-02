@@ -11,9 +11,13 @@ class Dbh {
         $user = 'alex';
         $password = 'team53server';
         $dbname = 'gasco';
+        $port = 3306;
 
         // Create connection
-        $conn = new mysqli($host, $user, $password, $dbname);
+        // $conn = new mysqli($host, $user, $password, $dbname);
+        $conn = mysqli_init();
+        mysqli_ssl_set($conn, NULL, NULL, NULL, NULL, NULL);
+        mysqli_real_connect($conn, $host, $user, $password, $dbname, $port, MYSQLI_CLIENT_SSL);
 
         // Check connection
         if ($conn->connect_error) {

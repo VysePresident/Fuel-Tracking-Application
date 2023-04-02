@@ -87,24 +87,55 @@ container.innerHTML = `
 home.appendChild(container);
 
 async function fetchUserData() {
-    const response = await fetch('./server/getUserData.php');
-    const userData = await response.json();
-    // Populate the form fields with the fetched user data
-    document.getElementById('email').value = userData.email;
-    document.getElementById('password').value = userData.password;
-    document.getElementById('confirmPassword').value = userData.password;
-    document.getElementById('fname').value = userData.fname;
-    document.getElementById('mname').value = userData.mname;
-    document.getElementById('lname').value = userData.lname;
-    document.getElementById('phone').value = userData.phone;
-    document.getElementById('companyName').value = userData.companyName;
-    document.getElementById('state').value = userData.companyState;
-    document.getElementById('city').value = userData.companyCity;
-    document.getElementById('street').value = userData.companyStreet;
-    document.getElementById('street2').value = userData.companyStreet2;
-    document.getElementById('zipcode').value = userData.zipcode;
+    try {
+        const response = await fetch('/server/getClientData.php');
+        const responseBody = await response.text();
+        if (!response.ok) {
+            throw new Error(response.status);
+        }
+        const clientData = JSON.parse(responseBody);
+        console.log(clientData);
+        // Populate the form fields with the fetched user data
+        document.getElementById('email').value = clientData.email;
+        document.getElementById('password').value = clientData.password;
+        document.getElementById('confirmPassword').value = clientData.password;
+        document.getElementById('fname').value = clientData.fname;
+        document.getElementById('mname').value = clientData.mname;
+        document.getElementById('lname').value = clientData.lname;
+        document.getElementById('phone').value = clientData.phone;
+        document.getElementById('companyName').value = clientData.companyName;
+        document.getElementById('state').value = clientData.companyState;
+        document.getElementById('city').value = clientData.companyCity;
+        document.getElementById('street').value = clientData.companyStreet;
+        document.getElementById('street2').value = clientData.companyStreet2;
+        document.getElementById('zipcode').value = clientData.zipcode;
+    } catch (error) {
+        console.error(`Failed to fetch user data: ${error}`);
+        // Handle the error by displaying an error message to the user
+        const errorMessage = document.createElement('p');
+        errorMessage.textContent = 'Failed to fetch user data. Please try again later.';
+        container.appendChild(errorMessage);
+    }
 }
 
+
+ document.addEventListener('DOMContentLoaded', function() {
+    // Call the fetchUserData function when the DOM is loaded
+    fetchUserData();
+      
+    const form = document.querySelector('.formTable');
+    console.log(form);
+    form.addEventListener('submit', function(e) {
+        const password = document.getElementById('password').value;
+        const confirmPassword = document.getElementById('confirmPassword').value;
+        if (password !== confirmPassword) {
+        e.preventDefault(); // prevent the form from submitting
+        alert('Passwords do not match'); // display an error message
+    }
+    });
+
+});
+     
 
 // async function fetchUserData() {
 //     const userData = {
@@ -139,17 +170,21 @@ async function fetchUserData() {
 // }
 
 // Call the fetchUserData function when the page loads
-fetchUserData();
+
+
+
+
+// fetchUserData();
 
   
-const form = document.querySelector('.formTable');
-console.log(form);
-form.addEventListener('submit', function(e) {
-    const password = document.getElementById('password').value;
-    const confirmPassword = document.getElementById('confirmPassword').value;
-    if (password !== confirmPassword) {
-    e.preventDefault(); // prevent the form from submitting
-    alert('Passwords do not match'); // display an error message
-  }
-});
+// const form = document.querySelector('.formTable');
+// console.log(form);
+// form.addEventListener('submit', function(e) {
+//     const password = document.getElementById('password').value;
+//     const confirmPassword = document.getElementById('confirmPassword').value;
+//     if (password !== confirmPassword) {
+//     e.preventDefault(); // prevent the form from submitting
+//     alert('Passwords do not match'); // display an error message
+//   }
+// });
 
