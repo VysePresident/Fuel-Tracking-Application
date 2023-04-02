@@ -20,18 +20,25 @@
     <section>
         <form class="formTable" action="orderSummary.php" method="POST">
             <div class="nav-bar" id="nav-bar">
-                <?php include_once 'components/nav-bar.php'; ?>
                 <?php
+                    include_once 'components/nav-bar.php';
+                    include("src/connection.php");
                     ini_set("display_errors", "1");
                     ini_set("display_startup_errors", "1");
                     error_reporting(E_ALL);
                     // Dummy values to stand in for user profile information, as we are not yet intended
                     // to work on the backend.
+                    $client = $_SESSION['client'];
+                    $email = $client->getEmail();
+                    $query = "SELECT * FROM clientinformation WHERE email = \"".$email."\";";
+                    
+                    $result = mysqli_query($con, $query);
+                    $row = mysqli_fetch_assoc($result);
 
-                    $company_name = $_SESSION['companyName'];
-                    $state = $_SESSION['companyState'];
-                    $city = $_SESSION['companyCity'];
-                    $street = $_SESSION['companyStreet'];
+                    $company_name = $row['companyName'];
+                    $state = $row['companyState'];
+                    $city = $row['companyCity'];
+                    $street = $row['companyStreet'];
                 ?> 
                 <!--<object type="text/html" data="components/nav-bar.php"></object>-->
             </div>
