@@ -18,7 +18,7 @@
 </head>
 
 <body>
-    <form class="orderSummary" action="orderConfirmation.php">
+    <form class="orderSummary" action="src/newRow.php" method="POST">
     <div class="nav-bar" id="nav-bar">
         <?php include_once 'components/nav-bar.php'; 
             include("src/connection.php");
@@ -71,15 +71,10 @@
             $numTrucksUsed = $priceCalc->calculate_num_trucks();
             $status = "Transit";
             $expectedProfits = $priceCalc->calculate_profit_percentage();
+
+            $sendQuery = "INSERT INTO FuelQuote (email, gallonsPurchased, fueltype, dateOfPurchase, numTrucksUsed, paymentType, totalBill, expectedProfits, status) VALUES ('".$email."', ".$gallonsRequested.", '".$fuelType."', '".$deliveryDate."', ".$numTrucksUsed.", '".$paymentType."', ".$totalPrice.", ".$expectedProfits.", 'Transit');";
         }
     ?>
-
-
-
-
-
-
-
         <!--<object type="text/html" data="components/nav-bar.php"></object> -->
     </div>
         <section name="summarySection">
@@ -97,7 +92,8 @@
             </div>
         </section>
         <section class="buttons">
-        <input type="submit" value="Confirm" class="confirmButton" id="confirmButton" onclick="confirmOrder('<?php echo $email . ',' . $gallonsRequested . ',' . $fuelType . ',' . $deliveryDate . ',' . $numTrucksUsed . ',' . $_POST['paymentType'] . ',' . $totalPrice . ',' . $expectedProfits . ',' . $status;?>')">
+            <input type="hidden" name="send_query" value=<?php echo "'".$sendQuery."'"?>>
+            <input type="submit" value="Confirm" class="confirmButton" id="confirmButton" onclick="confirmOrder()">
             <input type="submit" formaction="index.php" value="Cancel" class="cancelButton" id="cancelButton" onclick="goHome()">
         </section>
     </form>
