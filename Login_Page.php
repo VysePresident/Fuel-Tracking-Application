@@ -72,7 +72,7 @@
 			<button type="submit">Login</button>
 		</div>
 		<!--This is where the link for the registration page will be-->
-		<p>Don't have an account?<a href = "register.html">Register here</a>.</p>
+		<p>Don't have an account?<a href = "registration.php">Register here</a>.</p>
 	</form>
     <footer>
 		<!--This is where the footer of the page will be-->
