@@ -18,62 +18,62 @@
 </head>
 
 <body>
-    <form class="orderSummary" action="src/newRow.php" method="POST">
+    <form class="orderSummary" action="newRow.php" method="POST">
     <div class="nav-bar" id="nav-bar">
         <?php include_once 'components/nav-bar.php'; 
-            include("src/connection.php");
-        ini_set("display_errors", "1");
-        ini_set("display_startup_errors", "1");
-        error_reporting(E_ALL);
-        $client = $_SESSION['client'];
+            include("server/connection.php");
+            ini_set("display_errors", "1");
+            ini_set("display_startup_errors", "1");
+            error_reporting(E_ALL);
+            $client = $_SESSION['client'];
 
-        // Fuel Pricing Module
-        include 'src/fuelPricing.php';
+            // Fuel Pricing Module
+            include 'src/fuelPricing.php';
 
-        $client = $_SESSION['client'];
-        $email = $client->getEmail();
-        $query = "SELECT * FROM clientinformation WHERE email = \"".$email."\";";
+            $client = $_SESSION['client'];
+            $email = $client->getEmail();
+            $query = "SELECT * FROM clientinformation WHERE email = \"".$email."\";";
 
-        $result = mysqli_query($con, $query);
-        $row = mysqli_fetch_assoc($result);
+            $result = mysqli_query($con, $query);
+            $row = mysqli_fetch_assoc($result);
 
-        $company_name = $row['companyName'];
-        $state = $row['companyState'];
-        $truck = new Truck(80,50,60);
-        $city = $row['companyCity'];
-        $street = $row['companyStreet'];
+            $company_name = $row['companyName'];
+            $state = $row['companyState'];
+            $truck = new Truck(80,50,60);
+            $city = $row['companyCity'];
+            $street = $row['companyStreet'];
 
-        $query2 = "SELECT * FROM states WHERE stateName = '".$state."';";
-        $result2 = mysqli_query($con, $query2);
-        $row2 = mysqli_fetch_assoc($result2);
-        
-        $companyState = new State($row['companyState'], floatval($row2['avgShippingCost']));
+            $query2 = "SELECT * FROM states WHERE stateName = '".$state."';";
+            $result2 = mysqli_query($con, $query2);
+            $row2 = mysqli_fetch_assoc($result2);
 
-        if ($_SERVER["REQUEST_METHOD"] == "POST") {
+            $companyState = new State($row['companyState'], floatval($row2['avgShippingCost']));
 
-            // Get the values submitted in the form
-            $fuelType = $_POST["fuelType"];
-            $gallonsRequested = $_POST["gallonsRequested"];
-            $deliveryDate = $_POST["deliveryDate"];
-            $paymentType = $_POST["paymentType"];
+            if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
-            // Access fuelType
-            $query3 = "SELECT * FROM fueltype WHERE fueltype = '".$fuelType."';";
-            $result3 = mysqli_query($con, $query3);
-            $row3 = mysqli_fetch_assoc($result3);
-            
-            $fuel = new FuelType($fuelType, floatval($row3['baseCost']), 0.1);
+                // Get the values submitted in the form
+                $fuelType = $_POST["fuelType"];
+                $gallonsRequested = $_POST["gallonsRequested"];
+                $deliveryDate = $_POST["deliveryDate"];
+                $paymentType = $_POST["paymentType"];
 
-            // Calculate pricing
-            $priceCalc = new Price($fuel,$companyState,$truck,$gallonsRequested);
-            $pricePerGallon = $fuel->get_price_per_gallon();
-            $totalPrice = $priceCalc->calculate_total_sale_price();
-            $numTrucksUsed = $priceCalc->calculate_num_trucks();
-            $status = "Transit";
-            $expectedProfits = $priceCalc->calculate_profit_percentage();
+                // Access fuelType
+                $query3 = "SELECT * FROM fueltype WHERE fueltype = '".$fuelType."';";
+                $result3 = mysqli_query($con, $query3);
+                $row3 = mysqli_fetch_assoc($result3);
 
-            $sendQuery = "INSERT INTO FuelQuote (email, gallonsPurchased, fueltype, dateOfPurchase, numTrucksUsed, paymentType, totalBill, expectedProfits, status) VALUES ('".$email."', ".$gallonsRequested.", '".$fuelType."', '".$deliveryDate."', ".$numTrucksUsed.", '".$paymentType."', ".$totalPrice.", ".$expectedProfits.", 'Transit');";
-        }
+                $fuel = new FuelType($fuelType, floatval($row3['baseCost']), 0.1);
+
+                // Calculate pricing
+                $priceCalc = new Price($fuel,$companyState,$truck,$gallonsRequested);
+                $pricePerGallon = $fuel->get_price_per_gallon();
+                $totalPrice = $priceCalc->calculate_total_sale_price();
+                $numTrucksUsed = $priceCalc->calculate_num_trucks();
+                $status = "Transit";
+                $expectedProfits = $priceCalc->calculate_profit_percentage();
+
+                $sendQuery = "INSERT INTO FuelQuote (email, gallonsPurchased, fueltype, dateOfPurchase, numTrucksUsed, paymentType, totalBill, expectedProfits, status) VALUES ('".$email."', ".$gallonsRequested.", '".$fuelType."', '".$deliveryDate."', ".$numTrucksUsed.", '".$paymentType."', ".$totalPrice.", ".$expectedProfits.", 'Transit');";
+            }
     ?>
         <!--<object type="text/html" data="components/nav-bar.php"></object> -->
     </div>
