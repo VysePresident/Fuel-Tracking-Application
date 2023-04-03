@@ -92,7 +92,7 @@ class LoginManager extends Dbh {
                     // Error connecting to database
                     return null;
                     //header("location: index.php?error=DB_CONN_FAILED");
-                    exit();
+                    //exit();
                 }
                 
             }
