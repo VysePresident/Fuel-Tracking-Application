@@ -1,8 +1,8 @@
 <?php
-  session_start();
   require_once dirname(__DIR__) . '/src/client.php';
+  session_start();
   //require_once '../src/client.php';
-  
+
 ?>
 
 <link rel="stylesheet" href="./styles/nav-bar.css">

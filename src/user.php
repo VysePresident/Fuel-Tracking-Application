@@ -99,22 +99,41 @@ public function validate_input($data){
 }
 
 
-public function editUserProfile(array $userData) {
-    if (!$this->validate_input($userData)) {
-        throw new Exception("Invalid user data provided.");
-    }
+// public function editUserProfile(array $userData) {
+//     if (!$this->validate_input($userData)) {
+//         throw new Exception("Invalid user data provided.");
+//     }
 
-    $hashed_password = password_hash($userData['password'], PASSWORD_DEFAULT);
+//     $hashed_password = password_hash($userData['password'], PASSWORD_DEFAULT);
 
-    $sql = "UPDATE user_profiles SET email=?, password=?, fname=?, mname=?, lname=?, phone=?, companyName=?, state=?, city=?, street=?, street2=?, zipcode=? WHERE id=?";
+//     $sql = "UPDATE ClientInformation SET email=?, password=?, fname=?, mname=?, lname=?, phone=?, companyName=?, state=?, city=?, street=?, street2=?, zipcode=? WHERE id=?";
 
-    $stmt = $this->conn->prepare($sql);
-    $stmt->bind_param("ssssssssssssi", $userData['email'], $hashed_password, $userData['fname'], $userData['mname'], $userData['lname'], $userData['phone'], $userData['companyName'], $userData['state'], $userData['city'], $userData['street'], $userData['street2'], $userData['zipcode'], $userData['id']);
+//     $stmt = $this->conn->prepare($sql);
+//     $stmt->bind_param("ssssssssssssi", $userData['email'], $hashed_password, $userData['fname'], $userData['mname'], $userData['lname'], $userData['phone'], $userData['companyName'], $userData['state'], $userData['city'], $userData['street'], $userData['street2'], $userData['zipcode'], $userData['id']);
 
-    if ($stmt->execute()) {
-        return true;
-    }
+//     if ($stmt->execute()) {
+//         return true;
+//     }
 
-    return false;
-  }
+//     return false;
+//   }
+//   public function editUserProfile(array $userData) {
+//     if (!$this->validate_input($userData)) {
+//         throw new Exception("Invalid user data provided.");
+//     }
+
+//     $hashed_password = password_hash($userData['password'], PASSWORD_DEFAULT);
+
+//     $sql = "UPDATE ClientInformation SET email=?, fname=?, mname=?, lname=?, phone=?, companyName=?, companyState=?, companyCity=?, companyStreet=?, companyStreet2=?, zipcode=? WHERE email=?";
+
+//     $stmt = $this->conn->prepare($sql);
+//     $stmt->bind_param("ssssssssssss", $userData['email'], $userData['fname'], $userData['mname'], $userData['lname'], $userData['phone'], $userData['companyName'], $userData['state'], $userData['city'], $userData['street'], $userData['street2'], $userData['zipcode'], $userData['email']);
+
+//     if ($stmt->execute()) {
+//         return true;
+//     }
+
+//     return false;
+// }
+
 }
