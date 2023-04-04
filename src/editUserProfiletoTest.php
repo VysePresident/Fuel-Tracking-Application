@@ -96,24 +96,24 @@ class EditUserProfiletoTest {
   }
 }
           
-  // Database credentials
-  $servername = "gasco-server.mysql.database.azure.com";
-  $username = "tanya";
-  $password = "team53server";
-  $dbname = "gasco";
-  $port = 3306;
+  // // Database credentials
+  // $servername = "gasco-server.mysql.database.azure.com";
+  // $username = "tanya";
+  // $password = "team53server";
+  // $dbname = "gasco";
+  // $port = 3306;
   
-  // Create connection
-  $conn = mysqli_init();
-  mysqli_ssl_set($conn, NULL, NULL, NULL, NULL, NULL);
-  mysqli_real_connect($conn, $servername, $username, $password, $dbname, $port, MYSQLI_CLIENT_SSL);
+  // // Create connection
+  // $conn = mysqli_init();
+  // mysqli_ssl_set($conn, NULL, NULL, NULL, NULL, NULL);
+  // mysqli_real_connect($conn, $servername, $username, $password, $dbname, $port, MYSQLI_CLIENT_SSL);
   
-  // Check connection
-  if ($conn->connect_error) {
-  die("Connection failed: " . $conn->connect_error);
-  }
+  // // Check connection
+  // if ($conn->connect_error) {
+  // die("Connection failed: " . $conn->connect_error);
+  // }
   
-  $edit_user_profile = new EditUserProfiletoTest($conn);
-  $edit_user_profile->run();
+  // $edit_user_profile = new EditUserProfiletoTest($conn);
+  // $edit_user_profile->run();
   
-  $conn->close();
+  // $conn->close();
