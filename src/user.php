@@ -27,6 +27,7 @@ public function validate_input($data){
 
     // Check for required fields
     $required_fields = ['email', 'password', 'fname', 'lname', 'phone', 'companyName', 'state', 'city', 'street', 'zipcode'];
+
     foreach ($required_fields as $field) {
         if ($field === 'mname') {
             continue;
@@ -38,6 +39,7 @@ public function validate_input($data){
 
     // Check email format
     if (!filter_var($data['email'], FILTER_VALIDATE_EMAIL)) {
+
         $errors[] = "Invalid email format";
     }
 
@@ -78,6 +80,7 @@ public function validate_input($data){
     return empty($errors) ? true : $errors;
 }
 
+
 //   public function createUser(array $userData) {
 //     if (!$this->validate_input($userData)) {
 //         throw new Exception("Invalid user data provided.");
@@ -97,6 +100,7 @@ public function validate_input($data){
 
 //     return false;
 // }
+
 
 
 // public function editUserProfile(array $userData) {

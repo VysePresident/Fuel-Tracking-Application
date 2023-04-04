@@ -43,6 +43,7 @@ class UserTest extends TestCase{
         $this->assertEquals($expectedOutput, $cleanedInput);
     }
 
+
     // /**
     // * @covers \App\User::validate_input
     // * @covers \App\User::createUser
@@ -68,6 +69,7 @@ class UserTest extends TestCase{
     //     $this->assertTrue($user->createUser($validData));
     //     $this->assertIsBool($user->createUser($validData));
     // }
+
 
     /**
     * @covers \App\User::validate_input
@@ -105,6 +107,7 @@ class UserTest extends TestCase{
     
         $errors = $user->validate_input($input);
     
+
         $this->assertContains("Missing or empty field: email", $errors);
         $this->assertContains("Missing or empty field: fname", $errors);
         $this->assertNotContains("Missing or empty field: password", $errors);
