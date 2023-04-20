@@ -45,7 +45,7 @@ class LoginManager extends Dbh {
 
     public function getClientByEmail($email) {
         // Check credentials
-        echo "CHECK CREDENTIALS"  . '\n';
+        //echo "CHECK CREDENTIALS"  . '\n';
         $stmt = $this->conn->prepare("SELECT * FROM userCredentials WHERE email = ?");
         $stmt->bind_param("s", $email); // TESTING
         $stmt->execute();
@@ -54,7 +54,7 @@ class LoginManager extends Dbh {
 
         if ($clientData) {
             // Credentials good.  Check Password
-            echo "CHECK PASSWORD"  . '\n';
+            //echo "CHECK PASSWORD"  . '\n';
             if($this->doesPasswordMatch($this->password, $clientData['password']))
             {
                 $stmtClientInformation = $this->conn->prepare(
@@ -66,7 +66,7 @@ class LoginManager extends Dbh {
 
                 if ($clientInformation)
                 {
-                    echo "GET CLIENT INFO"  . '\n';
+                    //echo "GET CLIENT INFO"  . '\n';
                     $myClient = new Client(
                         $clientInformation['email'],
                         $clientInformation['fname'],
@@ -91,7 +91,7 @@ class LoginManager extends Dbh {
                 }
                 else
                 {
-                    echo "CAN'T CONNECT"  . '\n';
+                    //echo "CAN'T CONNECT"  . '\n';
                     // Error connecting to database
                     return null;
                     //header("location: index.php?error=DB_CONN_FAILED");
@@ -101,14 +101,14 @@ class LoginManager extends Dbh {
             }
             else
             {
-                echo "WRONG PASSWORD"  . '\n';
+                //echo "WRONG PASSWORD"  . '\n';
                 //Login fails - wrong password
                 return null;
                 //header("location: index.php?error=WRONG_PASSWORD");
                 //exit();
             }
         } else {
-            echo "WRONG EMAIL"  . '\n';
+            //echo "WRONG EMAIL"  . '\n';
             // Email doesn't exist
             return null;
         }
@@ -140,9 +140,9 @@ class LoginManager extends Dbh {
 
     public function isLoginValid() {
         $client = $this->getClientByEmail($this->email);
-        echo 'RESULTS ARE ' . '\n';
+        //echo 'RESULTS ARE ' . '\n';
         if ($client) {
-            echo 'SUCCESS' . '\n';
+            //echo 'SUCCESS' . '\n';
             session_start();
             $_SESSION['client'] = $client;
             $_SESSION['email'] = $client->getEmail();
@@ -150,7 +150,7 @@ class LoginManager extends Dbh {
             exit();
             } 
         else {
-            echo 'FAILURE' . '\n';
+            //echo 'FAILURE' . '\n';
             return false;
             //header("Location: ../index.php?error=noUser!");
             //exit();
