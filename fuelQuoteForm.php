@@ -11,9 +11,8 @@
 
     <script src="components/nav-bar.js" defer></script>
     <script src="components/footer.js" defer></script>
+    <script src="components/fuelQuoteForm.js" defer></script>
 </head>
-
-
 
 <body>
     <!--Add link for action to Order Summary Page-->
@@ -26,21 +25,30 @@
                     ini_set("display_errors", "1");
                     ini_set("display_startup_errors", "1");
                     error_reporting(E_ALL);
-                    // Dummy values to stand in for user profile information, as we are not yet intended
-                    // to work on the backend.
-                    $client = $_SESSION['client'];
-                    $email = $client->getEmail();
-                    $query = "SELECT * FROM clientinformation WHERE email = \"".$email."\";";
-                    
-                    $result = mysqli_query($con, $query);
-                    $row = mysqli_fetch_assoc($result);
 
-                    $company_name = $row['companyName'];
-                    $state = $row['companyState'];
-                    $city = $row['companyCity'];
-                    $street = $row['companyStreet'];
+                    if(isset($_SESSION['client']))
+                    {
+                        $client = $_SESSION['client'];
+                        $email = $client->getEmail();
+                        $query = "SELECT * FROM clientinformation WHERE email = \"".$email."\";";
+                        
+                        $result = mysqli_query($con, $query);
+                        $row = mysqli_fetch_assoc($result);
+
+                        $company_name = $row['companyName'];
+                        $state = $row['companyState'];
+                        $city = $row['companyCity'];
+                        $street = $row['companyStreet'];
+                    }
+                    else
+                    {
+                        $email = "(None - please sign in)";
+                        $company_name = "(None - please sign in)";
+                        $state = "(None - please sign in)";
+                        $city = "(None - please sign in)";
+                        $street = "(None - please sign in)";
+                    }
                 ?> 
-                <!--<object type="text/html" data="components/nav-bar.php"></object>-->
             </div>
             <section>
                 <h1><u>Fuel Order Form</u></h1>
@@ -102,9 +110,21 @@
                         </div> 
                     </div>
                 </p>
+                <p>
+                    <label for="suggestedPrice">Price Per Gallon: </label>
+                    <input class="formCell" type="text" name="suggestedPrice" id="suggestedPrice" readonly>
+                </p>
+                <p>
+                    <label for="totalAmount">Total Price: </label>
+                    <input class="formCell" type="text" name="totalAmount" id="totalAmount" readonly>
+                </p>
+            <section>
+                <button type="button" id="getQuoteBtn">Get Quote</button>
+            </section>
             <section>
                 <input type="submit" value="Submit" class="submitButton" id="submitButton">
             </section>
+            
         </form>
     </section>
 </body>
