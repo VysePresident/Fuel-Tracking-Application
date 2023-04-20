@@ -29,18 +29,13 @@
     $companyProfitFactor = 0.10; // Company profit factor
 
     // Get input data from POST request
-    //$data = json_decode(file_get_contents('php://input'), true);
-    //$gallonsRequested = $data['gallonsRequested'];
-    //$state = $data['state'];
+    $data = json_decode(file_get_contents('php://input'), true);
+    $gallonsRequested = $data['gallonsRequested'];
+    $state = $client->getCompanyState();
     $hasRateHistory = false; // Assume no rate history initially
-    //$email = $client->getEmail();
-
-    //TESTING TESTING TESTING DUMMY VALUES
-
-    $gallonsRequested = 2000;
-    $state = "Texas";
     $email = $client->getEmail();
 
+    //TESTING TESTING TESTING DUMMY VALUES
 
     // Check if client has rate history 
     $stmt = $conn->prepare("SELECT COUNT(*) FROM fuelquote WHERE email = ?");
