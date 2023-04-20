@@ -98,3 +98,19 @@ form {
 .formCellText {
   display: inline;
 }
+
+
+
+/*TEST*/
+/* Set initial state to disabled */
+/*
+  #getQuoteBtn {
+  opacity: 0.5;
+  pointer-events: none;
+}
+/* Enable the button when the form is valid */
+/*
+  #fuelQuoteForm input:not([readonly]):valid + #getQuoteBtn {
+  opacity: 1;
+  pointer-events: auto;
+}*/
