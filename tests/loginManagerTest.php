@@ -107,13 +107,13 @@ class loginManagerTest extends PHPUnit\Framework\TestCase
     public function testGetClientByEmail()
     {
         // Good info
-        $loginManager = new LoginManager('bob2@gmail.com', 'pwd2');
-        $this->assertNotNull($loginManager->getClientByEmail('bob2@gmail.com'));
+        $loginManager = new LoginManager('bob10@gmail.com', '123456789');
+        $this->assertNotNull($loginManager->getClientByEmail('bob10@gmail.com'));
         // Bad email
         $this->assertNull($loginManager->getClientByEmail('FAKEBOB@gmail.com'));
         // Bad Password
-        $loginManager2 = new LoginManager('bob2@gmail.com', 'FAKE_BOB_ID');
-        $this->assertNull($loginManager2->getClientByEmail('bob2@gmail.com'));
+        $loginManager2 = new LoginManager('bob10@gmail.com', 'FAKE_BOB_ID');
+        $this->assertNull($loginManager2->getClientByEmail('bob10@gmail.com'));
         // Bad connection
         //$loginManager2 = new LoginManager('bob1@gmail.com', 'FAKE_BOB_ID');
         //$this->assertNull($loginManager2->getClientByEmail('bob1@gmail.com'));
@@ -128,7 +128,8 @@ class loginManagerTest extends PHPUnit\Framework\TestCase
     public function testdoesPasswordMatch() 
     {
         $loginManager = new LoginManager('bob@gmail.com', 'Glory2Bob');
-        $this->assertTrue($loginManager->doesPasswordMatch("pwd", "pwd"));
+        $hashed_pwd = password_hash('Glory2Bob', PASSWORD_DEFAULT);
+        $this->assertTrue($loginManager->doesPasswordMatch('Glory2Bob', $hashed_pwd));
         $this->assertFalse($loginManager->doesPasswordMatch("pwd", "notPwd"));
     }
 
