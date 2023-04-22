@@ -1,4 +1,4 @@
-<?php include_once 'components/nav-bar.php'; ?>
+<?//php include_once 'components/nav-bar.php'; ?>
 
 <!DOCTYPE html>
 <html lang="en">
