@@ -71,7 +71,7 @@ document.getElementById("getQuoteBtn").addEventListener("click", function (event
     }
   });
 
-// JavaScript code to hide submit button when input value is changed
+// Update Get Quote and Submit buttons
 const in1 = document.getElementById('fuelType');
 const in2 = document.getElementById('gallonsRequested');
 const in3 = document.getElementById('deliveryDate');
