@@ -83,6 +83,17 @@ form {
   cursor: pointer;
 }
 
+.grayButton {
+  background-color: gray;
+  color: white;
+  font-size: 16px;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  margin-top: 5px;
+  cursor: pointer;
+}
+
 /*#footer {
   position: fixed;
   bottom: 0;

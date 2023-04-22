@@ -70,3 +70,30 @@ document.getElementById("getQuoteBtn").addEventListener("click", function (event
       alert("Please fill in all the required fields.");
     }
   });
+
+// JavaScript code to hide submit button when input value is changed
+const in1 = document.getElementById('fuelType');
+const in2 = document.getElementById('gallonsRequested');
+const in3 = document.getElementById('deliveryDate');
+const in4 = document.getElementById('cash');
+const in5 = document.getElementById('credit');
+const in6 = document.getElementById('debit');
+
+function checkInputs() {
+  if (in1.value && in2.value && in3.value && (in4.checked || in5.checked || in6.checked)) {
+    document.getElementById("getQuoteBtn").disabled = false;
+    document.getElementById("grayButton").type = "hidden";
+    document.getElementById("submitButton").type = "submit";
+  } else {
+    document.getElementById("getQuoteBtn").disabled = true;
+    document.getElementById("grayButton").type = "button";
+    document.getElementById("submitButton").type = "hidden";
+  }
+}
+
+in1.addEventListener('input', checkInputs);
+in2.addEventListener('input', checkInputs);
+in3.addEventListener('input', checkInputs);
+in4.addEventListener('input', checkInputs);
+in5.addEventListener('input', checkInputs);
+in6.addEventListener('input', checkInputs);
