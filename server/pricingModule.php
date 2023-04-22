@@ -1,5 +1,9 @@
     <?php
 
+    require_once __DIR__ . '/../src/client.php';
+    //require_once __DIR__ . '/../components/nav-bar.php';
+
+    session_start();
 
     ini_set("display_errors", "1");
     ini_set("display_startup_errors", "1");
@@ -7,10 +11,6 @@
     //include_once 'server/loginSession.php'; // Maintains session information
 
     require_once __DIR__ . '/db_connection.php';
-    require_once __DIR__ . '/../src/client.php';
-    //require_once __DIR__ . '/../components/nav-bar.php';
-
-    session_start();
 
     $client = $_SESSION['client'];
 
