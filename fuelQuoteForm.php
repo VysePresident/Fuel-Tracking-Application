@@ -117,17 +117,18 @@
                 </p>
                 <p>
                     <label for="suggestedPrice">Price Per Gallon: </label>
-                    <input class="formCell" type="text" name="suggestedPrice" id="suggestedPrice" readonly>
+                    <input class="formCell" type="text" name="suggestedPrice" id="suggestedPrice" readonly required>
                 </p>
                 <p>
                     <label for="totalAmount">Total Price: </label>
-                    <input class="formCell" type="text" name="totalAmount" id="totalAmount" readonly>
+                    <input class="formCell" type="text" name="totalAmount" id="totalAmount" readonly required>
                 </p>
             <section>
-                <button type="button" id="getQuoteBtn">Get Quote</button>
+                <button type="button" id="getQuoteBtn" disabled="true">Get Quote</button>
             </section>
             <section>
-                <input type="submit" value="Submit" class="submitButton" id="submitButton">
+                <input type="button" value="Submit" class="grayButton" id="grayButton">
+                <input type="hidden" value="Submit" class="submitButton" id="submitButton">
             </section>
             
         </form>
