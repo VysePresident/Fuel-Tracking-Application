@@ -1,3 +1,5 @@
+<?php include_once 'components/nav-bar.php'; ?>
+
 <!DOCTYPE html>
 <html>
   <head>
@@ -14,10 +16,15 @@
   </head>
   <body>
       <header>
-        <nav id="nav-bar">
-          <?php include_once 'components/nav-bar.php'; ?>
+        
+      <div class="nav-bar" id="nav-bar">
+      </div>
+      
+      <!--<nav id="nav-bar">-->
+          <?php //include_once 'components/nav-bar.php'; ?>
           <!--<object type="text/html" data="components/nav-bar.php"></object>-->
-        </nav>
+        <!--</nav>-->
+
       </header>
       <section id="page">
         <section id="confirmation-message">

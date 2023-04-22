@@ -1,3 +1,5 @@
+<?php include_once 'components/nav-bar.php'; ?>
+
 <!DOCTYPE html>
 <html>
   <head>
@@ -7,7 +9,7 @@
   </head>
   <body>
       <div class="nav-bar" id="nav-bar">
-        <?php include_once 'components/nav-bar.php'; ?>
+        <?php //include_once 'components/nav-bar.php'; ?>
         <!--<object type="text/html" data="components/nav-bar.php"></object>-->
       </div>
       <div class="editUserProfile" id="editUserProfile"></div>

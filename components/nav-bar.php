@@ -19,6 +19,7 @@
             if(isset($_SESSION['client']))
             {
               echo '<li><a href="editUserProfile.php">PROFILE</a></li>';
+              echo '<li><a href="customer_history_page.php">HISTORY</a></li>';
               echo '<li><a href="/server/logout.php">LOGOUT</a></li>';
               echo "HI " . $_SESSION['client']->getEmail() . "!";
             }

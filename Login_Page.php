@@ -1,3 +1,5 @@
+<?php include_once 'components/nav-bar.php'; ?>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -18,7 +20,7 @@
 	<meta name = "viewport" content  = "width=device-width, initial-scale = 1.0" />
 	<link rel = "stylesheet" href = "styles/login_page.css">
 	<div class="nav-bar" id="nav-bar">
-		<?php include_once 'components/nav-bar.php'; ?>
+		<?php //include_once 'components/nav-bar.php'; ?>
         <!--<object type="text/html" data="components/nav-bar.php"></object>-->
 	</div>
   <!--<header>

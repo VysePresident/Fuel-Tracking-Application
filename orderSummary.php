@@ -1,3 +1,5 @@
+<?php include_once 'components/nav-bar.php'; ?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -20,7 +22,7 @@
 <body>
     <form class="orderSummary" action="newRow.php" method="POST">
     <div class="nav-bar" id="nav-bar">
-        <?php include_once 'components/nav-bar.php'; 
+        <?php //include_once 'components/nav-bar.php'; 
             include("server/connection.php");
             ini_set("display_errors", "1");
             ini_set("display_startup_errors", "1");
@@ -73,6 +75,7 @@
                 $expectedProfits = $priceCalc->calculate_profit_percentage();
 
                 $sendQuery = "INSERT INTO FuelQuote (email, gallonsPurchased, fueltype, dateOfPurchase, numTrucksUsed, paymentType, totalBill, expectedProfits, status) VALUES ('".$email."', ".$gallonsRequested.", '".$fuelType."', '".$deliveryDate."', ".$numTrucksUsed.", '".$paymentType."', ".$totalPrice.", ".$expectedProfits.", 'Transit');";
+                $result = mysqli_query($con, $sendQuery);
             }
     ?>
         <!--<object type="text/html" data="components/nav-bar.php"></object> -->

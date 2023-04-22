@@ -1,3 +1,5 @@
+<?php include_once 'components/nav-bar.php'; ?>
+
 <!DOCTYPE html>
 <html>
     <head>
@@ -14,7 +16,7 @@
       <link rel="stylesheet" href="https://cdn.datatables.net/1.10.25/css/jquery.dataTables.min.css">
       <link rel = "stylesheet" href = "Customer_history_page.css">
       <?php
-        include_once 'components/nav-bar.php';
+        //include_once 'components/nav-bar.php';
         ini_set("display_errors", "1");
         ini_set("display_startup_errors", "1");
         error_reporting(E_ALL);
