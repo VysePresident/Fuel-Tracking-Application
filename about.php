@@ -1,3 +1,5 @@
+<?php //include_once 'components/nav-bar.php'; ?>
+
 <!DOCTYPE html>
 <html>
   <head>
@@ -5,11 +7,11 @@
     <link rel="stylesheet" href="styles/styles.css">
     <link rel="stylesheet" href="styles/nav-bar.css">
     <link rel="stylesheet" href="styles/footer.css">
-    <link rel="stylesheet" href="styles/orderConfirmation.css">
+    <link rel="stylesheet" href="styles/about.css">
 
     <title>ORDER SUCCESSFUL CONFIRMATION.</title>
 
-    <script src="components/orderConfirmation.js"></script>
+    <!--<script src="components/orderConfirmation.js"></script>-->
 
   </head>
   <body>
