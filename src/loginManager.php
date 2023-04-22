@@ -1,5 +1,7 @@
 <?php
 
+session_start();
+
 require_once __DIR__ . '/dbh.php';
 require_once __DIR__ . '/client.php';
 
@@ -143,7 +145,8 @@ class LoginManager extends Dbh {
         //echo 'RESULTS ARE ' . '\n';
         if ($client) {
             //echo 'SUCCESS' . '\n';
-            session_start();
+            //header("Location: ../login.php");
+            
             $_SESSION['client'] = $client;
             $_SESSION['email'] = $client->getEmail();
             header("Location: ../index.php?noerror");
