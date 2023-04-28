@@ -47,11 +47,13 @@
                     }
                     else
                     {
-                        $email = "(None - please sign in)";
+                        header("Location: Login_Page.php");
+                        exit; // make sure to exit after the redirect
+                        /*$email = "(None - please sign in)";
                         $company_name = "(None - please sign in)";
                         $state = "(None - please sign in)";
                         $city = "(None - please sign in)";
-                        $street = "(None - please sign in)";
+                        $street = "(None - please sign in)";*/
                     }
                 ?> 
             </div>
