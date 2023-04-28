@@ -1,20 +1,4 @@
-<?php
-
-    require_once __DIR__ . '/../src/client.php';
-    //require_once __DIR__ . '/../components/nav-bar.php';
-
-    session_start();
-
-    ini_set("display_errors", "1");
-    ini_set("display_startup_errors", "1");
-    error_reporting(E_ALL);
-    //include_once 'server/loginSession.php'; // Maintains session information
-
-    require_once __DIR__ . '/db_connection.php';
-
-    $client = $_SESSION['client'];
-
-    // Constants
+<?php 
 
     $currentPricePerGallon = 1.50; // Current price per gallon
 
@@ -28,12 +12,9 @@
     $gallonsRequestedFactorLessThan1000 = 0.03; // Gallons requested factor for less than 1000 gallons
     $companyProfitFactor = 0.10; // Company profit factor
 
-    // Get input data from POST request
-    $data = json_decode(file_get_contents('php://input'), true);
-    $gallonsRequested = $data['gallonsRequested'];
-    $state = $client->getCompanyState();
+    //$state = $client->getCompanyState();
     $hasRateHistory = false; // Assume no rate history initially
-    $email = $client->getEmail();
+    //$email = $client->getEmail();
 
     //TESTING TESTING TESTING DUMMY VALUES
 
@@ -58,16 +39,5 @@
     // Calculate suggested price per gallon and total amount due
     $suggestedPricePerGallon = $currentPricePerGallon + $margin;
     $totalAmountDue = $gallonsRequested * $suggestedPricePerGallon;
-
-    // Prepare response data
-    $response = array(
-        'suggestedPrice' => number_format($suggestedPricePerGallon, 3),
-        'totalAmount' => number_format($totalAmountDue, 2)
-    );
-
-    // Send response as JSON
-    header('Content-Type: application/json');
-    echo json_encode($response);
-
-
+    $totalAmountDue = number_format($totalAmountDue, 2);
 ?>

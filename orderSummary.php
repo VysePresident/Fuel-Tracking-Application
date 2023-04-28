@@ -1,4 +1,7 @@
-<?php include_once 'components/nav-bar.php'; ?>
+<?php 
+    include_once 'components/nav-bar.php'; 
+    require_once __DIR__ . '/server/db_connection.php';
+?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -67,7 +70,8 @@
                 $fuel = new FuelType($fuelType, floatval($row3['baseCost']), 0.1);
 
                 // Calculate pricing
-                $priceCalc = new Price($fuel,$companyState,$truck,$gallonsRequested);
+                
+                /*$priceCalc = new Price($fuel,$companyState,$truck,$gallonsRequested);
                 $pricePerGallon = $fuel->get_price_per_gallon();
                 $totalPrice = $priceCalc->calculate_total_sale_price();
                 $numTrucksUsed = $priceCalc->calculate_num_trucks();
@@ -75,7 +79,15 @@
                 $expectedProfits = $priceCalc->calculate_profit_percentage();
 
                 $sendQuery = "INSERT INTO FuelQuote (email, gallonsPurchased, fueltype, dateOfPurchase, numTrucksUsed, paymentType, totalBill, expectedProfits, status) VALUES ('".$email."', ".$gallonsRequested.", '".$fuelType."', '".$deliveryDate."', ".$numTrucksUsed.", '".$paymentType."', ".$totalPrice.", ".$expectedProfits.", 'Transit');";
-                $result = mysqli_query($con, $sendQuery);
+                $result = mysqli_query($con, $sendQuery);*/
+
+
+                // Constants
+
+                require_once __DIR__ . "/orderSummaryPricing.php";
+
+
+
             }
     ?>
         <!--<object type="text/html" data="components/nav-bar.php"></object> -->
@@ -89,13 +101,13 @@
         </section>
             <div class="priceEstimate" name="priceEstimate", id="priceEstimate">
                 <ul class="priceEstimate">
-                    <li class="priceEstimate"><?php echo "<p>Price/Gallon: $pricePerGallon</p>" ?></li>
-                    <li class="priceEstimate"><?php echo "<p>Total Price: $totalPrice</p>" ?></li>
+                    <li class="priceEstimate"><?php echo "<p>Price/Gallon: $suggestedPricePerGallon</p>" ?></li> <!--$pricePerGallon-->
+                    <li class="priceEstimate"><?php echo "<p>Total Price: $totalAmountDue</p>" ?></li> <!--$totalPrice-->
                 </ul>
             </div>
         </section>
         <section class="buttons">
-            <input type="hidden" name="send_query" value=<?php echo "'".$sendQuery."'"?>>
+            <!--<input type="hidden" name="send_query" value=<?php //echo "'".$sendQuery."'"?>>-->
             <input type="submit" value="Confirm" class="confirmButton" id="confirmButton" onclick="confirmOrder()">
             <input type="submit" formaction="index.php" value="Cancel" class="cancelButton" id="cancelButton" onclick="goHome()">
         </section>
