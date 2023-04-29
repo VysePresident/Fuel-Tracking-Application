@@ -85,9 +85,13 @@
                 // Constants
 
                 require_once __DIR__ . "/orderSummaryPricing.php";
-
-
-
+                $_SESSION['gallonsPurchased'] = $gallonsRequested;
+                $_SESSION['fuelType'] = $fuelType;
+                $_SESSION['date'] = $deliveryDate;
+                $_SESSION['trucks'] = $totalAmountDue/2000;
+                $_SESSION['paymentType'] = $paymentType;
+                $_SESSION['total'] = $totalAmountDue;
+                $_SESSION['profit'] = $margin;
             }
     ?>
         <!--<object type="text/html" data="components/nav-bar.php"></object> -->
