@@ -88,7 +88,7 @@
                 $_SESSION['gallonsPurchased'] = $gallonsRequested;
                 $_SESSION['fuelType'] = $fuelType;
                 $_SESSION['date'] = $deliveryDate;
-                $_SESSION['trucks'] = $totalAmountDue/2000;
+                $_SESSION['trucks'] = ceil($totalAmountDue/2000);
                 $_SESSION['paymentType'] = $paymentType;
                 $_SESSION['total'] = $totalAmountDue;
                 $_SESSION['profit'] = $margin;
