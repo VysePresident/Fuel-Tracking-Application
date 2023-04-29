@@ -36,7 +36,7 @@ $street = $user->clean_input($_POST['street']);
 $street2 = $user->clean_input($_POST['street2']);
 $zipcode = $user->clean_input($_POST['zipcode']);
 
-$validation_result = $user->validate_input([
+$data = [
     'email' => $email,
     'password' => $password,
     'fname' => $fname,
@@ -49,7 +49,9 @@ $validation_result = $user->validate_input([
     'street' => $street,
     'street2' => $street2,
     'zipcode' => $zipcode
-]);
+];
+
+$validation_result = $user->validate_input($data, true);
 
 if ($validation_result === true) {
     try {
