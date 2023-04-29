@@ -53,9 +53,6 @@ $validation_result = $user->validate_input([
 
 if ($validation_result === true) {
     try {
-        // Hash the password 
-        $hashed_password = password_hash($password, PASSWORD_DEFAULT);
-    
         // Prepare and execute SQL statement for ClientInformation
         $sql_client_info = "UPDATE ClientInformation SET email=?, fname=?, mname=?, lname=?, phone=?, companyName=?, companyState=?, companyCity=?, companyStreet=?, companyStreet2=?, zipcode=? WHERE email=?";
 
@@ -63,10 +60,16 @@ if ($validation_result === true) {
         $stmt_client_info->bind_param("ssssssssssss", $email, $fname, $mname, $lname, $phone, $companyName, $state, $city, $street, $street2, $zipcode, $email);
 
         // Prepare and execute SQL statement for UserCredentials
-        $sql_user_credentials = "UPDATE UserCredentials SET email=?, password=? WHERE email=?";
-
-        $stmt_user_credentials = $conn->prepare($sql_user_credentials);
-        $stmt_user_credentials->bind_param("sss", $email, $hashed_password, $email);
+        if (!empty($password)) {
+            $hashed_password = password_hash($password, PASSWORD_DEFAULT);
+            $sql_user_credentials = "UPDATE UserCredentials SET email=?, password=? WHERE email=?";
+            $stmt_user_credentials = $conn->prepare($sql_user_credentials);
+            $stmt_user_credentials->bind_param("sss", $email, $hashed_password, $email);
+        } else {
+            $sql_user_credentials = "UPDATE UserCredentials SET email=? WHERE email=?";
+            $stmt_user_credentials = $conn->prepare($sql_user_credentials);
+            $stmt_user_credentials->bind_param("ss", $email, $email);
+        }
 
         // Execute both statements
         if ($stmt_client_info->execute() && $stmt_user_credentials->execute()) {
@@ -85,4 +88,5 @@ if ($validation_result === true) {
         echo $error . "<br>";
     }
 }
+
 $conn->close();

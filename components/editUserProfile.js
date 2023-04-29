@@ -18,11 +18,11 @@ container.innerHTML = `
               </div>
               <div class="formRow">
                   <p class="formCell" for="password">Password:</p>
-                  <input class="formCell" type="password" name="password" id="password" minlength="8" required>
+                  <input class="formCell" type="password" name="password" id="password" minlength="8">
               </div>
               <div class="formRow">
                 <p class="formCell" for="password">Confirm Password:</p>
-                <input class="formCell" type="password" name="confirmPassword" id="confirmPassword" minlength="8" required>
+                <input class="formCell" type="password" name="confirmPassword" id="confirmPassword" minlength="8">
               </div>
             </section>
   
@@ -128,10 +128,10 @@ async function fetchUserData() {
     form.addEventListener('submit', function(e) {
         const password = document.getElementById('password').value;
         const confirmPassword = document.getElementById('confirmPassword').value;
-        if (password !== confirmPassword) {
-        e.preventDefault(); // prevent the form from submitting
-        alert('Passwords do not match'); // display an error message
-    }
+        if (password !== '' && confirmPassword !== '' && password !== confirmPassword) {
+            e.preventDefault(); // prevent the form from submitting
+            alert('Passwords do not match'); // display an error message
+        }
     });
 
 });
