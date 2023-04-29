@@ -42,6 +42,6 @@
 
     my_php_function($con);
 
-    //header("Location: orderConfirmation.php"); // redirect to orderConfirmation.php
-    //exit(); // make sure no more code is executed after the header() function
+    header("Location: orderConfirmation.php"); // redirect to orderConfirmation.php
+    exit(); // make sure no more code is executed after the header() function
 ?>
