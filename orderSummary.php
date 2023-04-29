@@ -88,6 +88,7 @@
                 $_SESSION['gallonsPurchased'] = $gallonsRequested;
                 $_SESSION['fuelType'] = $fuelType;
                 $_SESSION['date'] = $deliveryDate;
+
                 $trucks = 1;
                 $_SESSION['trucks'] = $trucks;
                 $_SESSION['paymentType'] = $paymentType;
