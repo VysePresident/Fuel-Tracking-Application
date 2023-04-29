@@ -8,11 +8,11 @@ class UserTest extends TestCase{
 
     protected function setUp(): void
     {
-        $servername = "localhost";
-        $username = "root";
-        $password = "GasCo12345678";
-        $dbname = "gasco"; 
-        $port = 3307;
+        $servername = 'gasco-server.mysql.database.azure.com';
+        $username = 'alex';
+        $password = 'team53server';
+        $dbname = 'gasco';
+        $port = 3306;
 
         $this->connection = new mysqli($servername, $username, $password, $dbname, $port);
     }
