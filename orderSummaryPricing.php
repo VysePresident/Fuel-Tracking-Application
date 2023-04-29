@@ -39,5 +39,4 @@
     // Calculate suggested price per gallon and total amount due
     $suggestedPricePerGallon = $currentPricePerGallon + $margin;
     $totalAmountDue = $gallonsRequested * $suggestedPricePerGallon;
-    $totalAmountDue = number_format($totalAmountDue, 2);
 ?>
