@@ -18,11 +18,11 @@ container.innerHTML = `
               </div>
               <div class="formRow">
                   <p class="formCell" for="password">Password:</p>
-                  <input class="formCell" type="password" name="password" id="password" minlength="8" required>
+                  <input class="formCell" type="password" name="password" id="password" minlength="8" placeholder="Leave empty to keep the current password">
               </div>
               <div class="formRow">
                 <p class="formCell" for="password">Confirm Password:</p>
-                <input class="formCell" type="password" name="confirmPassword" id="confirmPassword" minlength="8" required>
+                <input class="formCell" type="password" name="confirmPassword" id="confirmPassword" minlength="8" placeholder="Leave empty to keep the current password">
               </div>
             </section>
   
@@ -97,8 +97,8 @@ async function fetchUserData() {
         console.log(clientData);
         // Populate the form fields with the fetched user data
         document.getElementById('email').value = clientData.email;
-        document.getElementById('password').value = clientData.password;
-        document.getElementById('confirmPassword').value = clientData.password;
+        // document.getElementById('password').value = clientData.password;
+        // document.getElementById('confirmPassword').value = clientData.password;
         document.getElementById('fname').value = clientData.fname;
         document.getElementById('mname').value = clientData.mname;
         document.getElementById('lname').value = clientData.lname;
@@ -128,63 +128,11 @@ async function fetchUserData() {
     form.addEventListener('submit', function(e) {
         const password = document.getElementById('password').value;
         const confirmPassword = document.getElementById('confirmPassword').value;
-        if (password !== confirmPassword) {
-        e.preventDefault(); // prevent the form from submitting
-        alert('Passwords do not match'); // display an error message
-    }
+        if (password !== '' && confirmPassword !== '' && password !== confirmPassword) {
+            e.preventDefault(); // prevent the form from submitting
+            alert('Passwords do not match'); // display an error message
+        }
     });
 
 });
-     
-
-// async function fetchUserData() {
-//     const userData = {
-//         email: 'john.doe@example.com',
-//         password: 'Password123@',
-//         fname: 'John',
-//         mname: 'D',
-//         lname: 'Doe',
-//         phone: '555-555-5555',
-//         companyName: 'ABC Corp',
-//         state: 'Texas',
-//         city: 'Missouri City',
-//         street: '123 Main St',
-//         street2: '',
-//         zipcode: '90001'
-//     };
-  
-//     // Populate the form fields with the fetched user data
-//     document.getElementById('email').value = userData.email;
-//     document.getElementById('password').value = userData.password;
-//     document.getElementById('confirmPassword').value = userData.password;
-//     document.getElementById('fname').value = userData.fname;
-//     document.getElementById('mname').value = userData.mname;
-//     document.getElementById('lname').value = userData.lname;
-//     document.getElementById('phone').value = userData.phone;
-//     document.getElementById('companyName').value = userData.companyName;
-//     document.getElementById('state').value = userData.state;
-//     document.getElementById('city').value = userData.city;
-//     document.getElementById('street').value = userData.street;
-//     document.getElementById('street2').value = userData.street2;
-//     document.getElementById('zipcode').value = userData.zipcode;
-// }
-
-// Call the fetchUserData function when the page loads
-
-
-
-
-// fetchUserData();
-
-  
-// const form = document.querySelector('.formTable');
-// console.log(form);
-// form.addEventListener('submit', function(e) {
-//     const password = document.getElementById('password').value;
-//     const confirmPassword = document.getElementById('confirmPassword').value;
-//     if (password !== confirmPassword) {
-//     e.preventDefault(); // prevent the form from submitting
-//     alert('Passwords do not match'); // display an error message
-//   }
-// });
-
+ 

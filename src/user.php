@@ -22,12 +22,17 @@ class User{
     return $data;
   }
 
-public function validate_input($data){
+public function validate_input($data, $password_optional = false){
     $errors = [];
 
     // Check for required fields
-    $required_fields = ['email', 'password', 'fname', 'lname', 'phone', 'companyName', 'state', 'city', 'street', 'zipcode'];
-
+    if($password_optional){
+        $required_fields = ['email', 'fname', 'lname', 'phone', 'companyName', 'state', 'city', 'street', 'zipcode'];
+    }
+    else{
+        $required_fields = ['email', 'password', 'fname', 'lname', 'phone', 'companyName', 'state', 'city', 'street', 'zipcode'];
+    }
+    
     foreach ($required_fields as $field) {
         if ($field === 'mname') {
             continue;
@@ -44,8 +49,19 @@ public function validate_input($data){
     }
 
     // Check password length
-    if (strlen($data['password']) < 8) {
-        $errors[] = "Password too short, must be at least 8 characters";
+    if ($password_optional) {
+        // Check if the password field is provided and is not empty
+        if (isset($data['password']) && !empty($data['password'])) {
+            if (strlen($data['password']) < 8) {
+                $errors[] = "Password too short, must be at least 8 characters";
+            }
+        }
+    } else {
+        if (!isset($data['password']) || empty($data['password'])) {
+            $errors[] = "Missing or empty field: password";
+        } elseif (strlen($data['password']) < 8) {
+            $errors[] = "Password too short, must be at least 8 characters";
+        }
     }
 
     // Check phone number format
